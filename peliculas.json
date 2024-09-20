@@ -1,0 +1,23 @@
+[
+    {
+        "titulo": "Inception",
+        "genero": "Ciencia Ficción",
+        "calificacion": 8.8,
+        "anio": 2010,
+        "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"]
+    },
+    {
+        "titulo": "The Dark Knight",
+        "genero": "Acción",
+        "calificacion": 9.0,
+        "anio": 2008,
+        "actores": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"]
+    },
+    {
+        "titulo": "Parasite",
+        "genero": "Drama",
+        "calificacion": 8.6,
+        "anio": 2019,
+        "actores": ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"]
+    }
+]
