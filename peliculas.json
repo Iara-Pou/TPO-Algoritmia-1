@@ -4,20 +4,23 @@
         "genero": "Ciencia Ficción",
         "calificacion": 8.8,
         "anio": 2010,
-        "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"]
+        "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
+        "descripcion": "Un ladrón especializado en el robo de secretos corporativos a través de los sueños es ofrecido la oportunidad de borrar su historial criminal si logra implantar una idea en la mente de un objetivo."
     },
     {
         "titulo": "The Dark Knight",
         "genero": "Acción",
         "calificacion": 9.0,
         "anio": 2008,
-        "actores": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"]
+        "actores": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+        "descripcion": "Batman, con la ayuda del teniente Jim Gordon y el fiscal del distrito Harvey Dent, intenta desmantelar las organizaciones criminales que plagan Gotham, mientras se enfrenta al caos desatado por el Joker."
     },
     {
         "titulo": "Parasite",
         "genero": "Drama",
         "calificacion": 8.6,
         "anio": 2019,
-        "actores": ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"]
+        "actores": ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"],
+        "descripcion": "Una familia de clase baja se infiltra en la vida de una familia rica, lo que desencadena una serie de eventos inesperados que llevan a una crítica social sobre la lucha de clases."
     }
 ]
