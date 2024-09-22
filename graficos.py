@@ -6,8 +6,6 @@ usuarios = (
         ("usuario3", "contrasenia3"),
     )
 
-
-
 def login():
 
     usuario = entry_user.get()
@@ -21,6 +19,8 @@ def login():
                 abrir_nueva_ventana()
                 return True
 
+    # Mostrar mensaje de error
+    label_error.config(text="Acceso denegado. Intenta de nuevo.")
     print("Acceso denegado.")
     return False
 
@@ -55,8 +55,12 @@ entry_user.pack(pady=5)
 label_user = tk.Label(raiz, text = "Ingresa tu contraseña", bg="#282c20",fg="white",font=("Arial",12))
 label_user.pack(pady=5)
 
-entry_contrasenia = tk.Entry(raiz,font=("Arial",12))
+# contraseña cifrada
+entry_contrasenia = tk.Entry(raiz, font=("Arial", 12), show='*')  
 entry_contrasenia.pack(pady=5)
+
+label_error = tk.Label(raiz, text="", bg="#282c34", fg="red", font=("Arial", 12))  
+label_error.pack(pady=5)
 
 button_style = {
     "font" : ("Arial",12),
