@@ -44,10 +44,9 @@ def recomendarPelicula(peliculas):
     lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas,eleccion_genero))   
     lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas,eleccion_anio))
     lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas,eleccion_calificacion))
+    
+    matriz.extend(lista_por_genero, lista_por_anio, lista_por_calificacion)
 
-    matriz.append(lista_por_genero)
-    matriz.append(lista_por_anio)
-    matriz.append(lista_por_calificacion)
 
     # Recomienda películas
     print('Peliculas recomendadas:')
