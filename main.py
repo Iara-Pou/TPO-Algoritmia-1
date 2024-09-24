@@ -56,8 +56,16 @@ def recomendarPelicula(peliculas):
         if i in matriz[1] or i in matriz[2]:
             print(i)
 
+
 def listarPeliculasPorGenero(peliculas):
-    print(peliculas)
+    generos = conseguir_generos(peliculas)
+
+    for genero in generos:
+        peliculas_genero = buscar_por_genero(peliculas, genero)
+
+        print(f'Películas de {genero}:')
+        print('--------------------------------')
+        mostrar_peliculas(peliculas_genero)
 
 
 # Cargar las películas desde el archivo JSON
