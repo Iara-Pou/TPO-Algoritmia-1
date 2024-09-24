@@ -74,9 +74,9 @@ def listarPeliculasPorGenero(peliculas):
     print(f"{', '.join(generos)}")
     eleccion_genero = input("Selecciona uno: ")
 
-    while eleccion_genero not in generos:
-            print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
-            eleccion_genero = input().strip() 
+    while eleccion_genero.lower() not in [g.lower() for g in generos]:  
+        print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
+        eleccion_genero = input().strip()  
 
     peliculas_genero = conseguir_titulos(buscar_por_genero(peliculas,eleccion_genero))
 
