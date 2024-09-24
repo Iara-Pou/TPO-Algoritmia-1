@@ -1,4 +1,4 @@
-from funciones import cargar_peliculas, buscar_por_genero, buscar_por_anio, mostrar_peliculas, buscar_por_descripcion
+from funciones import *
 from login import login
 
 
@@ -30,10 +30,16 @@ def recomendarPelicula(peliculas):
 
 
 def listarPeliculasPorGenero(peliculas):
-    print(peliculas)
+    generos = conseguir_generos(peliculas)
+
+    for genero in generos:
+        peliculas_genero = buscar_por_genero(peliculas, genero)
+
+        print(f'Películas de {genero}:')
+        print('--------------------------------')
+        mostrar_peliculas(peliculas_genero)
 
 
-# Cargar las películas desde el archivo JSON
 ruta_json = 'peliculas.json'
 peliculas = cargar_peliculas(ruta_json)
 
@@ -41,7 +47,7 @@ if login():
     # mostrar menu
     print('CINEMATCH')
     print('1. Pedir recomendación.')
-    print('2. Filtrar con género.')
+    print('2. Mostrar películas por género.')
     opcion_usuario = input('Ingresa la opción que desees: ')
 
     while opcion_usuario != '1' and opcion_usuario != '2':

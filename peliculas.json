@@ -1,11 +1,11 @@
-[
+[   
     {
         "titulo": "Inception",
         "genero": "Ciencia Ficción",
         "calificacion": 8.8,
         "anio": 2010,
         "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
-        "descripcion": "Un ladrón especializado en el robo de secretos corporativos a través de los sueños es ofrecido la oportunidad de borrar su historial criminal si logra implantar una idea en la mente de un objetivo."
+        "descripcion": "Un ladrón especializado en el robo de secretos a través de los sueños debe implantar una idea en la mente de un objetivo para borrar su historial criminal."
     },
     {
         "titulo": "The Dark Knight",
@@ -13,7 +13,7 @@
         "calificacion": 9.0,
         "anio": 2008,
         "actores": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
-        "descripcion": "Batman, con la ayuda del teniente Jim Gordon y el fiscal del distrito Harvey Dent, intenta desmantelar las organizaciones criminales que plagan Gotham, mientras se enfrenta al caos desatado por el Joker."
+        "descripcion": "Batman, junto a Jim Gordon y Harvey Dent, lucha contra el crimen en Gotham y el caos que provoca el Joker."
     },
     {
         "titulo": "Parasite",
@@ -21,6 +21,70 @@
         "calificacion": 8.6,
         "anio": 2019,
         "actores": ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"],
-        "descripcion": "Una familia de clase baja se infiltra en la vida de una familia rica, lo que desencadena una serie de eventos inesperados que llevan a una crítica social sobre la lucha de clases."
+        "descripcion": "Una familia pobre se infiltra en la vida de una familia rica, lo que desencadena una crítica social sobre la lucha de clases."
+    },
+    {
+        "titulo": "Interstellar",
+        "genero": "Ciencia Ficción",
+        "calificacion": 8.6,
+        "anio": 2014,
+        "actores": ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
+        "descripcion": "Un grupo de exploradores viaja a través de un agujero de gusano en el espacio para garantizar la supervivencia de la humanidad."
+    },
+    {
+        "titulo": "The Shawshank Redemption",
+        "genero": "Drama",
+        "calificacion": 9.3,
+        "anio": 1994,
+        "actores": ["Tim Robbins", "Morgan Freeman"],
+        "descripcion": "La historia de un banquero que es injustamente encarcelado y su amistad con un compañero de prisión que le da esperanza."
+    },
+    {
+        "titulo": "Pulp Fiction",
+        "genero": "Crimen",
+        "calificacion": 8.9,
+        "anio": 1994,
+        "actores": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
+        "descripcion": "Una serie de historias entrelazadas que exploran el mundo del crimen en Los Ángeles."
+    },
+    {
+        "titulo": "The Godfather",
+        "genero": "Crimen",
+        "calificacion": 9.2,
+        "anio": 1972,
+        "actores": ["Marlon Brando", "Al Pacino", "James Caan"],
+        "descripcion": "La saga de la familia Corleone, que narra el ascenso de Don Vito Corleone y su hijo Michael en el mundo del crimen organizado."
+    },
+    {
+        "titulo": "Forrest Gump",
+        "genero": "Romance",
+        "calificacion": 8.8,
+        "anio": 1994,
+        "actores": ["Tom Hanks", "Robin Wright"],
+        "descripcion": "La vida extraordinaria de un hombre con un coeficiente intelectual bajo que se convierte en testigo y protagonista de eventos históricos."
+    },
+    {
+        "titulo": "The Matrix",
+        "genero": "Ciencia Ficción",
+        "calificacion": 8.7,
+        "anio": 1999,
+        "actores": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
+        "descripcion": "Un hacker descubre la verdad sobre su realidad y su papel en la lucha contra los controladores de su mundo."
+    },
+    {
+        "titulo": "Fight Club",
+        "genero": "Drama",
+        "calificacion": 8.8,
+        "anio": 1999,
+        "actores": ["Brad Pitt", "Edward Norton", "Helena Bonham Carter"],
+        "descripcion": "Un hombre insatisfecho con su vida forma un club de lucha secreto como una forma de terapia y rebelión."
+    },
+    {
+        "titulo": "The Silence of the Lambs",
+        "genero": "Thriller",
+        "calificacion": 8.6,
+        "anio": 1991,
+        "actores": ["Jodie Foster", "Anthony Hopkins"],
+        "descripcion": "Una joven agente del FBI busca la ayuda de un asesino en serie encarcelado para atrapar a otro asesino."
     }
 ]
