@@ -14,12 +14,12 @@ def login():
 
         for usuario, contrasenia in usuarios:
             if usuario == nombre_usuario and contrasenia == contrasenia_usuario:
-                # Inicio de sesión exitoso
+                # Inicio de sesion exitoso
                 print("¡Acceso exitoso!")
                 print("-----------------------------------------------------------")
                 return True
 
-        # Disminuir el número de intentos
+        # Disminuir el numero de intentos
         intentos_permitidos -= 1
         print(
             f"Credenciales incorrectas. Te quedan {intentos_permitidos} intento(s).")

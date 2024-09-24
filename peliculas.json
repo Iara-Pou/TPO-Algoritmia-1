@@ -86,5 +86,85 @@
         "anio": 1991,
         "actores": ["Jodie Foster", "Anthony Hopkins"],
         "descripcion": "Una joven agente del FBI busca la ayuda de un asesino en serie encarcelado para atrapar a otro asesino."
+    },
+    {
+        "titulo": "12 Angry Men",
+        "genero": "Drama",
+        "calificacion": 8.9,
+        "anio": 1957,
+        "actores": ["Henry Fonda", "Lee J. Cobb", "Martin Balsam"],
+        "descripcion": "Doce miembros de un jurado deben decidir el destino de un joven acusado de asesinato en un juicio por jurado."
+    },
+    {
+        "titulo": "Schindler's List",
+        "genero": "Drama Histórico",
+        "calificacion": 8.9,
+        "anio": 1993,
+        "actores": ["Liam Neeson", "Ben Kingsley", "Ralph Fiennes"],
+        "descripcion": "La historia de Oskar Schindler, un empresario alemán que salvó a más de mil judíos del Holocausto."
+    },
+    {
+        "titulo": "The Lord of the Rings: The Return of the King",
+        "genero": "Fantasía",
+        "calificacion": 8.9,
+        "anio": 2003,
+        "actores": ["Elijah Wood", "Ian McKellen", "Viggo Mortensen"],
+        "descripcion": "La épica conclusión de la trilogía, donde Frodo y Sam se enfrentan al Señor Oscuro para destruir el Anillo Único."
+    },
+    {
+        "titulo": "Goodfellas",
+        "genero": "Crimen",
+        "calificacion": 8.7,
+        "anio": 1990,
+        "actores": ["Robert De Niro", "Ray Liotta", "Joe Pesci"],
+        "descripcion":  "La historia de Henry Hill, un joven que se une a la mafia y asciende en las filas, pero eventualmente enfrenta las consecuencias de su vida criminal."
+    },
+    {
+        "titulo": "Seven",
+        "genero": "Thriller",
+        "calificacion": 8.6,
+        "anio": 1995,
+        "actores": ["Morgan Freeman", "Brad Pitt", "Gwyneth Paltrow"],
+        "descripcion": "Dos detectives investigan una serie de asesinatos cometidos por un asesino en serie que utiliza los siete pecados capitales como motivo."
+    },
+    {
+        "titulo": "The Green Mile",
+        "genero": "Drama",
+        "calificacion": 8.6,
+        "anio": 1999,
+        "actores": ["Tom Hanks", "Michael Clarke Duncan", "David Morse"],
+        "descripcion": "Un guardia de una prisión de máxima seguridad desarrolla una profunda amistad con un condenado a muerte que parece poseer poderes sobrenaturales."
+    },
+    {
+        "titulo": "City of God",
+        "genero": "Drama",
+        "calificacion": 8.7,
+        "anio": 2002,
+        "actores": ["Alexandre Rodrigues", "Leandro Firmino", "Pêdro Motta"],
+        "descripcion": "Un retrato violento y realista de la vida en los barrios marginales de Río de Janeiro, donde la violencia y el crimen son parte de la vida cotidiana."
+    },
+    {
+        "titulo": "Spirited Away",
+        "genero": "Animación",
+        "calificacion": 8.6,
+        "anio": 2001,
+        "actores": ["Rumi Hiiragi",  "Miyu Irino",  "Mari Natsuki"],
+        "descripcion": "Una niña de 10 años se pierde en un mundo de espíritus y debe encontrar una manera de regresar a casa."
+    },
+    {
+        "titulo": "The Pianist",
+        "genero": "Drama",
+        "calificacion": 8.5,
+        "anio": 2002,
+        "actores": ["Adrien Brody", "Emilia Fox", "Thomas Kretschmann"],
+        "descripcion": "La historia real de un pianista polaco que lucha por sobrevivir en el gueto de Varsovia durante la Segunda Guerra Mundial."
+    },
+    {
+        "titulo": "Oldboy",
+        "genero": "Thriller",
+        "calificacion": 8.4,
+        "anio": 2003,
+        "actores": ["Choi Min-sik", "Yoo Ji-tae", "Kang Hye-jung"],
+        "descripcion": "Un hombre es liberado después de ser encarcelado durante 15 años sin ninguna explicación y busca venganza contra sus captores."
     }
 ]

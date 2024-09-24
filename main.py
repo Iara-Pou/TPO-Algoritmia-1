@@ -13,7 +13,7 @@ def recomendarPelicula(peliculas):
     print(f"{generos}")
     eleccion_genero = input().strip()  # Usa strip() para eliminar espacios en blanco
 
-    while eleccion_genero not in generos:
+    while eleccion_genero.lower() not in [g.lower() for g in generos]:  
         print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
         eleccion_genero = input().strip()  # Usa strip() para eliminar espacios en blanco
 
@@ -21,39 +21,39 @@ def recomendarPelicula(peliculas):
     ###ingresar año de estreno
     print("¿Te gustaría elegir un año específico de estreno?")
     print(f"Tenemos películas de estos años: {anios}")
-    print(f"Si no quisieras ingresar un año escribi : NO")
-    eleccion_anio = int(input().strip())  # Usa strip() para eliminar espacios en blanco
- 
-    while(eleccion_anio not in anios):
-        print(" Por favor, ingresa una opcion valida")
-        eleccion_anio = int(input().strip())  # Usa strip() para eliminar espacios en blanco
+    print(f"Si no quisieras ingresar un año escribí: NO")
+    eleccion_anio = input().strip()  # Validar si el usuario escribe 'NO' sin importar mayúsculas
+    if eleccion_anio.lower() == 'no':
+        eleccion_anio = None
+    else:
+        while not eleccion_anio.isdigit() or int(eleccion_anio) not in anios:
+            print("Por favor, ingresa una opción válida.")
+            eleccion_anio = input().strip()
+        eleccion_anio = int(eleccion_anio)
 
-
-    ###ingresar calificacion
+    ### Ingresar calificacion
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
     print(f"{calificaciones}")
-    eleccion_calificacion = float(input().strip())  # Usa strip() para eliminar espacios en blanco
-
+    eleccion_calificacion = float(input().strip())  
     while eleccion_calificacion not in calificaciones:
         print("La calificación no está en la lista. Intenta de nuevo.")
-        eleccion_calificacion = input().strip()  # Usa strip() para eliminar espacios en blanco
+        eleccion_calificacion = float(input().strip())
 
-
-    # Crea la matriz de recomendación vacía basada en la cantidad de géneros
+    # Crea la matriz de recomendacion vacia basada en la cantidad de generos
     matriz = []
-    lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas,eleccion_genero))   
-    lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas,eleccion_anio))
-    lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas,eleccion_calificacion))
-    
+    lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))
+    lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas, eleccion_anio)) if eleccion_anio else []
+    lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas, eleccion_calificacion))
+
     matriz.append(lista_por_genero)
     matriz.append(lista_por_anio)
     matriz.append(lista_por_calificacion)
 
 
-    # Recomienda películas
+    # Recomienda peliculas
     peliculas_recomendadas = []
     for i in matriz[0]:
-        #si coincide con el año o con la calificación, retorno
+        # Si coincide con el año o con la calificacion, retorna
         if i in matriz[1] or i in matriz[2]:
             peliculas_recomendadas.append(i)
 
