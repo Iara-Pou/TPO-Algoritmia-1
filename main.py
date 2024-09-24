@@ -9,6 +9,7 @@ def recomendarPelicula(peliculas):
     calificaciones = conseguir_calificaciones(peliculas)
 
     ###ingresar genero
+    print("\n---------------------------------------------------")
     print("¿Qué género te gustaría ver? Aquí te dejo una lista con los géneros disponibles:")
     print(f"{generos}")
     eleccion_genero = input().strip()  # Usa strip() para eliminar espacios en blanco
@@ -18,7 +19,7 @@ def recomendarPelicula(peliculas):
         eleccion_genero = input().strip()  # Usa strip() para eliminar espacios en blanco
 
     ###ingresar año de estreno
-    print("------------------------------------------------------------------------------------------")
+    print("\n------------------------------------------------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
     print(f"Tenemos películas de estos años: {anios}")
     print(f"Si no quisieras ingresar un año escribi : NO")
@@ -31,7 +32,7 @@ def recomendarPelicula(peliculas):
         eleccion_anio = int(input().strip())  # Usa strip() para eliminar espacios en blanco
 
     ###ingresar calificacion
-    print("------------------------------------------------------------------------------------------")
+    print("\n------------------------------------------------------------------------------------------")
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
     print(f"{calificaciones}")
     eleccion_calificacion = float(input().strip())  # Usa strip() para eliminar espacios en blanco
@@ -52,26 +53,32 @@ def recomendarPelicula(peliculas):
     matriz.append(lista_por_calificacion)
 
     # Recomienda películas
+    print("\n---------------------------------------------------")
     print('Peliculas recomendadas:')
     for i in matriz[0]:
         #si coincide con el año o con la calificación, retorno
         if i in matriz[1] or i in matriz[2]:
             print(i)
+    print("\n---------------------------------------------------")
 
 def listarPeliculasPorGenero(peliculas):
     generos = conseguir_generos(peliculas)
 
+    print("\n---------------------------------------------------")
     print(f"Tenemos estos generos disponibles :{generos} ")
-
+    print("\n---------------------------------------------------")
+    
     eleccion_genero = input("Selecciona uno:")
 
     while eleccion_genero not in generos:
-            print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
+            print("\nEl género elegido no está en la lista. Por favor, intenta de nuevo.")
             eleccion_genero = input().strip() 
 
     peliculas_genero = conseguir_titulos(buscar_por_genero(peliculas,eleccion_genero))
 
+    print("\n---------------------------------------------------")
     print(f"Peliculas encontradas: {', '.join(peliculas_genero)}")
+    print("\n---------------------------------------------------")
 
 # Cargar las películas desde el archivo JSON
 ruta_json = 'peliculas.json'
@@ -79,15 +86,19 @@ peliculas = cargar_peliculas(ruta_json)
 
 if login():
     # mostrar menu
+    print("\n---------------------------------------------------")
     print('CINEMATCH')
+    print("---------------------------------------------------")
     print('1. Pedir recomendación.')
     print('2. Buscar por genero.')
+    print("---------------------------------------------------")
     opcion_usuario = input('Ingresa la opción que desees: ')
 
     while opcion_usuario != '1' and opcion_usuario != '2':
-        opcion_usuario = input(
-            'ERROR, tenés que ingresar 1 o 2. \nIngresa la opción que desees: ')
-
+        print("\n---------------------------------------------------")
+        opcion_usuario = input('ERROR, tenés que ingresar 1 o 2. \nIngresa la opción que desees: ')
+        print("\n---------------------------------------------------")
+    
     if opcion_usuario == '1':
         recomendarPelicula(peliculas)
     elif opcion_usuario == '2':

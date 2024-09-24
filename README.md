@@ -1,81 +1,129 @@
-# TPO Algoritmia 1
- ### Análisis General del Proyecto
-Este programa es un recomendador de películas basado en criterios específicos como género, rango de años o una breve descripción. El flujo principal del código empieza con la autenticación del usuario, que da acceso a las funcionalidades. Las películas se cargan desde un archivo JSON, y luego el usuario puede elegir entre obtener recomendaciones o listar películas por género. La interacción se gestiona a través de un menú.
+### README
 
-El código se divide en funciones que están organizadas para facilitar la modularidad y la claridad, siendo reutilizables y fácilmente ampliables. Además, el uso de archivos JSON para almacenar los datos permite una separación entre lógica y datos.
+#### 1. Análisis del archivo `funciones.py`
 
+Este archivo contiene las funciones auxiliares que se utilizan para filtrar y manejar las películas. Estas funciones permiten buscar películas basadas en diferentes criterios, cargar datos desde un archivo JSON y procesar la información.
 
-### Documentacion detallada
+- **`similar(a, b)`**: 
+  - **Propósito**: Compara dos strings y devuelve una medida de similitud.
+  - **Parámetros**: 
+    - `a` (str): Primer string.
+    - `b` (str): Segundo string.
+  - **Salida**: Un número flotante entre 0 y 1 que indica cuán similares son los dos strings.
 
-#### `main.py`
-1. **recomendarPelicula(peliculas)**
-   - **Parámetros**: `peliculas` (lista de diccionarios con información de películas).
-   - **Entrada**: Elige una opción de búsqueda (género, rango de años, descripción) e ingresa los valores correspondientes.
-   - **Salida**: Muestra las películas que cumplen con los criterios elegidos.
-   - **Descripción**: Esta función permite recomendar películas al usuario basado en tres criterios de búsqueda: género, rango de años y palabras clave en la descripción.
+- **`buscar_por_descripcion(peliculas, palabras_clave)`**:
+  - **Propósito**: Busca películas cuya descripción tenga coincidencias aproximadas con las palabras clave proporcionadas.
+  - **Parámetros**: 
+    - `peliculas` (list): Lista de películas.
+    - `palabras_clave` (str): Palabras clave que se buscan en las descripciones.
+  - **Salida**: Lista de películas con coincidencias en la descripción.
 
-2. **listarPeliculasPorGenero(peliculas)**
-   - **Parámetros**: `peliculas` (lista de películas).
-   - **Entrada**: Ninguna entrada adicional, simplemente muestra todas las películas cargadas.
-   - **Salida**: Lista las películas por género.
-   - **Descripción**: Muestra todas las películas almacenadas en el archivo JSON.
+- **`cargar_peliculas(ruta_archivo)`**:
+  - **Propósito**: Cargar las películas desde un archivo JSON.
+  - **Parámetros**:
+    - `ruta_archivo` (str): Ruta del archivo JSON.
+  - **Salida**: Una lista de diccionarios con información de cada película.
 
-3. **login()**
-   - **Parámetros**: Ninguno.
-   - **Entrada**: Solicita el nombre de usuario y contraseña.
-   - **Salida**: Devuelve `True` si el login es exitoso, `False` en caso contrario.
-   - **Descripción**: Valida las credenciales del usuario. Si el login es exitoso, permite acceder a las funcionalidades del programa.
+- **`buscar_por_genero(peliculas, genero)`**:
+  - **Propósito**: Filtrar películas por género.
+  - **Parámetros**:
+    - `peliculas` (list): Lista de películas.
+    - `genero` (str): Género seleccionado.
+  - **Salida**: Lista de películas que pertenecen al género seleccionado.
 
-#### `funciones.py`
-1. **similar(a, b)**
-   - **Parámetros**: `a` (cadena de texto), `b` (cadena de texto).
-   - **Entrada**: Dos cadenas de texto a comparar.
-   - **Salida**: Un valor de similitud entre 0 y 1.
-   - **Descripción**: Calcula la similitud entre dos cadenas utilizando el módulo `SequenceMatcher`.
+- **`buscar_por_anio(peliculas, anio)`**:
+  - **Propósito**: Filtrar películas por año.
+  - **Parámetros**:
+    - `peliculas` (list): Lista de películas.
+    - `anio` (int): Año seleccionado.
+  - **Salida**: Lista de películas lanzadas en el año seleccionado.
 
-2. **buscar_por_descripcion(peliculas, palabras_clave)**
-   - **Parámetros**: `peliculas` (lista de películas), `palabras_clave` (texto ingresado por el usuario).
-   - **Entrada**: Descripción o palabras clave.
-   - **Salida**: Lista de películas que coinciden parcialmente con las palabras clave.
-   - **Descripción**: Filtra las películas que contienen coincidencias aproximadas con las palabras clave en su descripción.
+- **`buscar_por_calificacion(peliculas, calificacion)`**:
+  - **Propósito**: Filtrar películas por calificación.
+  - **Parámetros**:
+    - `peliculas` (list): Lista de películas.
+    - `calificacion` (float): Calificación seleccionada.
+  - **Salida**: Lista de películas con la calificación seleccionada.
 
-3. **cargar_peliculas(ruta_archivo)**
-   - **Parámetros**: `ruta_archivo` (ruta al archivo JSON).
-   - **Entrada**: Ninguna entrada adicional.
-   - **Salida**: Carga y devuelve una lista de películas desde el archivo JSON.
-   - **Descripción**: Lee un archivo JSON y retorna la lista de películas contenida en él.
+- **`mostrar_peliculas(peliculas)`**:
+  - **Propósito**: Mostrar la información completa de las películas.
+  - **Parámetros**:
+    - `peliculas` (list): Lista de películas.
+  - **Salida**: Información impresa de cada película.
 
-4. **buscar_por_genero(peliculas, genero)**
-   - **Parámetros**: `peliculas` (lista de películas), `genero` (texto ingresado por el usuario).
-   - **Entrada**: Género de película.
-   - **Salida**: Lista de películas que coinciden con el género.
-   - **Descripción**: Busca y filtra las películas que coinciden exactamente con el género proporcionado.
+- **`conseguir_generos(peliculas)`**:
+  - **Propósito**: Obtener una lista de géneros disponibles.
+  - **Parámetros**:
+    - `peliculas` (list): Lista de películas.
+  - **Salida**: Un conjunto de géneros.
 
-5. **buscar_por_anio(peliculas, anio_inicio, anio_fin)**
-   - **Parámetros**: `peliculas` (lista de películas), `anio_inicio` (número entero), `anio_fin` (número entero).
-   - **Entrada**: Rango de años.
-   - **Salida**: Lista de películas que fueron lanzadas dentro del rango especificado.
-   - **Descripción**: Filtra películas dentro de un rango de años dado.
+- **`conseguir_anios(peliculas)`**:
+  - **Propósito**: Obtener una lista de años de estreno disponibles.
+  - **Parámetros**:
+    - `peliculas` (list): Lista de películas.
+  - **Salida**: Un conjunto de años.
 
-6. **mostrar_peliculas(peliculas)**
-   - **Parámetros**: `peliculas` (lista de películas).
-   - **Entrada**: Ninguna entrada adicional.
-   - **Salida**: Muestra información detallada de las películas.
-   - **Descripción**: Imprime el título, género, calificación, año y actores de cada película.
+- **`conseguir_calificaciones(peliculas)`**:
+  - **Propósito**: Obtener una lista de calificaciones disponibles.
+  - **Parámetros**:
+    - `peliculas` (list): Lista de películas.
+  - **Salida**: Un conjunto de calificaciones.
 
-### Uso del archivo `peliculas.json`
-- **Propósito**: El archivo `peliculas.json` contiene la base de datos de películas, con información clave como el título, género, calificación, año de lanzamiento, actores principales y una descripción breve. Este archivo es fundamental para que el programa funcione correctamente, ya que es de donde provienen los datos utilizados para hacer recomendaciones y mostrar información detallada.
+- **`conseguir_titulos(peliculas)`**:
+  - **Propósito**: Obtener una lista de títulos de películas.
+  - **Parámetros**:
+    - `peliculas` (list): Lista de películas.
+  - **Salida**: Un conjunto de títulos.
 
-- **Estructura**:
-  - **`titulo`**: El título de la película.
-  - **`genero`**: El género de la película (por ejemplo, Acción, Drama, etc.).
-  - **`calificacion`**: La calificación de la película en una escala numérica (ejemplo, 8.8).
-  - **`anio`**: El año de lanzamiento de la película.
-  - **`actores`**: Una lista de los actores principales que participaron en la película.
-  - **`descripcion`**: Una breve sinopsis que resume la trama de la película.
+---
 
-- **Funcionamiento**:
-  1. **Carga**: El archivo es leído y cargado al iniciar el programa mediante la función `cargar_peliculas(ruta_archivo)`, que lo convierte en una lista de diccionarios accesibles por el programa.
-  2. **Búsquedas**: Las funciones como `buscar_por_genero`, `buscar_por_anio` y `buscar_por_descripcion` utilizan estos datos para encontrar coincidencias basadas en las preferencias del usuario.
-  3. **Visualización**: Los datos son mostrados al usuario cuando se invoca la función `mostrar_peliculas`, imprimiendo detalles como título, género, calificación, año y actores.
+#### 2. Análisis del archivo `main.py`
+
+Este archivo contiene el flujo principal del programa, encargándose de la interacción con el usuario, la elección de opciones, y la lógica de recomendación de películas.
+
+- **`recomendarPelicula(peliculas)`**:
+  - **Propósito**: Filtrar películas por género, año y calificación, y mostrar las recomendaciones.
+  - **Entradas**: 
+    - Lista de películas.
+  - **Flujo**:
+    1. Se solicitan los géneros, años y calificaciones disponibles.
+    2. El usuario selecciona un género, año y calificación.
+    3. Se genera una matriz con películas filtradas por cada criterio.
+    4. Se muestran las películas que coinciden con al menos dos de los criterios.
+  - **Salidas**: Películas recomendadas impresas en consola.
+
+- **`listarPeliculasPorGenero(peliculas)`**:
+  - **Propósito**: Mostrar las películas disponibles de un género específico.
+  - **Entradas**: 
+    - Lista de películas.
+  - **Flujo**:
+    1. Se muestra una lista de géneros disponibles.
+    2. El usuario selecciona un género.
+    3. Se muestran los títulos de las películas del género seleccionado.
+  - **Salidas**: Películas filtradas por género impresas en consola.
+
+- **Lógica de menú principal**:
+  - Al iniciar, se cargan las películas desde el archivo `peliculas.json`.
+  - El programa solicita el inicio de sesión mediante la función `login()`.
+  - Después del login exitoso, el usuario puede elegir entre:
+    1. Recibir una recomendación de películas.
+    2. Listar las películas por género.
+  - Según la opción seleccionada, se llama a la función correspondiente.
+
+---
+
+#### 3. Análisis del archivo `peliculas.json`
+
+El archivo `peliculas.json` contiene la base de datos de las películas en formato JSON, con varios atributos como título, género, calificación, año, actores y descripción.
+
+- **Formato de las películas**:
+  Cada película es un diccionario con las siguientes claves:
+  - `titulo`: El nombre de la película.
+  - `genero`: El género al que pertenece.
+  - `calificacion`: La calificación en una escala de 1 a 10.
+  - `anio`: El año en que fue lanzada.
+  - `actores`: Lista de actores que participaron.
+  - `descripcion`: Una breve descripción del argumento.
+
+Este archivo es esencial para la ejecución del programa, ya que todos los filtros y recomendaciones se basan en los datos almacenados aquí.
 
