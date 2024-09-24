@@ -18,6 +18,7 @@ def recomendarPelicula(peliculas):
         eleccion_genero = input().strip()  # Usa strip() para eliminar espacios en blanco
 
     ###ingresar año de estreno
+    print("------------------------------------------------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
     print(f"Tenemos películas de estos años: {anios}")
     print(f"Si no quisieras ingresar un año escribi : NO")
@@ -30,6 +31,7 @@ def recomendarPelicula(peliculas):
         eleccion_anio = int(input().strip())  # Usa strip() para eliminar espacios en blanco
 
     ###ingresar calificacion
+    print("------------------------------------------------------------------------------------------")
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
     print(f"{calificaciones}")
     eleccion_calificacion = float(input().strip())  # Usa strip() para eliminar espacios en blanco
@@ -57,8 +59,19 @@ def recomendarPelicula(peliculas):
             print(i)
 
 def listarPeliculasPorGenero(peliculas):
-    print(peliculas)
+    generos = conseguir_generos(peliculas)
 
+    print(f"Tenemos estos generos disponibles :{generos} ")
+
+    eleccion_genero = input("Selecciona uno:")
+
+    while eleccion_genero not in generos:
+            print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
+            eleccion_genero = input().strip() 
+
+    peliculas_genero = conseguir_titulos(buscar_por_genero(peliculas,eleccion_genero))
+
+    print(f"Peliculas encontradas: {', '.join(peliculas_genero)}")
 
 # Cargar las películas desde el archivo JSON
 ruta_json = 'peliculas.json'
@@ -68,7 +81,7 @@ if login():
     # mostrar menu
     print('CINEMATCH')
     print('1. Pedir recomendación.')
-    print('2. Filtrar con género.')
+    print('2. Buscar por genero.')
     opcion_usuario = input('Ingresa la opción que desees: ')
 
     while opcion_usuario != '1' and opcion_usuario != '2':
