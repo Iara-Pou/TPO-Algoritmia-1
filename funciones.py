@@ -29,8 +29,11 @@ def buscar_por_genero(peliculas, genero):
     return [p for p in peliculas if p['genero'].lower() == genero.lower()]
 
 
-def buscar_por_anio(peliculas, anio_inicio, anio_fin):
-    return [p for p in peliculas if anio_inicio <= p['anio'] <= anio_fin]
+def buscar_por_anio(peliculas,anio):
+    return [p for p in peliculas if anio == p["anio"]]
+
+def buscar_por_calificacion(peliculas, calificacion):
+    return [p for p in peliculas if p['calificacion'] == calificacion]
 
 
 def mostrar_peliculas(peliculas):
@@ -59,3 +62,8 @@ def conseguir_calificaciones(peliculas):
 
     return calificaciones
 
+def conseguir_titulos(peliculas):
+    titulos = set()
+    for pelicula in peliculas:
+        titulos.add(pelicula['titulo'])
+    return titulos
