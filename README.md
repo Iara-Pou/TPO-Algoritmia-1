@@ -62,3 +62,20 @@ El código se divide en funciones que están organizadas para facilitar la modul
    - **Entrada**: Ninguna entrada adicional.
    - **Salida**: Muestra información detallada de las películas.
    - **Descripción**: Imprime el título, género, calificación, año y actores de cada película.
+
+### Uso del archivo `peliculas.json`
+- **Propósito**: El archivo `peliculas.json` contiene la base de datos de películas, con información clave como el título, género, calificación, año de lanzamiento, actores principales y una descripción breve. Este archivo es fundamental para que el programa funcione correctamente, ya que es de donde provienen los datos utilizados para hacer recomendaciones y mostrar información detallada.
+
+- **Estructura**:
+  - **`titulo`**: El título de la película.
+  - **`genero`**: El género de la película (por ejemplo, Acción, Drama, etc.).
+  - **`calificacion`**: La calificación de la película en una escala numérica (ejemplo, 8.8).
+  - **`anio`**: El año de lanzamiento de la película.
+  - **`actores`**: Una lista de los actores principales que participaron en la película.
+  - **`descripcion`**: Una breve sinopsis que resume la trama de la película.
+
+- **Funcionamiento**:
+  1. **Carga**: El archivo es leído y cargado al iniciar el programa mediante la función `cargar_peliculas(ruta_archivo)`, que lo convierte en una lista de diccionarios accesibles por el programa.
+  2. **Búsquedas**: Las funciones como `buscar_por_genero`, `buscar_por_anio` y `buscar_por_descripcion` utilizan estos datos para encontrar coincidencias basadas en las preferencias del usuario.
+  3. **Visualización**: Los datos son mostrados al usuario cuando se invoca la función `mostrar_peliculas`, imprimiendo detalles como título, género, calificación, año y actores.
+
