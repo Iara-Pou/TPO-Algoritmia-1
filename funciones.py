@@ -11,7 +11,7 @@ def buscar_por_descripcion(peliculas, palabras_clave):
     peliculas_encontradas = []
 
     for pelicula in peliculas:
-        descripcion = pelicula['descripcion'].lower()
+        descripcion = pelicula['descripcion']
         # Verificamos si hay coincidencias aproximadas en la descripción
         if any(similar(palabra, descripcion) > 0.6 for palabra in palabras):  # Coincidencia aproximada > 60%
             peliculas_encontradas.append(pelicula)

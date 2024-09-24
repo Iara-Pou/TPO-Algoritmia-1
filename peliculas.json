@@ -1,170 +1,226 @@
-[   
+[
     {
-        "titulo": "Inception",
-        "genero": "Ciencia Ficción",
-        "calificacion": 8.8,
-        "anio": 2010,
-        "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
-        "descripcion": "Un ladrón especializado en el robo de secretos a través de los sueños debe implantar una idea en la mente de un objetivo para borrar su historial criminal."
+        "titulo": "The Incredibles",
+        "genero": "Animación",
+        "calificacion": 6,
+        "anio": 2004,
+        "actores": ["Craig T. Nelson", "Holly Hunter", "Samuel L. Jackson"],
+        "descripcion": "Una familia de superhéroes intenta llevar una vida normal, mientras luchan contra un villano que amenaza al mundo."
     },
     {
-        "titulo": "The Dark Knight",
-        "genero": "Acción",
-        "calificacion": 9.0,
-        "anio": 2008,
-        "actores": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
-        "descripcion": "Batman, junto a Jim Gordon y Harvey Dent, lucha contra el crimen en Gotham y el caos que provoca el Joker."
+        "titulo": "Shrek",
+        "genero": "Animación",
+        "calificacion": 7,
+        "anio": 2001,
+        "actores": ["Mike Myers", "Eddie Murphy", "Cameron Diaz"],
+        "descripcion": "Un ogro solitario se embarca en una misión para rescatar a una princesa y recuperar su hogar."
     },
     {
-        "titulo": "Parasite",
+        "titulo": "Coco",
+        "genero": "Animación",
+        "calificacion": 8,
+        "anio": 2017,
+        "actores": ["Anthony Gonzalez", "Gael García Bernal", "Benjamin Bratt"],
+        "descripcion": "Un joven aspirante a músico se encuentra en la Tierra de los Muertos y busca la verdad sobre su familia."
+    },
+    {
+        "titulo": "Spirited Away",
+        "genero": "Animación",
+        "calificacion": 9,
+        "anio": 2001,
+        "actores": ["Rumi Hiiragi", "Miyu Irino", "Mari Natsuki"],
+        "descripcion": "Una niña de 10 años se pierde en un mundo de espíritus y debe encontrar una manera de regresar a casa."
+    },
+    {
+        "titulo": "The Room",
         "genero": "Drama",
-        "calificacion": 8.6,
-        "anio": 2019,
-        "actores": ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"],
-        "descripcion": "Una familia pobre se infiltra en la vida de una familia rica, lo que desencadena una crítica social sobre la lucha de clases."
+        "calificacion": 6,
+        "anio": 2003,
+        "actores": ["Tommy Wiseau", "Juliette Danielle"],
+        "descripcion": "Un amorío se convierte en un triángulo amoroso que destruye la vida de todos los involucrados."
     },
     {
-        "titulo": "Interstellar",
-        "genero": "Ciencia Ficción",
-        "calificacion": 8.6,
-        "anio": 2014,
-        "actores": ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
-        "descripcion": "Un grupo de exploradores viaja a través de un agujero de gusano en el espacio para garantizar la supervivencia de la humanidad."
+        "titulo": "A Beautiful Mind",
+        "genero": "Drama",
+        "calificacion": 7,
+        "anio": 2001,
+        "actores": ["Russell Crowe", "Jennifer Connelly"],
+        "descripcion": "La vida del matemático John Nash, quien luchó contra la esquizofrenia mientras hacía importantes contribuciones a su campo."
+    },
+    {
+        "titulo": "The Pursuit of Happyness",
+        "genero": "Drama",
+        "calificacion": 8,
+        "anio": 2006,
+        "actores": ["Will Smith", "Jaden Smith"],
+        "descripcion": "La historia inspiradora de un padre que lucha por un futuro mejor para él y su hijo a pesar de las adversidades."
     },
     {
         "titulo": "The Shawshank Redemption",
         "genero": "Drama",
-        "calificacion": 9.3,
+        "calificacion": 9,
         "anio": 1994,
         "actores": ["Tim Robbins", "Morgan Freeman"],
         "descripcion": "La historia de un banquero que es injustamente encarcelado y su amistad con un compañero de prisión que le da esperanza."
     },
     {
-        "titulo": "Pulp Fiction",
-        "genero": "Crimen",
-        "calificacion": 8.9,
-        "anio": 1994,
-        "actores": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
-        "descripcion": "Una serie de historias entrelazadas que exploran el mundo del crimen en Los Ángeles."
-    },
-    {
-        "titulo": "The Godfather",
-        "genero": "Crimen",
-        "calificacion": 9.2,
-        "anio": 1972,
-        "actores": ["Marlon Brando", "Al Pacino", "James Caan"],
-        "descripcion": "La saga de la familia Corleone, que narra el ascenso de Don Vito Corleone y su hijo Michael en el mundo del crimen organizado."
-    },
-    {
-        "titulo": "Forrest Gump",
+        "titulo": "The Twilight Saga: Eclipse",
         "genero": "Romance",
-        "calificacion": 8.8,
-        "anio": 1994,
-        "actores": ["Tom Hanks", "Robin Wright"],
-        "descripcion": "La vida extraordinaria de un hombre con un coeficiente intelectual bajo que se convierte en testigo y protagonista de eventos históricos."
+        "calificacion": 6,
+        "anio": 2010,
+        "actores": ["Kristen Stewart", "Robert Pattinson"],
+        "descripcion": "Bella debe elegir entre su amor por Edward y su amistad con Jacob, mientras se enfrenta a una amenaza de vampiros."
     },
     {
-        "titulo": "The Matrix",
-        "genero": "Ciencia Ficción",
-        "calificacion": 8.7,
-        "anio": 1999,
-        "actores": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
-        "descripcion": "Un hacker descubre la verdad sobre su realidad y su papel en la lucha contra los controladores de su mundo."
+        "titulo": "Pride and Prejudice",
+        "genero": "Romance",
+        "calificacion": 7,
+        "anio": 2005,
+        "actores": ["Keira Knightley", "Matthew Macfadyen"],
+        "descripcion": "La historia de amor entre Elizabeth Bennet y el Sr. Darcy en la Inglaterra del siglo XIX."
     },
     {
-        "titulo": "Fight Club",
-        "genero": "Drama",
-        "calificacion": 8.8,
-        "anio": 1999,
-        "actores": ["Brad Pitt", "Edward Norton", "Helena Bonham Carter"],
-        "descripcion": "Un hombre insatisfecho con su vida forma un club de lucha secreto como una forma de terapia y rebelión."
+        "titulo": "La La Land",
+        "genero": "Romance",
+        "calificacion": 8,
+        "anio": 2016,
+        "actores": ["Ryan Gosling", "Emma Stone"],
+        "descripcion": "Un músico y una aspirante a actriz luchan por sus sueños en Los Ángeles mientras se enamoran el uno del otro."
     },
     {
-        "titulo": "The Silence of the Lambs",
-        "genero": "Thriller",
-        "calificacion": 8.6,
-        "anio": 1991,
-        "actores": ["Jodie Foster", "Anthony Hopkins"],
-        "descripcion": "Una joven agente del FBI busca la ayuda de un asesino en serie encarcelado para atrapar a otro asesino."
+        "titulo": "Titanic",
+        "genero": "Romance",
+        "calificacion": 9,
+        "anio": 1997,
+        "actores": ["Leonardo DiCaprio", "Kate Winslet"],
+        "descripcion": "Una historia de amor entre dos jóvenes de diferentes clases sociales a bordo del famoso transatlántico."
     },
     {
-        "titulo": "12 Angry Men",
-        "genero": "Drama",
-        "calificacion": 8.9,
-        "anio": 1957,
-        "actores": ["Henry Fonda", "Lee J. Cobb", "Martin Balsam"],
-        "descripcion": "Doce miembros de un jurado deben decidir el destino de un joven acusado de asesinato en un juicio por jurado."
+        "titulo": "The Hangover",
+        "genero": "Comedia",
+        "calificacion": 6,
+        "anio": 2009,
+        "actores": ["Bradley Cooper", "Ed Helms"],
+        "descripcion": "Tres amigos se despiertan después de una noche de despedida de soltero en Las Vegas y deben encontrar al novio perdido."
     },
     {
-        "titulo": "Schindler's List",
-        "genero": "Drama Histórico",
-        "calificacion": 8.9,
-        "anio": 1993,
-        "actores": ["Liam Neeson", "Ben Kingsley", "Ralph Fiennes"],
-        "descripcion": "La historia de Oskar Schindler, un empresario alemán que salvó a más de mil judíos del Holocausto."
+        "titulo": "Superbad",
+        "genero": "Comedia",
+        "calificacion": 7,
+        "anio": 2007,
+        "actores": ["Jonah Hill", "Michael Cera"],
+        "descripcion": "Dos amigos de secundaria intentan tener una última gran fiesta antes de graduarse."
     },
     {
-        "titulo": "The Lord of the Rings: The Return of the King",
-        "genero": "Fantasía",
-        "calificacion": 8.9,
-        "anio": 2003,
-        "actores": ["Elijah Wood", "Ian McKellen", "Viggo Mortensen"],
-        "descripcion": "La épica conclusión de la trilogía, donde Frodo y Sam se enfrentan al Señor Oscuro para destruir el Anillo Único."
+        "titulo": "Bridesmaids",
+        "genero": "Comedia",
+        "calificacion": 8,
+        "anio": 2011,
+        "actores": ["Kristen Wiig", "Maya Rudolph"],
+        "descripcion": "Una mujer debe competir con la mejor amiga de la novia mientras navega por los desafíos de ser una dama de honor."
     },
     {
-        "titulo": "Goodfellas",
+        "titulo": "The Grand Budapest Hotel",
+        "genero": "Comedia",
+        "calificacion": 9,
+        "anio": 2014,
+        "actores": ["Ralph Fiennes", "F. Murray Abraham"],
+        "descripcion": "Las aventuras de un conserje de un hotel y su joven protegido en un hotel europeo entre las guerras."
+    },
+    {
+        "titulo": "The Nun",
+        "genero": "Terror",
+        "calificacion": 6,
+        "anio": 2018,
+        "actores": ["Demian Bichir", "Taissa Farmiga"],
+        "descripcion": "Un sacerdote y una novicia investigan la muerte de una joven en una abadía rumana, desatando fuerzas demoníacas."
+    },
+    {
+        "titulo": "A Quiet Place",
+        "genero": "Terror",
+        "calificacion": 7,
+        "anio": 2018,
+        "actores": ["Emily Blunt", "John Krasinski"],
+        "descripcion": "Una familia debe vivir en silencio para evitar criaturas ciegas que cazan por el sonido."
+    },
+    {
+        "titulo": "Get Out",
+        "genero": "Terror",
+        "calificacion": 8,
+        "anio": 2017,
+        "actores": ["Daniel Kaluuya", "Allison Williams"],
+        "descripcion": "Un joven afroamericano visita la familia de su novia blanca y descubre un secreto escalofriante."
+    },
+    {
+        "titulo": "Hereditary",
+        "genero": "Terror",
+        "calificacion": 9,
+        "anio": 2018,
+        "actores": ["Toni Collette", "Gabriel Byrne"],
+        "descripcion": "Después de la muerte de su madre, una familia se enfrenta a una serie de eventos inquietantes y oscuros."
+    },
+    {
+        "titulo": "Ocean's Twelve",
         "genero": "Crimen",
-        "calificacion": 8.7,
-        "anio": 1990,
-        "actores": ["Robert De Niro", "Ray Liotta", "Joe Pesci"],
-        "descripcion":  "La historia de Henry Hill, un joven que se une a la mafia y asciende en las filas, pero eventualmente enfrenta las consecuencias de su vida criminal."
+        "calificacion": 6,
+        "anio": 2004,
+        "actores": ["George Clooney", "Brad Pitt"],
+        "descripcion": "Un grupo de ladrones debe llevar a cabo un nuevo robo para pagar una deuda."
     },
     {
-        "titulo": "Seven",
-        "genero": "Thriller",
-        "calificacion": 8.6,
-        "anio": 1995,
-        "actores": ["Morgan Freeman", "Brad Pitt", "Gwyneth Paltrow"],
-        "descripcion": "Dos detectives investigan una serie de asesinatos cometidos por un asesino en serie que utiliza los siete pecados capitales como motivo."
-    },
-    {
-        "titulo": "The Green Mile",
-        "genero": "Drama",
-        "calificacion": 8.6,
-        "anio": 1999,
-        "actores": ["Tom Hanks", "Michael Clarke Duncan", "David Morse"],
-        "descripcion": "Un guardia de una prisión de máxima seguridad desarrolla una profunda amistad con un condenado a muerte que parece poseer poderes sobrenaturales."
-    },
-    {
-        "titulo": "City of God",
-        "genero": "Drama",
-        "calificacion": 8.7,
-        "anio": 2002,
-        "actores": ["Alexandre Rodrigues", "Leandro Firmino", "Pêdro Motta"],
-        "descripcion": "Un retrato violento y realista de la vida en los barrios marginales de Río de Janeiro, donde la violencia y el crimen son parte de la vida cotidiana."
-    },
-    {
-        "titulo": "Spirited Away",
-        "genero": "Animación",
-        "calificacion": 8.6,
-        "anio": 2001,
-        "actores": ["Rumi Hiiragi",  "Miyu Irino",  "Mari Natsuki"],
-        "descripcion": "Una niña de 10 años se pierde en un mundo de espíritus y debe encontrar una manera de regresar a casa."
-    },
-    {
-        "titulo": "The Pianist",
-        "genero": "Drama",
-        "calificacion": 8.5,
-        "anio": 2002,
-        "actores": ["Adrien Brody", "Emilia Fox", "Thomas Kretschmann"],
-        "descripcion": "La historia real de un pianista polaco que lucha por sobrevivir en el gueto de Varsovia durante la Segunda Guerra Mundial."
-    },
-    {
-        "titulo": "Oldboy",
-        "genero": "Thriller",
-        "calificacion": 8.4,
+        "titulo": "The Italian Job",
+        "genero": "Crimen",
+        "calificacion": 7,
         "anio": 2003,
-        "actores": ["Choi Min-sik", "Yoo Ji-tae", "Kang Hye-jung"],
-        "descripcion": "Un hombre es liberado después de ser encarcelado durante 15 años sin ninguna explicación y busca venganza contra sus captores."
+        "actores": ["Mark Wahlberg", "Charlize Theron"],
+        "descripcion": "Un ladrón planea un robo audaz en Italia con la ayuda de un equipo de expertos."
+    },
+    {
+        "titulo": "The Usual Suspects",
+        "genero": "Crimen",
+        "calificacion": 8,
+        "anio": 1995,
+        "actores": ["Kevin Spacey", "Gabriel Byrne"],
+        "descripcion": "Un grupo de criminales es reunido para llevar a cabo un robo, pero su plan se complica."
+    },
+    {
+        "titulo": "Scarface",
+        "genero": "Crimen",
+        "calificacion": 9,
+        "anio": 1983,
+        "actores": ["Al Pacino", "Michelle Pfeiffer"],
+        "descripcion": "La historia de un inmigrante cubano que se convierte en un poderoso narcotraficante en Miami."
+    },
+    {
+        "titulo": "The Last Airbender",
+        "genero": "Fantasía",
+        "calificacion": 6,
+        "anio": 2010,
+        "actores": ["Noah Ringer", "Dev Patel"],
+        "descripcion": "Un joven que puede controlar los cuatro elementos debe salvar el mundo de la Nación del Fuego."
+    },
+    {
+        "titulo": "Stardust",
+        "genero": "Fantasía",
+        "calificacion": 7,
+        "anio": 2007,
+        "actores": ["Charlie Cox", "Claire Danes"],
+        "descripcion": "Un joven viaja a un mundo mágico para recuperar una estrella caída, solo para descubrir que la estrella es una mujer."
+    },
+    {
+        "titulo": "Pan's Labyrinth",
+        "genero": "Fantasía",
+        "calificacion": 8,
+        "anio": 2006,
+        "actores": ["Ivana Baquero", "Sergi López"],
+        "descripcion": "Una joven se encuentra en un mundo mágico y aterrador durante la guerra civil española."
+    },
+    {
+        "titulo": "The Shape of Water",
+        "genero": "Fantasía",
+        "calificacion": 9,
+        "anio": 2017,
+        "actores": ["Sally Hawkins", "Michael Shannon"],
+        "descripcion": "Una limpiadora de un laboratorio gubernamental forma una conexión única con una criatura anfibia."
     }
 ]

@@ -10,15 +10,16 @@ def recomendarPelicula(peliculas):
 
     ###ingresar genero
     print("¿Qué género te gustaría ver? Aquí te dejo una lista con los géneros disponibles:")
-    print(f"{generos}")
-    eleccion_genero = input().strip()  # Usa strip() para eliminar espacios en blanco
+    print(f"{', '.join(generos)}")
+    eleccion_genero = input().strip()  
 
     while eleccion_genero.lower() not in [g.lower() for g in generos]:  
         print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
-        eleccion_genero = input().strip()  # Usa strip() para eliminar espacios en blanco
+        eleccion_genero = input().strip()  
 
 
     ###ingresar año de estreno
+    print("--------------------------------------------------------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
     print(f"Tenemos películas de estos años: {anios}")
     print(f"Si no quisieras ingresar un año escribí: NO")
@@ -32,8 +33,9 @@ def recomendarPelicula(peliculas):
         eleccion_anio = int(eleccion_anio)
 
     ### Ingresar calificacion
+    print("------------------------------------------------------------------------------------------------")
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
-    print(f"{calificaciones}")
+    print(f"{(calificaciones)}")
     eleccion_calificacion = float(input().strip())  
     while eleccion_calificacion not in calificaciones:
         print("La calificación no está en la lista. Intenta de nuevo.")
@@ -59,7 +61,8 @@ def recomendarPelicula(peliculas):
 
     if len(peliculas_recomendadas) != 0:
         for i in peliculas_recomendadas:
-            print(i)
+            print(f"Tu recomendacion es: {', '.join(peliculas_recomendadas)}")
+            print("Esperamos que te guste ;D")
     else:
         print('No se encontraron películas para recomendar.')
 
@@ -67,12 +70,17 @@ def recomendarPelicula(peliculas):
 def listarPeliculasPorGenero(peliculas):
     generos = conseguir_generos(peliculas)
 
-    for genero in generos:
-        peliculas_genero = buscar_por_genero(peliculas, genero)
+    print(f"Tenemos estos generos disponibles :{generos} ")
 
-        print(f'Películas de {genero}:')
-        print('--------------------------------')
-        mostrar_peliculas(peliculas_genero)
+    eleccion_genero = input("Selecciona uno:")
+
+    while eleccion_genero not in generos:
+            print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
+            eleccion_genero = input().strip() 
+
+    peliculas_genero = conseguir_titulos(buscar_por_genero(peliculas,eleccion_genero))
+
+    print(f"Peliculas encontradas: {', '.join(peliculas_genero)}")
 
 
 # Cargar las películas desde el archivo JSON
@@ -85,6 +93,7 @@ if login():
     print('1. Pedir recomendación.')
     print('2. Listar todas las películas.')
     opcion_usuario = input('Ingresa la opción que desees: ')
+    print("--------------------------------------------------------------------------------------")
 
     while opcion_usuario != '1' and opcion_usuario != '2':
         opcion_usuario = input(
