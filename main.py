@@ -21,7 +21,7 @@ def recomendarPelicula(peliculas):
     ###ingresar año de estreno
     print("--------------------------------------------------------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
-    print(f"Tenemos películas de estos años: {anios}")
+    print(f"{', '.join(map(str, anios))}")
     print(f"Si no quisieras ingresar un año escribí: NO")
     eleccion_anio = input().strip()  # Validar si el usuario escribe 'NO' sin importar mayúsculas
     if eleccion_anio.lower() == 'no':
@@ -35,7 +35,7 @@ def recomendarPelicula(peliculas):
     ### Ingresar calificacion
     print("------------------------------------------------------------------------------------------------")
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
-    print(f"{(calificaciones)}")
+    print(f"{', '.join(map(str, calificaciones))}")
     eleccion_calificacion = float(input().strip())  
     while eleccion_calificacion not in calificaciones:
         print("La calificación no está en la lista. Intenta de nuevo.")
@@ -70,9 +70,9 @@ def recomendarPelicula(peliculas):
 def listarPeliculasPorGenero(peliculas):
     generos = conseguir_generos(peliculas)
 
-    print(f"Tenemos estos generos disponibles :{generos} ")
-
-    eleccion_genero = input("Selecciona uno:")
+    print(f"Tenemos estos generos disponibles:")
+    print(f"{', '.join(generos)}")
+    eleccion_genero = input("Selecciona uno: ")
 
     while eleccion_genero not in generos:
             print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
