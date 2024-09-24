@@ -36,3 +36,12 @@ def buscar_por_anio(peliculas, anio_inicio, anio_fin):
 def mostrar_peliculas(peliculas):
     for p in peliculas:
         print(f"Título: {p['titulo']}\nGénero: {p['genero']}\nCalificación: {p['calificacion']}\nAño: {p['anio']}\nActores: {', '.join(p['actores'])}\n")
+
+
+def conseguir_generos(peliculas):
+    generos = set()
+    for pelicula in peliculas:
+        generos.add(pelicula['genero'])
+
+    print(generos)
+    return generos
