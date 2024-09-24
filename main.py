@@ -17,6 +17,7 @@ def recomendarPelicula(peliculas):
         print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
         eleccion_genero = input().strip()  # Usa strip() para eliminar espacios en blanco
 
+
     ###ingresar año de estreno
     print("¿Te gustaría elegir un año específico de estreno?")
     print(f"Tenemos películas de estos años: {anios}")
@@ -24,10 +25,9 @@ def recomendarPelicula(peliculas):
     eleccion_anio = int(input().strip())  # Usa strip() para eliminar espacios en blanco
  
     while(eleccion_anio not in anios):
-        print(eleccion_anio)
-        print(anios)
         print(" Por favor, ingresa una opcion valida")
         eleccion_anio = int(input().strip())  # Usa strip() para eliminar espacios en blanco
+
 
     ###ingresar calificacion
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
@@ -75,7 +75,7 @@ if login():
     # mostrar menu
     print('CINEMATCH')
     print('1. Pedir recomendación.')
-    print('2. Filtrar con género.')
+    print('2. Listar todas las películas.')
     opcion_usuario = input('Ingresa la opción que desees: ')
 
     while opcion_usuario != '1' and opcion_usuario != '2':
