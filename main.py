@@ -45,15 +45,23 @@ def recomendarPelicula(peliculas):
     lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas,eleccion_anio))
     lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas,eleccion_calificacion))
     
-    matriz.extend(lista_por_genero, lista_por_anio, lista_por_calificacion)
+    matriz.append(lista_por_genero)
+    matriz.append(lista_por_anio)
+    matriz.append(lista_por_calificacion)
 
 
     # Recomienda películas
-    print('Peliculas recomendadas:')
+    peliculas_recomendadas = []
     for i in matriz[0]:
         #si coincide con el año o con la calificación, retorno
         if i in matriz[1] or i in matriz[2]:
+            peliculas_recomendadas.append(i)
+
+    if len(peliculas_recomendadas) != 0:
+        for i in peliculas_recomendadas:
             print(i)
+    else:
+        print('No se encontraron películas para recomendar.')
 
 
 def listarPeliculasPorGenero(peliculas):
