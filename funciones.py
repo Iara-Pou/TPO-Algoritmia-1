@@ -43,5 +43,4 @@ def conseguir_generos(peliculas):
     for pelicula in peliculas:
         generos.add(pelicula['genero'])
 
-    print(generos)
     return generos
