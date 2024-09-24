@@ -44,3 +44,18 @@ def conseguir_generos(peliculas):
         generos.add(pelicula['genero'])
 
     return generos
+
+def conseguir_anios(peliculas):
+    anios = set()
+    for pelicula in peliculas:
+        anios.add(pelicula['anio'])
+        
+    return anios
+
+def conseguir_calificaciones(peliculas):
+    calificaciones = set()
+    for pelicula in peliculas:
+        calificaciones.add(pelicula['calificacion'])
+
+    return calificaciones
+
