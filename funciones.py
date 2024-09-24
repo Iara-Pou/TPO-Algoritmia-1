@@ -2,23 +2,6 @@ import json
 from difflib import SequenceMatcher
 
 
-def similar(a, b):
-    return SequenceMatcher(None, a, b).ratio()
-
-
-def buscar_por_descripcion(peliculas, palabras_clave):
-    palabras = palabras_clave.lower().split()
-    peliculas_encontradas = []
-
-    for pelicula in peliculas:
-        descripcion = pelicula['descripcion']
-        # Verificamos si hay coincidencias aproximadas en la descripción
-        if any(similar(palabra, descripcion) > 0.6 for palabra in palabras):  # Coincidencia aproximada > 60%
-            peliculas_encontradas.append(pelicula)
-
-    return peliculas_encontradas
-
-
 def cargar_peliculas(ruta_archivo):
     with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
         peliculas = json.load(archivo)
