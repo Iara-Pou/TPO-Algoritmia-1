@@ -26,7 +26,7 @@ def recomendarPelicula(peliculas):
     ###ingresar año de estreno
     print("-----------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
-    print(f"{', '.join(map(str, anios))}")
+    print('\n'.join(map(lambda anio: f"- {anio}", anios)))
     print(f"Si no quisieras ingresar un año escribí: NO")
     eleccion_anio = input().strip()  # Validar si el usuario escribe 'NO' sin importar mayúsculas
     if eleccion_anio.lower() == 'no':
@@ -40,7 +40,6 @@ def recomendarPelicula(peliculas):
     ### Ingresar calificacion
     print("-----------------------------------------------------")
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
-    print(f"{', '.join(map(str, calificaciones))}")
     print('\n'.join(map(lambda calificacion: f"- {calificacion}", calificaciones)))
     eleccion_calificacion = float(input().strip())  
     while eleccion_calificacion not in calificaciones:
