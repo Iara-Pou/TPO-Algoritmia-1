@@ -1,6 +1,11 @@
 from funciones import *
 from login import login
 
+def mostrarMenuNumerado(opciones):
+    opciones_menu = list(opciones)
+    for i in range(len(opciones_menu)):
+        print(f'{i + 1}. {opciones_menu[i]}')
+
 def recomendarPelicula(peliculas):
 
     # Ingresar parámetros de búsqueda 
@@ -37,6 +42,7 @@ def recomendarPelicula(peliculas):
     print("-----------------------------------------------------")
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
     print(f"{', '.join(map(str, calificaciones))}")
+    print('\n'.join(map(lambda calificacion: f"- {calificacion}", calificaciones)))
     eleccion_calificacion = float(input().strip())  
     while eleccion_calificacion not in calificaciones:
         print("La calificación no está en la lista. Intenta de nuevo.")
