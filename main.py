@@ -1,19 +1,8 @@
 from funciones import *
 from login import login
 
-def mostrarMenuNumerado(opciones):
-    opciones_menu = list(opciones)
-    for i in range(len(opciones_menu)):
-        print(f'{i + 1}. {opciones_menu[i]}')
-
-def recomendarPelicula(peliculas):
-
-    # Ingresar parámetros de búsqueda y los ordena 
-    generos = sorted(conseguir_generos(peliculas))
-    anios = sorted(conseguir_anios(peliculas))
-    calificaciones = sorted(conseguir_calificaciones(peliculas))
-
-    ###ingresar genero
+def ingresar_genero(generos):
+   
     print("\n---------------------------------------------------")
     print("¿Qué género te gustaría ver? Aquí te dejo una lista con los géneros disponibles:")
     mostrarMenuNumerado(generos)
@@ -23,6 +12,20 @@ def recomendarPelicula(peliculas):
         print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
         eleccion_genero = int(input('Ingresá el género:'))  
 
+    eleccion_genero = list(generos)[eleccion_genero-1]
+    
+    return eleccion_genero
+    
+
+def recomendarPelicula(peliculas):
+
+    # Ingresar parámetros de búsqueda y los ordena 
+    generos = sorted(conseguir_generos(peliculas))
+    anios = sorted(conseguir_anios(peliculas))
+    calificaciones = sorted(conseguir_calificaciones(peliculas))
+
+    # Ingresar genero, anio estreno y calificacion
+    eleccion_genero = ingresar_genero(generos)
     ###ingresar año de estreno
     print("-----------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
@@ -48,7 +51,7 @@ def recomendarPelicula(peliculas):
 
     # Crea la matriz de recomendacion vacia basada en la cantidad de generos
     matriz = []
-    lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, list(generos)[eleccion_genero-1]))
+    lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))
     lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas, eleccion_anio)) if eleccion_anio else []
     lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas, eleccion_calificacion))
 
@@ -77,18 +80,9 @@ def recomendarPelicula(peliculas):
 def listarPeliculasPorGenero(peliculas):
     #ordena generos de forma ascendente
     generos = sorted(conseguir_generos(peliculas))
+    eleccion_genero = ingresar_genero(generos)
 
-    print("\n---------------------------------------------------")
-    print(f"Tenemos estos generos disponibles :")
-    mostrarMenuNumerado(generos)
-    print("\n---------------------------------------------------")
-    eleccion_genero = int(input("Selecciona uno: "))
-
-    while eleccion_genero < 1 or eleccion_genero > len(generos):  
-        print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
-        eleccion_genero = input().strip()  
-
-    peliculas_genero = conseguir_titulos(buscar_por_genero(peliculas, list(generos)[eleccion_genero-1]))
+    peliculas_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))
     print("\n---------------------------------------------------")
     print(f"Peliculas encontradas: {', '.join(peliculas_genero)}")
     print("\n---------------------------------------------------")
