@@ -115,22 +115,39 @@ def listarPeliculasPorGenero(peliculas):
 ruta_json = 'peliculas.json'
 peliculas = cargar_peliculas(ruta_json)
 
+#variable para controlar el flujo del while principal
+programa_reinicia = True
+
 if login():
-    # mostrar menu
-    print("\n---------------------------------------------------")
-    print('CINEMATCH')
-    print("---------------------------------------------------")
-    print('1. Pedir recomendación.')
-    print('2. Buscar por genero.')
-    print("---------------------------------------------------")
-    opcion_usuario = input('Ingresa la opción que desees: ')
+    while programa_reinicia:
+        # mostrar menu
+        print("\n---------------------------------------------------")
+        print('CINEMATCH')
+        print("---------------------------------------------------")
+        print('1. Pedir recomendación.')
+        print('2. Buscar por genero.')
+        print("---------------------------------------------------")
+        opcion_usuario = input('Ingresa la opción que desees: ')
 
-    while opcion_usuario != '1' and opcion_usuario != '2':
-        opcion_usuario = input(
-            'ERROR, tenés que ingresar 1 o 2. \nIngresa la opción que desees: ')
+        while opcion_usuario != '1' and opcion_usuario != '2':
+            opcion_usuario = input(
+                'ERROR, tenés que ingresar 1 o 2. \nIngresa la opción que desees: ')
 
-    if opcion_usuario == '1':
-        recomendarPelicula(peliculas)
-    elif opcion_usuario == '2':
-        listarPeliculasPorGenero(peliculas)
-    print("\n---------------------------------------------------")
+        if opcion_usuario == '1':
+            recomendarPelicula(peliculas)
+        elif opcion_usuario == '2':
+            listarPeliculasPorGenero(peliculas)
+        print("\n---------------------------------------------------")
+        
+        #reinicio
+        print("¿Deseas otra recomendación?")
+        respuesta_usuario = input("Ingresá 'si' para volver a tener una recomendación, \n'no' para salir del programa: ").strip().lower()
+        
+        while respuesta_usuario not in ('si', 'no'):
+            print("Hubo un error en la respuesta.")
+            respuesta_usuario = input("Ingresá 'si' para volver a tener una recomendación, \n'no' para salir del programa: ")
+            
+        if respuesta_usuario == 'no':
+            programa_reinicia = False
+            print("¡Gracias por usar nuestro recomendador!")
+

@@ -19,8 +19,10 @@ def buscar_por_anio(peliculas,anio):
 def buscar_por_calificacion(peliculas, calificacion):
     return [p for p in peliculas if p['calificacion'] == calificacion]
 
+
 def buscar_por_titulo(peliculas, titulo):
     return next((p for p in peliculas if p['titulo'] == titulo), None)
+
 
 def mostrar_peliculas(peliculas):
     for p in peliculas:
@@ -34,12 +36,14 @@ def conseguir_generos(peliculas):
 
     return generos
 
+
 def conseguir_anios(peliculas):
     anios = set()
     for pelicula in peliculas:
         anios.add(pelicula['anio'])
         
     return anios
+
 
 def conseguir_calificaciones(peliculas):
     calificaciones = set()
@@ -48,11 +52,13 @@ def conseguir_calificaciones(peliculas):
 
     return calificaciones
 
+
 def conseguir_titulos(peliculas):
     titulos = set()
     for pelicula in peliculas:
         titulos.add(pelicula['titulo'])
     return titulos
+
 
 def mostrarMenuNumerado(opciones):
     opciones_menu = list(opciones)
