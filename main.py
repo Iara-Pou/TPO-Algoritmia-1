@@ -9,7 +9,7 @@ def ingresar_genero(generos):
 
     while eleccion_genero < 1 or eleccion_genero > len(generos):  
         print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
-        eleccion_genero = int(input('Ingresá el género:'))  
+        eleccion_genero = int(input('Ingresá el género: '))  
 
     eleccion_genero = list(generos)[eleccion_genero-1]
     
@@ -21,16 +21,25 @@ def ingresar_anio_estreno(anios):
     print("¿Te gustaría elegir un año específico de estreno?")
     print(' - '.join(map(str, anios)))
     print(f"Si no quisieras ingresar un año escribí: NO")
-    eleccion_anio = input().strip()  # Validar si el usuario escribe 'NO' sin importar mayúsculas
-    if eleccion_anio.lower() == 'no':
-        eleccion_anio = None
-    else:
-        while not eleccion_anio.isdigit() or int(eleccion_anio) not in anios:
-            print("Por favor, ingresa una opción válida.")
-            eleccion_anio = input().strip()
-        eleccion_anio = int(eleccion_anio)
+    eleccion_anio = input().strip().lower()  
     
-    return eleccion_anio
+    anio_valido = False
+    while not anio_valido:
+        #si es número, que valide que sea año válido
+        if eleccion_anio.isdigit():
+            if int(eleccion_anio) in anios:
+                anio_valido = True
+            else:
+                eleccion_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
+        #si ingresa no, año va a ser none
+        elif eleccion_anio == 'no':
+            anio_valido = True
+            eleccion_anio = None
+        #sino, pide una opcion válida
+        else:
+            eleccion_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
+       
+    return eleccion_anio 
 
 
 def ingresar_calificacion(calificaciones):
