@@ -50,3 +50,9 @@ def conseguir_titulos(peliculas):
     for pelicula in peliculas:
         titulos.add(pelicula['titulo'])
     return titulos
+
+def mostrarMenuNumerado(opciones):
+    opciones_menu = list(opciones)
+    for i in range(len(opciones_menu)):
+        print(f'{i + 1}. {opciones_menu[i]}')
+        
