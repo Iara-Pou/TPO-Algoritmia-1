@@ -69,9 +69,8 @@ def recomendarPelicula(peliculas):
             peliculas_recomendadas.append(i)
 
     if len(peliculas_recomendadas) != 0:
-        for i in peliculas_recomendadas:
-            print(f"Tu recomendacion es: {', '.join(peliculas_recomendadas)}")
-            print("Esperamos que te guste ;D")
+        print(f"Tu recomendacion es: {', '.join(peliculas_recomendadas)}")
+        print("Esperamos que te guste ;D")
     else:
         print('No se encontraron películas para recomendar.')
     print("\n---------------------------------------------------")
