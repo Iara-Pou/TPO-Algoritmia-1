@@ -1,8 +1,7 @@
 from funciones import *
 from login import login
 
-def ingresar_genero(generos):
-   
+def ingresar_genero(generos): 
     print("\n---------------------------------------------------")
     print("¿Qué género te gustaría ver? Aquí te dejo una lista con los géneros disponibles:")
     mostrarMenuNumerado(generos)
@@ -16,20 +15,11 @@ def ingresar_genero(generos):
     
     return eleccion_genero
     
-
-def recomendarPelicula(peliculas):
-
-    # Ingresar parámetros de búsqueda y los ordena 
-    generos = sorted(conseguir_generos(peliculas))
-    anios = sorted(conseguir_anios(peliculas))
-    calificaciones = sorted(conseguir_calificaciones(peliculas))
-
-    # Ingresar genero, anio estreno y calificacion
-    eleccion_genero = ingresar_genero(generos)
-    ###ingresar año de estreno
+    
+def ingresar_anio_estreno(anios):
     print("-----------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
-    print('\n'.join(map(lambda anio: f"- {anio}", anios)))
+    print(' - '.join(map(str, anios)))
     print(f"Si no quisieras ingresar un año escribí: NO")
     eleccion_anio = input().strip()  # Validar si el usuario escribe 'NO' sin importar mayúsculas
     if eleccion_anio.lower() == 'no':
@@ -39,15 +29,32 @@ def recomendarPelicula(peliculas):
             print("Por favor, ingresa una opción válida.")
             eleccion_anio = input().strip()
         eleccion_anio = int(eleccion_anio)
+    
+    return eleccion_anio
 
-    ### Ingresar calificacion
+
+def ingresar_calificacion(calificaciones):
     print("-----------------------------------------------------")
     print("¿Preferís alguna calificación? Seleccioná una de la lista:")
-    print('\n'.join(map(lambda calificacion: f"- {calificacion}", calificaciones)))
-    eleccion_calificacion = float(input().strip())  
+    print(' - '.join(map(str, calificaciones)))
+    eleccion_calificacion = int(input().strip())  
     while eleccion_calificacion not in calificaciones:
         print("La calificación no está en la lista. Intenta de nuevo.")
-        eleccion_calificacion = float(input().strip())
+        eleccion_calificacion = int(input().strip())
+        
+    return eleccion_calificacion
+ 
+
+def recomendarPelicula(peliculas):
+    # Ingresar parámetros de búsqueda y los ordena 
+    generos = sorted(conseguir_generos(peliculas))
+    anios = sorted(conseguir_anios(peliculas))
+    calificaciones = sorted(conseguir_calificaciones(peliculas))
+
+    # Ingresar genero, anio estreno y calificacion
+    eleccion_genero = ingresar_genero(generos)
+    eleccion_anio = ingresar_anio_estreno(anios)
+    eleccion_calificacion = ingresar_calificacion(calificaciones)
 
     # Crea la matriz de recomendacion vacia basada en la cantidad de generos
     matriz = []
@@ -58,7 +65,6 @@ def recomendarPelicula(peliculas):
     matriz.append(lista_por_genero)
     matriz.append(lista_por_anio)
     matriz.append(lista_por_calificacion)
-
 
     # Recomienda peliculas
     print("\n---------------------------------------------------")
@@ -77,7 +83,7 @@ def recomendarPelicula(peliculas):
 
 
 def listarPeliculasPorGenero(peliculas):
-    #ordena generos de forma ascendente
+
     generos = sorted(conseguir_generos(peliculas))
     eleccion_genero = ingresar_genero(generos)
 
@@ -85,6 +91,8 @@ def listarPeliculasPorGenero(peliculas):
     print("\n---------------------------------------------------")
     print(f"Peliculas encontradas: {', '.join(peliculas_genero)}")
     print("\n---------------------------------------------------")
+
+
 
 # Cargar las películas desde el archivo JSON
 ruta_json = 'peliculas.json'
