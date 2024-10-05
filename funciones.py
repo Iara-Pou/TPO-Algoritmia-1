@@ -1,6 +1,9 @@
 import json
 from difflib import SequenceMatcher
 
+def filtrar_rango_anios(anio_inicio, anio_fin, anios):
+    return list(filter(lambda anio: anio >= int(anio_inicio) and anio <= int(anio_fin), anios))    
+
 
 def cargar_peliculas(ruta_archivo):
     with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
