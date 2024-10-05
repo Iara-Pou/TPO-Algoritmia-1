@@ -56,22 +56,22 @@ def recomendarPelicula(peliculas):
     eleccion_anio = ingresar_anio_estreno(anios)
     eleccion_calificacion = ingresar_calificacion(calificaciones)
 
-    # Crea la matriz de recomendacion vacia basada en la cantidad de generos
-    matriz = []
+    # Crea la matriz de recomendacion peliculas_filtradas
+    peliculas_filtradas = []
     lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))
     lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas, eleccion_anio)) if eleccion_anio else []
     lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas, eleccion_calificacion))
 
-    matriz.append(lista_por_genero)
-    matriz.append(lista_por_anio)
-    matriz.append(lista_por_calificacion)
+    peliculas_filtradas.append(lista_por_genero)
+    peliculas_filtradas.append(lista_por_anio)
+    peliculas_filtradas.append(lista_por_calificacion)
 
     # Recomienda peliculas
     print("\n---------------------------------------------------")
     peliculas_recomendadas = []
-    for i in matriz[0]:
+    for i in peliculas_filtradas[0]:
         # Si coincide con el año o con la calificacion, retorna
-        if i in matriz[1] or i in matriz[2]:
+        if i in peliculas_filtradas[1] or i in peliculas_filtradas[2]:
             peliculas_recomendadas.append(i)
 
     if len(peliculas_recomendadas) != 0:
