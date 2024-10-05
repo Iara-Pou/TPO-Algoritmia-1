@@ -17,28 +17,67 @@ def ingresar_genero(generos):
     
     
 def ingresar_anio_estreno(anios):
+    #ofrece opciones de busqueda de años
     print("-----------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
     print(' - '.join(map(str, anios)))
-    print(f"Si no quisieras ingresar un año escribí: NO")
-    eleccion_anio = input().strip().lower()  
+    mostrarMenuNumerado(['Si', 'Prefiero un rango', 'No'])
+    modalidad_anio = input().strip().lower()  
+
+    while modalidad_anio not in ('1', '2', '3'):
+        modalidad_anio = input("Por favor, ingresa una opción válida: ").strip().lower()   
     
-    anio_valido = False
-    while not anio_valido:
-        #si es número, que valide que sea año válido
-        if eleccion_anio.isdigit():
-            if int(eleccion_anio) in anios:
-                anio_valido = True
-            else:
-                eleccion_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
-        #si ingresa no, año va a ser none
-        elif eleccion_anio == 'no':
-            anio_valido = True
-            eleccion_anio = None
-        #sino, pide una opcion válida
-        else:
-            eleccion_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
-       
+    #funcionamiento de busqueda de años
+    eleccion_anio = None
+    if modalidad_anio == '1' or modalidad_anio == '2':
+        print("-----------------------------------------------------")
+        print('Años de estreno:')
+        print(' - '.join(map(str, anios)))
+            
+        if modalidad_anio == '1':
+            #ingresar anio y que sea valido
+            eleccion_anio = input("Por favor, ingresa un año: ").strip().lower()
+            anio_valido = False     
+            while not anio_valido:
+                #si es número, que valide que sea año válido
+                if eleccion_anio.isdigit():
+                    if int(eleccion_anio) in anios:
+                        anio_valido = True
+                    else:
+                        eleccion_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
+                #si ingresa no, año va a ser none
+                else:
+                    eleccion_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
+                
+        elif modalidad_anio == '2':
+            #ingresar rango
+            #ingresa primer anio y valida
+            primer_anio = input("Por favor, ingresá el año de inicio: ")    
+            anio_valido = False
+            while not anio_valido:
+                if primer_anio.isdigit():
+                    if int(primer_anio) in anios:
+                        anio_valido = True
+                    else:
+                        primer_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
+                else:
+                    primer_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
+                    
+            #ingresa segundo anio y valida
+            segundo_anio = input("Por favor, ingresá el año de fin: ")
+            anio_valido = False
+            while not anio_valido:
+                if segundo_anio.isdigit():
+                    if int(segundo_anio) in anios and int(segundo_anio) >= int(primer_anio):
+                        anio_valido = True
+                    else:
+                        segundo_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
+                else:
+                    segundo_anio = input("Por favor, ingresa una opción válida: ").strip().lower()
+            
+            #filtrar anios mayor, menor 
+            eleccion_anio = list(filter(lambda anio: anio >= int(primer_anio) and anio <= int(segundo_anio), anios))    
+    
     return eleccion_anio 
 
 
@@ -67,15 +106,25 @@ def recomendarPelicula(peliculas):
 
     # Crea la matriz de recomendacion peliculas_filtradas
     peliculas_filtradas = []
-    lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))
-    lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas, eleccion_anio)) if eleccion_anio else []
+    
+    lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))  
+    # filtra anio puede ser una lista, un None o un int
+    if isinstance(eleccion_anio, list):  
+        lista_por_anio = []
+        for anio in eleccion_anio:
+            lista_por_anio.extend(conseguir_titulos(buscar_por_anio(peliculas, anio)))
+    elif eleccion_anio == None:
+        lista_por_anio = []
+    else:
+        lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas, eleccion_anio))
     lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas, eleccion_calificacion))
 
+    # Completa la matriz de recomendacion peliculas_filtradas
     peliculas_filtradas.append(lista_por_genero)
     peliculas_filtradas.append(lista_por_anio)
     peliculas_filtradas.append(lista_por_calificacion)
 
-    # Recomienda peliculas
+    # Recomienda peliculas según coincidencias en la matriz
     print("\n---------------------------------------------------")
     peliculas_recomendadas = []
     for i in peliculas_filtradas[0]:
