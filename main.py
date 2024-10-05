@@ -75,8 +75,16 @@ def recomendarPelicula(peliculas):
             peliculas_recomendadas.append(i)
 
     if len(peliculas_recomendadas) != 0:
-        print(f"Tu recomendacion es: {', '.join(peliculas_recomendadas)}")
-        print("Esperamos que te guste ;D")
+        informacion_peliculas = []
+        # Busca la información completa de cada película recomendada
+        for titulo in peliculas_recomendadas:
+            info = buscar_por_titulo(peliculas, titulo)
+            if info:
+                informacion_peliculas.append(info)
+        print("Te recomendamos: \n")
+        mostrar_peliculas(informacion_peliculas)
+        print("\nEsperamos que te gusten ;D")
+        
     else:
         print('No se encontraron películas para recomendar.')
     print("\n---------------------------------------------------")
@@ -86,10 +94,10 @@ def listarPeliculasPorGenero(peliculas):
 
     generos = sorted(conseguir_generos(peliculas))
     eleccion_genero = ingresar_genero(generos)
-
-    peliculas_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))
+    
     print("\n---------------------------------------------------")
-    print(f"Peliculas encontradas: {', '.join(peliculas_genero)}")
+    print("Peliculas encontradas:\n")
+    peliculas_genero = mostrar_peliculas(buscar_por_genero(peliculas, eleccion_genero))
     print("\n---------------------------------------------------")
 
 
