@@ -236,11 +236,10 @@ if login():
         print("¿Deseas otra recomendación?")
         respuesta_usuario = input("Ingresá 'si' para volver a tener una recomendación, \n'no' para salir del programa: ").strip().lower()
         
-        while respuesta_usuario not in ('si', 'no'):
+        while respuesta_usuario.lower() not in ('si', 'no'):
             print("Hubo un error en la respuesta.")
             respuesta_usuario = input("Ingresá 'si' para volver a tener una recomendación, \n'no' para salir del programa: ")
             
-        if respuesta_usuario == 'no':
-            reinicio = False
+        if respuesta_usuario.lower() == 'no':
+            programa_reinicia = False
             print("¡Gracias por usar nuestro recomendador!")
-
