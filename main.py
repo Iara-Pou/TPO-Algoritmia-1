@@ -241,5 +241,5 @@ if login():
             respuesta_usuario = input("Ingresá 'si' para volver a tener una recomendación, \n'no' para salir del programa: ")
             
         if respuesta_usuario.lower() == 'no':
-            programa_reinicia = False
+            reinicio = False
             print("¡Gracias por usar nuestro recomendador!")
