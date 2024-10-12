@@ -122,7 +122,7 @@ def ingresar_calificacion(calificaciones):
     return eleccion_calificacion 
  
 
-def recomendarPelicula(peliculas):
+def recomendar_pelicula(peliculas):
 
     ###### Ingresar genero, anio estreno y calificacion
     generos = sorted(conseguir_generos(peliculas))
@@ -191,7 +191,7 @@ def recomendarPelicula(peliculas):
     print("\n---------------------------------------------------")
 
 
-def listarPeliculasPorGenero(peliculas):
+def listar_peliculas_por_genero(peliculas):
 
     generos = sorted(conseguir_generos(peliculas))
     eleccion_genero = ingresar_genero(generos)
@@ -227,9 +227,9 @@ if login():
                 'ERROR, tenés que ingresar 1 o 2. \nIngresa la opción que desees: ')
 
         if opcion_usuario == '1':
-            recomendarPelicula(peliculas)
+            recomendar_pelicula(peliculas)
         elif opcion_usuario == '2':
-            listarPeliculasPorGenero(peliculas)
+            listar_peliculas_por_genero(peliculas)
         print("\n---------------------------------------------------")
         
         #reinicio

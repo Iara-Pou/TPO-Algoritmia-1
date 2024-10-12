@@ -1,10 +1,18 @@
-def login():
+def cargar_usuarios_desde_archivo():
+    usuarios = ()
+    with open("usuarios.txt", "r") as archivo:
+        for linea in archivo:
+            # Eliminar espacios en blanco y separar el nombre de usuario y contraseña
+            linea = linea.strip()
+            usuario, contrasenia = linea.split(",")
+            # Agregar a la tupla de usuarios
+            usuarios += ((usuario, contrasenia),)
 
-    usuarios = (
-        ("usuario1", "contrasenia1"),
-        ("usuario2", "contrasenia2"),
-        ("usuario3", "contrasenia3"),
-    )
+    return usuarios
+
+
+def login():
+    usuarios = cargar_usuarios_desde_archivo()
     intentos_permitidos = 3
 
     print('¡Bienvenido!')
