@@ -24,6 +24,9 @@ def login():
 
     while intentos_permitidos > 0:
         # menu del login
+        print("\n---------------------------------------------------")
+        print('CINEMATCH')
+        print("---------------------------------------------------")
         print("1. Iniciar sesión")
         print("2. Agregar nuevo usuario")
         opcion = input("Elige una opción: ")

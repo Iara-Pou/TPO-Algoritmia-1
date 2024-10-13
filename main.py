@@ -6,20 +6,25 @@ def ingresar_genero(generos):
     print("\n---------------------------------------------------")
     print("¿Qué género te gustaría ver? Aquí te dejo una lista con los géneros disponibles:")
     mostrarMenuNumerado(generos)
-    eleccion_genero = int(input('Ingresá el género:'))  
-
-    while eleccion_genero < 1 or eleccion_genero > len(generos):  
-        print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
-        eleccion_genero = int(input('Ingresá el género: '))  
-
-    eleccion_genero = list(generos)[eleccion_genero-1]
     
-    return eleccion_genero
+    while True:
+        try:
+            eleccion_genero = int(input('Ingresá el género:'))  
+            while eleccion_genero < 1 or eleccion_genero > len(generos):  
+                print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
+                eleccion_genero = int(input('Ingresá el género: '))  
+                
+            eleccion_genero = list(generos)[eleccion_genero-1]
+            return eleccion_genero
+        
+        except:
+            print('Debes ingresar un numero. ')
+            
 
 # seleccionar opcion en anios o calificaciones
 def seleccionar_opcion(elementos, tipo_elemento):
     
-    eleccion_elemento = input(f"Por favor, ingresa un {tipo_elemento}: ").strip()
+    eleccion_elemento = input(f"Por favor, ingresa un/una {tipo_elemento}: ").strip()
     elemento_valido = False   
       
     while not elemento_valido:
@@ -41,7 +46,7 @@ def seleccionar_opcion(elementos, tipo_elemento):
 def seleccionar_rango(elementos, tipo_elemento):
     
     # ingresa primer elemento y valida
-    eleccion_primer_elemento = input(f"Por favor, ingresá el primer {tipo_elemento}: ")    
+    eleccion_primer_elemento = input(f"Por favor, ingresá el/la primer {tipo_elemento}: ")    
     elemento_valido = False
 
     while not elemento_valido:
@@ -57,7 +62,7 @@ def seleccionar_rango(elementos, tipo_elemento):
     elementos_siguientes = filtrar_rango_anios(eleccion_primer_elemento, elementos[-1], elementos)
     print(' - '.join(map(str, elementos_siguientes)))
 
-    eleccion_segundo_elemento = input(f"Por favor, ingresá el {tipo_elemento} de fin: ")
+    eleccion_segundo_elemento = input(f"Por favor, ingresá el/la {tipo_elemento} de fin: ")
     elemento_valido = False
     while not elemento_valido:
         if eleccion_segundo_elemento.isdigit():
@@ -92,7 +97,7 @@ def ingresar_anio_estreno(anios):
         print(' - '.join(map(str, anios)))
             
         if modalidad_anio == '1':
-            eleccion_anio = seleccionar_opcion(anios, 'años')
+            eleccion_anio = seleccionar_opcion(anios, 'año')
         elif modalidad_anio == '2':
             eleccion_anio = seleccionar_rango(anios, 'año')
 
@@ -115,7 +120,7 @@ def ingresar_calificacion(calificaciones):
         modalidad_calificacion = input("Por favor, ingresa una opción válida: ").strip().lower()   
       
     if modalidad_calificacion == '1':
-        eleccion_calificacion = seleccionar_opcion(calificaciones, 'calificaciones')
+        eleccion_calificacion = seleccionar_opcion(calificaciones, 'calificación')
     else: 
         eleccion_calificacion = seleccionar_rango(calificaciones, 'calificación')
     
