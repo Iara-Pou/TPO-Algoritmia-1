@@ -11,11 +11,32 @@ def cargar_usuarios_desde_archivo():
     return usuarios
 
 
+def nombre_en_uso(usuarios, nombre_usuario):
+    # Itero usuarios, si alguno fuera igual retorno True (si existe)
+    for usuario in usuarios:
+        if usuario[0] == nombre_usuario:
+            return True
+    # Sino, retorno False (no existe)
+    return False
+
+
 def agregar_usuario_a_archivo(nombre_usuario, contrasenia_usuario):
-    # Modo "a" para agregar al final
+    # Cargar usuarios
+    usuarios = cargar_usuarios_desde_archivo()
+
+    # Validar que no repito nombre
+    while nombre_en_uso(usuarios, nombre_usuario):
+        print(
+            f"El nombre de usuario '{nombre_usuario}' ya está en uso. Elige otro.")
+        nombre_usuario = input('Nombre nuevo: ')
+        contrasenia_usuario = input('Contraseña: ')
+        print("-----------------------------------------------------------")
+
+    # Agregar el nuevo usuario
     with open("usuarios.txt", "a") as archivo:
         archivo.write(f"{nombre_usuario},{contrasenia_usuario}\n")
     print(f"Usuario {nombre_usuario} agregado exitosamente.")
+    print("-----------------------------------------------------------")
 
 
 def login():
