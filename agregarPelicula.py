@@ -57,27 +57,14 @@ def actorValido(actor):
         return False
     return True
 
-    '''
-    Ejemplo de película:
-        {
-            "titulo": "The Last Airbender",
-            "genero": "Fantasía",
-            "calificacion": 6,
-            "anio": 2010,
-            "actores": ["Noah Ringer", "Dev Patel"],
-            "descripcion": "Un joven que puede controlar los cuatro elementos debe salvar el mundo de la Nación del Fuego.",
-            "urlImagen": "https://m.media-amazon.com/images/I/71ZxVE+dYXL._AC_UF1000,1000_QL80_.jpg"
-        },
-    '''
-
 
 def agregar_pelicula():
     pelicula = {}
 
     # Ingresar un título y anexarlo a película
-    titulo_ingresado = input('Ingresá el título de la pelicula')
+    titulo_ingresado = input('Ingresá el título de la pelicula: ')
     while not tituloValido(titulo_ingresado):
-        titulo_ingresado = input('Ingresá el título de la pelicula')
+        titulo_ingresado = input('Título inválido. Ingresá un nuevo título para la pelicula: ')
 
     pelicula["titulo"] = titulo_ingresado
 
@@ -119,7 +106,7 @@ def agregar_pelicula():
     segundo_actor = input('Ingresá otro actor: ')
     while not actorValido(segundo_actor):
         print("Nombre de actor inválido. Ingresá solo letras y acentos.")
-        segundo_actor = input('Ingresá un actor: ')
+        segundo_actor = input('Ingresá otro actor: ')
     actores.append(segundo_actor)
 
     pelicula['actores'] = actores
