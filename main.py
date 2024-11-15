@@ -1,6 +1,6 @@
 from funciones import *
 from login import login
-
+from agregarPelicula import agregar_pelicula
 
 def ingresar_genero(generos): 
     print("\n---------------------------------------------------")
@@ -224,10 +224,11 @@ if login():
         print("---------------------------------------------------")
         print('1. Pedir recomendación.')
         print('2. Buscar por genero.')
+        print('3. Agregar película.')
         print("---------------------------------------------------")
         opcion_usuario = input('Ingresa la opción que desees: ')
 
-        while opcion_usuario != '1' and opcion_usuario != '2':
+        while opcion_usuario != '1' and opcion_usuario != '2' and opcion_usuario != '3':
             opcion_usuario = input(
                 'ERROR, tenés que ingresar 1 o 2. \nIngresa la opción que desees: ')
 
@@ -235,10 +236,13 @@ if login():
             recomendar_pelicula(peliculas)
         elif opcion_usuario == '2':
             listar_peliculas_por_genero(peliculas)
+        elif opcion_usuario == '3':
+            agregar_pelicula()            
         print("\n---------------------------------------------------")
+
         
         #reinicio
-        print("¿Deseas otra recomendación?")
+        print("¿Deseas seguir usando nuestro recomendador?")
         respuesta_usuario = input("Ingresá 'si' para volver a tener una recomendación, \n'no' para salir del programa: ").strip().lower()
         
         while respuesta_usuario.lower() not in ('si', 'no'):
