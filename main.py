@@ -237,7 +237,8 @@ if login():
         elif opcion_usuario == '2':
             listar_peliculas_por_genero(peliculas)
         elif opcion_usuario == '3':
-            agregar_pelicula()            
+            #reinicia películas cuando sumo una nueva
+            peliculas = agregar_pelicula()            
         print("\n---------------------------------------------------")
 
         

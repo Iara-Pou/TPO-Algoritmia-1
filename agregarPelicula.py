@@ -130,5 +130,9 @@ def agregar_pelicula():
     # Guardar la lista de películas actualizada en el archivo JSON
     peliculas.append(pelicula)
     guardar_peliculas(peliculas, ruta_json)
+    print("\n---------------------------------------------------")
     print("Película agregada y guardada con éxito.")
+    
+    # Recarga películas para que no quede el json de películas desactualizado
+    return cargar_peliculas(ruta_json)
 
