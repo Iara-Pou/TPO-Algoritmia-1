@@ -57,10 +57,11 @@ def conseguir_calificaciones(peliculas):
 
 
 def conseguir_titulos(peliculas):
-    titulos = set()
-    for pelicula in peliculas:
-        titulos.add(pelicula['titulo'])
-    return titulos
+    if not peliculas:  # Caso base: lista vacía
+        return set()
+    # Extraer el título de la primera película y llamar recursivamente con el resto de titulos
+    titulo = {peliculas[0]['titulo']}
+    return titulo.union(conseguir_titulos(peliculas[1:]))
 
 
 def mostrarMenuNumerado(opciones):
