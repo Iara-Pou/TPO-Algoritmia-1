@@ -85,7 +85,7 @@ def agregar_pelicula():
         # Calificación va del 1 al 10
         calificacion_ingresada = input(
             'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
-    pelicula["calificacion"] = calificacion_ingresada
+    pelicula["calificacion"] = int(calificacion_ingresada)
 
     # Ingresar año
     anio_ingresado = input('Ingresá el año de la película: ')
