@@ -57,82 +57,109 @@ def actorValido(actor):
         return False
     return True
 
+def crear_pelicula(titulo_ingresado, genero_ingresado, calificacion_ingresada, anio_ingresado, actores, descripcion_ingresada, url_imagen_ingresada):
+    pelicula = {}
+    pelicula["titulo"] = titulo_ingresado
+    pelicula["genero"] = genero_ingresado
+    pelicula["calificacion"] = int(calificacion_ingresada)
+    pelicula["anio"] = int(anio_ingresado)
+    pelicula['actores'] = actores
+    pelicula["descripcion"] = descripcion_ingresada
+    pelicula["urlImagen"] = url_imagen_ingresada
+    
+    return pelicula
+    
 
 def agregar_pelicula():
-    pelicula = {}
-
-    # Ingresar un título y anexarlo a película
+    print('CARGA DE PELÍCULAS \nIMPORTANTE || Por favor, ingresá -1 en cualquier momento de la carga para cancelar el proceso. ')
+    
+    ### Ingresar datos y validar:
+    # título
     titulo_ingresado = input('Ingresá el título de la pelicula: ')
     while not tituloValido(titulo_ingresado):
+        if titulo_ingresado == '-1': return
         titulo_ingresado = input('Título inválido. Ingresá un nuevo título para la pelicula: ')
 
-    pelicula["titulo"] = titulo_ingresado
-
-    # Ingresar género por número
-    # Asume que devuelve una lista de géneros
-    generos_disponibles = list(conseguir_generos(peliculas))  # Convertir a lista
+    # género (por número)
+    generos_disponibles = list(conseguir_generos(peliculas))  
     mostrarMenuNumerado(generos_disponibles)
-
     genero_ingresado = input('Ingresá un número para cargar el género: ')
     while not genero_ingresado.isdigit() or not generoValido(int(genero_ingresado), generos_disponibles):
+        if genero_ingresado == '-1': return
         genero_ingresado = input(
             'Número inválido. Ingresá un número válido para cargar el género: ')
-    pelicula["genero"] = generos_disponibles[int(genero_ingresado) - 1]
-
-    # ingresar calificación
+    
+    # calificación
     calificacion_ingresada = input('Ingresá una calificación del 1 al 10:')
     while not calificacion_ingresada.isdigit() or not calificacionValida(calificacion_ingresada):
+        if calificacion_ingresada == '-1': return
         # Calificación va del 1 al 10
         calificacion_ingresada = input(
             'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
-    pelicula["calificacion"] = int(calificacion_ingresada)
-
-    # Ingresar año
+    
+    # año
     anio_ingresado = input('Ingresá el año de la película: ')
     while not anio_ingresado.isdigit() or not anioValido(int(anio_ingresado)):
+        if anio_ingresado == '-1': return
         anio_ingresado = input(
             'Año inválido. Ingresá un año válido para la película: ')
-    pelicula["anio"] = int(anio_ingresado)
-
-    # ingresar dos actores
+    
+    # actores
     actores = []
-
     primer_actor = input('Ingresá un actor: ')
     while not actorValido(primer_actor):
+        if primer_actor == '-1': return
         print("Nombre de actor inválido. Ingresá solo letras y acentos.")
         primer_actor = input('Ingresá un actor: ')
     actores.append(primer_actor)
-
     segundo_actor = input('Ingresá otro actor: ')
     while not actorValido(segundo_actor):
+        if segundo_actor == '-1': return
         print("Nombre de actor inválido. Ingresá solo letras y acentos.")
         segundo_actor = input('Ingresá otro actor: ')
     actores.append(segundo_actor)
 
-    pelicula['actores'] = actores
-
-    # Ingresar descripción
+    # descripción
     descripcion_ingresada = input(
         'Ingresá la descripción de la película (hasta 200 caracteres): ')
     while not descripcionValida(descripcion_ingresada):
+        if descripcion_ingresada == '-1': return
         descripcion_ingresada = input(
             'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
-    pelicula["descripcion"] = descripcion_ingresada
 
-    # Ingresar URL de la imagen
+    # URL de imagen
     url_imagen_ingresada = input(
         'Ingresá la URL de la imagen de la película: ')
     while not urlImagenValida(url_imagen_ingresada):
+        if url_imagen_ingresada == '-1': return
         url_imagen_ingresada = input(
             'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
-    pelicula["urlImagen"] = url_imagen_ingresada
-
-    # Guardar la lista de películas actualizada en el archivo JSON
-    peliculas.append(pelicula)
-    guardar_peliculas(peliculas, ruta_json)
-    print("\n---------------------------------------------------")
-    print("Película agregada y guardada con éxito.")
     
-    # Recarga películas para que no quede el json de películas desactualizado
-    return cargar_peliculas(ruta_json)
+    
+    ### Guardar la lista de películas actualizada en el archivo JSON    
+    pelicula = crear_pelicula(titulo_ingresado, 
+                              generos_disponibles[int(genero_ingresado) - 1], 
+                              calificacion_ingresada, 
+                              anio_ingresado, 
+                              actores, 
+                              descripcion_ingresada, 
+                              url_imagen_ingresada)
+    
+    print('La película a sumar es:')
+    mostrar_peliculas([pelicula])
+    print('¿Deseas agregar la película?')
+    
+    respuesta_agregar_pelicula = input('Ingresá "si" para agregarla, "no" para cancelar la carga:').lower()
+    while respuesta_agregar_pelicula not in ("no", "si"):
+        respuesta_agregar_pelicula = input('Por favor, ingresá "si" o "no" para decidir si cargar la película:')
+    
+    #si actualizo la pelicula, cargo y retorno el archivo actualizado
+    if respuesta_agregar_pelicula == "si":   
+        peliculas.append(pelicula)
+        guardar_peliculas(peliculas, ruta_json)
+        print("\n---------------------------------------------------")
+        print("Película agregada y guardada con éxito.")
+        # Recarga películas para que no quede el json de películas desactualizado
+        return cargar_peliculas(ruta_json)
 
+    #si no actualizo la película, retorna None

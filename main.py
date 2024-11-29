@@ -227,10 +227,12 @@ if login():
         print('3. Agregar película.')
         print("---------------------------------------------------")
         opcion_usuario = input('Ingresa la opción que desees: ')
+        print("---------------------------------------------------")
 
         while opcion_usuario != '1' and opcion_usuario != '2' and opcion_usuario != '3':
             opcion_usuario = input(
-                'ERROR, tenés que ingresar 1 o 2. \nIngresa la opción que desees: ')
+                'ERROR, tenés que ingresar 1, 2 o 3. \nIngresa la opción que desees: ')
+        print("---------------------------------------------------")
 
         if opcion_usuario == '1':
             recomendar_pelicula(peliculas)
@@ -238,7 +240,9 @@ if login():
             listar_peliculas_por_genero(peliculas)
         elif opcion_usuario == '3':
             #reinicia películas cuando sumo una nueva
-            peliculas = agregar_pelicula()            
+            resultado_agregar_pelicula = agregar_pelicula()
+            if resultado_agregar_pelicula != None:
+                peliculas = resultado_agregar_pelicula        
         print("\n---------------------------------------------------")
 
         
