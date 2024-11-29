@@ -11,11 +11,10 @@ def ingresar_genero(generos):
     while True:
         try:
             eleccion_genero = int(input('Ingresá el género: '))  
-            if eleccion_genero == -1: return -1
             while eleccion_genero < 1 or eleccion_genero > len(generos):  
+                if eleccion_genero == -1: return -1
                 print("El género elegido no está en la lista. Por favor, intenta de nuevo.")
                 eleccion_genero = int(input('Ingresá el género: '))  
-                if eleccion_genero == -1: return -1
             return list(generos)[eleccion_genero-1]
         except ValueError:
             print('Debes ingresar un número. ')
@@ -41,7 +40,11 @@ def seleccionar_rango(elementos, tipo_elemento):
     if segundo_elemento >= primer_elemento:
         return filtrar_rango_anios(primer_elemento, segundo_elemento, elementos)
     else:
+        #si no ingresó un rango válido, vuelve a llamar a la funcion para que lo haga
         print("El rango no es válido. Intenta nuevamente.")
+        print("-----------------------------------------------------")
+        print(' - '.join(map(str, elementos)))
+
         return seleccionar_rango(elementos, tipo_elemento)
 
 def ingresar_anio_estreno(anios):
@@ -165,4 +168,4 @@ if login():
                 peliculas = resultado
         elif opcion == '4':
             continuar = False
-            print("¡Gracias por usar nuestro recomendador! Hasta la próxima.")
+            print("¡Gracias por usar nuestro recomendador!")
