@@ -80,8 +80,6 @@ def seleccionar_rango(elementos, tipo_elemento):
                     
                         
 def ingresar_anio_estreno(anios):
-    
-    # Ofrece opciones de busqueda de años
     print("-----------------------------------------------------")
     print("¿Te gustaría elegir un año específico de estreno?")
     print(' - '.join(map(str, anios)))
@@ -113,16 +111,18 @@ def ingresar_calificacion(calificaciones):
     print("-----------------------------------------------------")
     print("¿Preferís alguna calificación?")
     print(' - '.join(map(str, calificaciones)))
-    mostrarMenuNumerado(['Si', 'Prefiero un rango'])
+    mostrarMenuNumerado(['Si', 'Prefiero un rango', 'No'])
     modalidad_calificacion = input().strip().lower()  
 
-    while modalidad_calificacion not in ('1', '2'):
+    while modalidad_calificacion not in ('1', '2', '3'):
         modalidad_calificacion = input("Por favor, ingresa una opción válida: ").strip().lower()   
       
     if modalidad_calificacion == '1':
         eleccion_calificacion = seleccionar_opcion(calificaciones, 'calificación')
-    else: 
+    elif modalidad_calificacion == '2':
         eleccion_calificacion = seleccionar_rango(calificaciones, 'calificación')
+    else: 
+        eleccion_calificacion = None
     
     return eleccion_calificacion 
  
@@ -143,7 +143,8 @@ def recomendar_pelicula(peliculas):
     peliculas_filtradas = []
     
     # Filtra por género, año, calificacion
-    lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))   
+    lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero)) 
+    
     # Año puede ser una lista, un None o un int
     if isinstance(eleccion_anio, list):  
         lista_por_anio = []
@@ -153,11 +154,14 @@ def recomendar_pelicula(peliculas):
         lista_por_anio = []
     else:
         lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas, eleccion_anio))
-    # Calificación puede ser una lista o un int    
+        
+    # Calificación puede ser una lista, un None o un int    
     if isinstance(eleccion_calificacion, list):  
         lista_por_calificacion = []
         for calificacion in eleccion_calificacion:
             lista_por_calificacion.extend(conseguir_titulos(buscar_por_calificacion(peliculas, calificacion)))
+    elif eleccion_calificacion == None:
+        lista_por_calificacion = []
     else:
         lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas, eleccion_calificacion))
         
@@ -171,11 +175,16 @@ def recomendar_pelicula(peliculas):
     print("\n---------------------------------------------------")
     peliculas_recomendadas = []
     
-    # Si hay coincidencia entre los tres filtros, recomendar película
-    for pelicula in peliculas_filtradas[0]:
-        # También debe coincidir en año o calificación  
-        if pelicula in peliculas_filtradas[1] or pelicula in peliculas_filtradas[2]:              
-            peliculas_recomendadas.append(pelicula)
+    # Si no cargaron informacion de años o de calificación, filtrar por género. 
+    # Sino, si, buscar por coincidencia entre filtro 1 y 2 o filtro 2 y 3:
+    if len(peliculas_filtradas[1]) == 0 and len(peliculas_filtradas[2]) == 0:
+        peliculas_recomendadas = lista_por_genero
+    else:
+        # Si hay coincidencia entre los tres filtros, recomendar película
+        for pelicula in peliculas_filtradas[0]:
+            # También debe coincidir en año o calificación  
+            if pelicula in peliculas_filtradas[1] or pelicula in peliculas_filtradas[2]:              
+                peliculas_recomendadas.append(pelicula)
     
     # Si hay películas, las muestra
     if len(peliculas_recomendadas) != 0:
@@ -188,11 +197,10 @@ def recomendar_pelicula(peliculas):
 
         print("Te recomendamos: \n")
         mostrar_peliculas(informacion_peliculas)
-
         print("\nEsperamos que te gusten ;D")
+        
     else:
         print('No se encontraron películas para recomendar.')
-        
     print("\n---------------------------------------------------")
 
 
@@ -203,7 +211,7 @@ def listar_peliculas_por_genero(peliculas):
     
     print("\n---------------------------------------------------")
     print("Peliculas encontradas:\n")
-    peliculas_genero = mostrar_peliculas(buscar_por_genero(peliculas, eleccion_genero))
+    mostrar_peliculas(buscar_por_genero(peliculas, eleccion_genero))
     print("\n---------------------------------------------------")
 
 
