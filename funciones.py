@@ -35,7 +35,10 @@ def buscar_por_calificacion(peliculas, calificacion):
 
 
 def buscar_por_titulo(peliculas, titulo):
-    return next((p for p in peliculas if p['titulo'] == titulo), None)
+    for pelicula in peliculas:
+        if pelicula['titulo'] == titulo:
+            return pelicula
+    return None
 
 
 def mostrar_peliculas(peliculas):
@@ -44,27 +47,15 @@ def mostrar_peliculas(peliculas):
 
 
 def conseguir_generos(peliculas):
-    generos = set()
-    for pelicula in peliculas:
-        generos.add(pelicula['genero'])
-
-    return generos
+    return set(map(lambda pelicula: pelicula['genero'], peliculas))
 
 
 def conseguir_anios(peliculas):
-    anios = set()
-    for pelicula in peliculas:
-        anios.add(pelicula['anio'])
-
-    return anios
+    return set(map(lambda pelicula: pelicula['anio'], peliculas))
 
 
 def conseguir_calificaciones(peliculas):
-    calificaciones = set()
-    for pelicula in peliculas:
-        calificaciones.add(pelicula['calificacion'])
-
-    return calificaciones
+    return set(map(lambda pelicula: pelicula['calificacion'], peliculas))
 
 
 def conseguir_titulos(peliculas):

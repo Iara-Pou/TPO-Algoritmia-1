@@ -184,7 +184,7 @@ peliculas = cargar_peliculas(ruta_json)
 
 # Tienen que existir películas con formato valido (cargar_peliculas retorna una lista vacía si se genera una excepción en la carga del archivo)
 # El usuario tiene que poder loguearse
-if len(peliculas) > 0 and login():
+if not listaEstaVacia(peliculas) and login():
     continuar = True
     while continuar:
         print("\n---------------------------------------------------")
