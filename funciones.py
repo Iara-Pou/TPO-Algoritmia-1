@@ -1,5 +1,4 @@
 import json
-from difflib import SequenceMatcher
 
 
 def filtrar_rango_anios(anio_inicio, anio_fin, anios):
@@ -7,9 +6,20 @@ def filtrar_rango_anios(anio_inicio, anio_fin, anios):
 
 
 def cargar_peliculas(ruta_archivo):
-    with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
-        peliculas = json.load(archivo)
-    return peliculas
+    try:
+        with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
+            peliculas = json.load(archivo)
+        return peliculas
+    except FileNotFoundError:
+        print(f"ERROR: No se encontró el archivo en la ruta '{ruta_archivo}'.")
+        return []
+    except json.JSONDecodeError:
+        print(
+            f"ERROR: El archivo '{ruta_archivo}' no contiene un JSON válido.")
+        return []
+    except Exception as e:
+        print(f"ERROR INESPERADO: {e}")
+        return []
 
 
 def buscar_por_genero(peliculas, genero):

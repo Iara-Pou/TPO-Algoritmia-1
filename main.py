@@ -21,19 +21,26 @@ def ingresar_genero(generos):
                 eleccion_genero = int(input('Ingresá el género: '))
             return list(generos)[eleccion_genero-1]
         except ValueError:
-            print('Debes ingresar un número. ')
-
+            print('Debes ingresar un número.')
+            
 
 def seleccionar_opcion(elementos, tipo_elemento):
-    eleccion = input(f"Por favor, ingresa un/una {tipo_elemento}: ").strip()
     while True:
-        if eleccion == "-1":
-            return -1
-        if eleccion.isdigit() and int(eleccion) in elementos:
-            return int(eleccion)
-        eleccion = input(
-            f"Por favor, ingresa un/una {tipo_elemento} válido/a: ").strip()
-
+        try:
+            eleccion = int(input(
+                f"Por favor, ingresa un/una {tipo_elemento}: ").strip())
+            # Si el usuario ingresa -1, cancela el circuito
+            if eleccion == -1:
+                return -1
+            # Si es un número y está dentro de los elementos que puedo elegir, lo retorna
+            if eleccion in elementos:
+                return eleccion
+            # mensaje error
+            print("El", tipo_elemento,
+                  "no está en la lista. Por favor, intenta de nuevo.")
+        except ValueError:
+            print('Debes ingresar un número.')
+            
 
 def seleccionar_rango(elementos, tipo_elemento):
     primer_elemento = seleccionar_opcion(elementos, f"primer {tipo_elemento}")
@@ -175,7 +182,9 @@ def listar_peliculas_por_genero(peliculas):
 ruta_json = 'peliculas.json'
 peliculas = cargar_peliculas(ruta_json)
 
-if login():
+# Tienen que existir películas con formato valido (cargar_peliculas retorna una lista vacía si se genera una excepción en la carga del archivo)
+# El usuario tiene que poder loguearse
+if len(peliculas) > 0 and login():
     continuar = True
     while continuar:
         print("\n---------------------------------------------------")
