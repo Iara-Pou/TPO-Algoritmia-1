@@ -108,10 +108,8 @@ def recomendar_pelicula(peliculas):
     elif eleccion_calificacion is not None:
         lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas, eleccion_calificacion))
 
-    peliculas_filtradas.append(lista_por_genero)
-    peliculas_filtradas.append(lista_por_anio)
-    peliculas_filtradas.append(lista_por_calificacion)
-
+    # arma matriz de películas filtradas por parámetros anteriores
+    peliculas_filtradas = [lista_por_genero, lista_por_anio, lista_por_calificacion]
     peliculas_recomendadas = []
     if not lista_por_anio and not lista_por_calificacion:
         peliculas_recomendadas = lista_por_genero
