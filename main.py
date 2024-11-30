@@ -1,6 +1,7 @@
 from funciones import *
 from login import login
 from agregarPelicula import agregar_pelicula
+from functools import reduce
 
 
 def ingresar_genero(generos):
@@ -21,7 +22,7 @@ def ingresar_genero(generos):
             return list(generos)[eleccion_genero-1]
         except ValueError:
             print('Debes ingresar un número.')
-
+            
 
 def seleccionar_opcion(elementos, tipo_elemento):
     while True:
@@ -39,7 +40,7 @@ def seleccionar_opcion(elementos, tipo_elemento):
                   "no está en la lista. Por favor, intenta de nuevo.")
         except ValueError:
             print('Debes ingresar un número.')
-
+            
 
 def seleccionar_rango(elementos, tipo_elemento):
     primer_elemento = seleccionar_opcion(elementos, f"primer {tipo_elemento}")
@@ -100,10 +101,13 @@ def ingresar_calificacion(calificaciones):
 
 
 def recomendar_pelicula(peliculas):
+    # recupera todos los generos, anios y calificaciones
     generos = sorted(conseguir_generos(peliculas))
     anios = sorted(conseguir_anios(peliculas))
     calificaciones = sorted(conseguir_calificaciones(peliculas))
 
+    # CONSEGUIR DATOS DEL USUARIO
+    # obtiene las elecciones de genero, anio, calificación como parámetros para el filtro de la recomendación
     eleccion_genero = ingresar_genero(generos)
     if eleccion_genero == -1:
         return
@@ -114,40 +118,44 @@ def recomendar_pelicula(peliculas):
     if eleccion_calificacion == -1:
         return
 
-    peliculas_filtradas = []
+    # GENERAR MATRIZ DE RECOMENDACIÓN
     lista_por_genero = conseguir_titulos(
         buscar_por_genero(peliculas, eleccion_genero))
     lista_por_anio = []
     lista_por_calificacion = []
 
+    # filtra películas por año ingresado y devuelve una lista
     if isinstance(eleccion_anio, list):
-        for anio in eleccion_anio:
-            lista_por_anio.extend(conseguir_titulos(
-                buscar_por_anio(peliculas, anio)))
+        lista_por_anio = reduce(lambda acumulador, anio: acumulador + list(
+            conseguir_titulos(buscar_por_anio(peliculas, anio))), eleccion_anio, [])
     elif eleccion_anio is not None:
         lista_por_anio = conseguir_titulos(
             buscar_por_anio(peliculas, eleccion_anio))
 
+    # filtra películas por calificación ingresada y devuelve una lista
     if isinstance(eleccion_calificacion, list):
-        for calificacion in eleccion_calificacion:
-            lista_por_calificacion.extend(conseguir_titulos(
-                buscar_por_calificacion(peliculas, calificacion)))
+        lista_por_calificacion = reduce(lambda acumulador, calificacion: acumulador + list(
+            conseguir_titulos(buscar_por_calificacion(peliculas, calificacion))), eleccion_calificacion, [])
     elif eleccion_calificacion is not None:
         lista_por_calificacion = conseguir_titulos(
             buscar_por_calificacion(peliculas, eleccion_calificacion))
 
-    peliculas_filtradas.append(lista_por_genero)
-    peliculas_filtradas.append(lista_por_anio)
-    peliculas_filtradas.append(lista_por_calificacion)
-
+    # arma matriz de películas filtradas por parámetros anteriores
+    peliculas_filtradas = [lista_por_genero,
+                           lista_por_anio, lista_por_calificacion]
     peliculas_recomendadas = []
-    if not lista_por_anio and not lista_por_calificacion:
+
+    # GENERA LISTA DE PELÍCULAS RECOMENDADAS
+    # si la película tiene el genero y el año o el género y la calificación, la almacena como una película a recomendar
+    if listaEstaVacia(lista_por_anio) and listaEstaVacia(lista_por_calificacion):
         peliculas_recomendadas = lista_por_genero
     else:
-        for pelicula in peliculas_filtradas[0]:
-            if pelicula in peliculas_filtradas[1] or pelicula in peliculas_filtradas[2]:
-                peliculas_recomendadas.append(pelicula)
+        peliculas_recomendadas = list(filter(
+            lambda pelicula: pelicula in peliculas_filtradas[1] or pelicula in peliculas_filtradas[2],
+            peliculas_filtradas[0]
+        ))
 
+    # MUESTRA RECOMENDACIÓN
     if peliculas_recomendadas:
         informacion_peliculas = [buscar_por_titulo(
             peliculas, titulo) for titulo in peliculas_recomendadas if buscar_por_titulo(peliculas, titulo)]
