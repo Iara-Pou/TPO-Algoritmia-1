@@ -111,7 +111,10 @@ def recomendar_pelicula(peliculas):
     # arma matriz de películas filtradas por parámetros anteriores
     peliculas_filtradas = [lista_por_genero, lista_por_anio, lista_por_calificacion]
     peliculas_recomendadas = []
-    if not lista_por_anio and not lista_por_calificacion:
+    
+    ### GENERA LISTA DE PELÍCULAS RECOMENDADAS
+    # si la película tiene el genero y el año o el género y la calificación, la almacena como una película a recomendar
+    if listaEstaVacia(lista_por_anio) and listaEstaVacia(lista_por_calificacion):
         peliculas_recomendadas = lista_por_genero
     else:
         for pelicula in peliculas_filtradas[0]:

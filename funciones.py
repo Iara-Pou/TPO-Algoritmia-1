@@ -69,3 +69,8 @@ def mostrarMenuNumerado(opciones):
     for i in range(len(opciones_menu)):
         print(f'{i + 1}. {opciones_menu[i]}')
         
+def listaEstaVacia(lista):
+    if len(lista) == 0:
+        return True
+    return False
+        
