@@ -1,8 +1,9 @@
 import json
 from difflib import SequenceMatcher
 
+
 def filtrar_rango_anios(anio_inicio, anio_fin, anios):
-    return list(filter(lambda anio: anio >= int(anio_inicio) and anio <= int(anio_fin), anios))    
+    return list(filter(lambda anio: anio >= int(anio_inicio) and anio <= int(anio_fin), anios))
 
 
 def cargar_peliculas(ruta_archivo):
@@ -15,7 +16,7 @@ def buscar_por_genero(peliculas, genero):
     return [p for p in peliculas if p['genero'].lower() == genero.lower()]
 
 
-def buscar_por_anio(peliculas,anio):
+def buscar_por_anio(peliculas, anio):
     return [p for p in peliculas if anio == p["anio"]]
 
 
@@ -44,7 +45,7 @@ def conseguir_anios(peliculas):
     anios = set()
     for pelicula in peliculas:
         anios.add(pelicula['anio'])
-        
+
     return anios
 
 
@@ -68,4 +69,9 @@ def mostrarMenuNumerado(opciones):
     opciones_menu = list(opciones)
     for i in range(len(opciones_menu)):
         print(f'{i + 1}. {opciones_menu[i]}')
-        
+
+
+def listaEstaVacia(lista):
+    if len(lista) == 0:
+        return True
+    return False
