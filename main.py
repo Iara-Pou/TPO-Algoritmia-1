@@ -1,6 +1,8 @@
 from funciones import *
 from login import login
 from agregarPelicula import agregar_pelicula
+from functools import reduce
+
 
 def ingresar_genero(generos): 
     print("\n---------------------------------------------------")
@@ -80,10 +82,13 @@ def ingresar_calificacion(calificaciones):
     return None
 
 def recomendar_pelicula(peliculas):
+    # recupera todos los generos, anios y calificaciones
     generos = sorted(conseguir_generos(peliculas))
     anios = sorted(conseguir_anios(peliculas))
     calificaciones = sorted(conseguir_calificaciones(peliculas))
 
+    ### CONSEGUIR DATOS DEL USUARIO
+    #obtiene las elecciones de genero, anio, calificación como parámetros para el filtro de la recomendación
     eleccion_genero = ingresar_genero(generos)
     if eleccion_genero == -1: return
     eleccion_anio = ingresar_anio_estreno(anios)
@@ -91,20 +96,20 @@ def recomendar_pelicula(peliculas):
     eleccion_calificacion = ingresar_calificacion(calificaciones)
     if eleccion_calificacion == -1: return
 
-    peliculas_filtradas = []
+    ### GENERAR MATRIZ DE RECOMENDACIÓN
     lista_por_genero = conseguir_titulos(buscar_por_genero(peliculas, eleccion_genero))
     lista_por_anio = []
     lista_por_calificacion = []
-
+    
+    # filtra películas por año ingresado y devuelve una lista
     if isinstance(eleccion_anio, list):
-        for anio in eleccion_anio:
-            lista_por_anio.extend(conseguir_titulos(buscar_por_anio(peliculas, anio)))
+        lista_por_anio = reduce(lambda acumulador, anio: acumulador + list(conseguir_titulos(buscar_por_anio(peliculas, anio))), eleccion_anio, [])
     elif eleccion_anio is not None:
         lista_por_anio = conseguir_titulos(buscar_por_anio(peliculas, eleccion_anio))
 
+    # filtra películas por calificación ingresada y devuelve una lista
     if isinstance(eleccion_calificacion, list):
-        for calificacion in eleccion_calificacion:
-            lista_por_calificacion.extend(conseguir_titulos(buscar_por_calificacion(peliculas, calificacion)))
+        lista_por_calificacion = reduce(lambda acumulador, calificacion: acumulador + list(conseguir_titulos(buscar_por_calificacion(peliculas, calificacion))), eleccion_calificacion, [])
     elif eleccion_calificacion is not None:
         lista_por_calificacion = conseguir_titulos(buscar_por_calificacion(peliculas, eleccion_calificacion))
 
@@ -117,10 +122,12 @@ def recomendar_pelicula(peliculas):
     if listaEstaVacia(lista_por_anio) and listaEstaVacia(lista_por_calificacion):
         peliculas_recomendadas = lista_por_genero
     else:
-        for pelicula in peliculas_filtradas[0]:
-            if pelicula in peliculas_filtradas[1] or pelicula in peliculas_filtradas[2]:
-                peliculas_recomendadas.append(pelicula)
-
+        peliculas_recomendadas = list(filter(
+        lambda pelicula: pelicula in peliculas_filtradas[1] or pelicula in peliculas_filtradas[2],
+        peliculas_filtradas[0]
+    ))
+                
+    ### MUESTRA RECOMENDACIÓN
     if peliculas_recomendadas:
         informacion_peliculas = [buscar_por_titulo(peliculas, titulo) for titulo in peliculas_recomendadas if buscar_por_titulo(peliculas, titulo)]
         print("Te recomendamos:\n")
