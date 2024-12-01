@@ -2,6 +2,7 @@ from funciones import *
 from login import login
 from agregarPelicula import agregar_pelicula
 from functools import reduce
+from manejarSesion import get_id_usuario, get_rol_usuario
 
 
 def ingresar_genero(generos):
@@ -22,7 +23,7 @@ def ingresar_genero(generos):
             return list(generos)[eleccion_genero-1]
         except ValueError:
             print('Debes ingresar un número.')
-            
+
 
 def seleccionar_opcion(elementos, tipo_elemento):
     while True:
@@ -40,7 +41,7 @@ def seleccionar_opcion(elementos, tipo_elemento):
                   "no está en la lista. Por favor, intenta de nuevo.")
         except ValueError:
             print('Debes ingresar un número.')
-            
+
 
 def seleccionar_rango(elementos, tipo_elemento):
     primer_elemento = seleccionar_opcion(elementos, f"primer {tipo_elemento}")
@@ -178,36 +179,55 @@ def listar_peliculas_por_genero(peliculas):
     print("\n---------------------------------------------------")
 
 
+def usuario_es_admin():
+    return get_rol_usuario() == 'admin'
+
+
 # Flujo principal del programa
 ruta_json = 'peliculas.json'
 peliculas = cargar_peliculas(ruta_json)
 
 # Tienen que existir películas con formato valido (cargar_peliculas retorna una lista vacía si se genera una excepción en la carga del archivo)
-# El usuario tiene que poder loguearse
 if not listaEstaVacia(peliculas) and login():
     continuar = True
     while continuar:
+
+        # IMPRIMIR MENU
         print("\n---------------------------------------------------")
-        print('CINEMATCH')
+        print(f'¡Bienvenido a CINEMATCH, {get_id_usuario()}!')
         print("---------------------------------------------------")
         print('1. Pedir recomendación.')
         print('2. Buscar por género.')
-        print('3. Agregar película.')
-        print('4. Salir del programa.')
+        # Opcion de agregar película solo disponible para usuarios admin
+        if usuario_es_admin():
+            print('3. Agregar película.')
+            print('4. Salir del programa.')
+        else:
+            print('3. Salir del programa.')
+
         print("---------------------------------------------------")
         opcion = input('Ingresa la opción que desees: ').strip()
 
-        while opcion not in ('1', '2', '3', '4'):
+        # VALIDAR ITEM DE MENU INGRESADO
+        while opcion not in ('1', '2', '3', '4') and usuario_es_admin():
             opcion = input("ERROR: Por favor, ingresá 1, 2, 3 o 4: ").strip()
+        while opcion not in ('1', '2', '3') and not usuario_es_admin():
+            opcion = input("ERROR: Por favor, ingresá 1, 2 o 3: ").strip()
 
+        # REDIRIGIR A MÉTODO CORRESPONDIENTE SEGUN ITEM DE MENU
         if opcion == '1':
+
             recomendar_pelicula(peliculas)
         elif opcion == '2':
+
             listar_peliculas_por_genero(peliculas)
-        elif opcion == '3':
+        # si usuario es admin, puede agregar pelicula
+        elif opcion == '3' and usuario_es_admin():
             resultado = agregar_pelicula()
             if resultado is not None:
                 peliculas = resultado
-        elif opcion == '4':
+
+        # la opción 4 del admin y tres del usuario normal cierra la sesión
+        elif (opcion == '4' and usuario_es_admin()) or (opcion == '3' and not usuario_es_admin()):
             continuar = False
             print("¡Gracias por usar nuestro recomendador!")

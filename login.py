@@ -1,12 +1,15 @@
+from manejarSesion import set_informacion_usuario
+
+
 def cargar_usuarios_desde_archivo():
     usuarios = ()
     with open("usuarios.txt", "r") as archivo:
         for linea in archivo:
             # Eliminar espacios en blanco y separar el nombre de usuario y contraseña
             linea = linea.strip()
-            usuario, contrasenia = linea.split(",")
+            usuario, contrasenia, rol = linea.split(",")
             # Agregar a la tupla de usuarios
-            usuarios += ((usuario, contrasenia),)
+            usuarios += ((usuario, contrasenia, rol),)
 
     return usuarios
 
@@ -58,9 +61,11 @@ def login():
                 nombre_usuario = input("Introduce tu usuario: ")
                 contrasenia_usuario = input("Introduce tu contraseña: ")
 
-                for usuario, contrasenia in usuarios:
+                for usuario, contrasenia, rol in usuarios:
                     if usuario == nombre_usuario and contrasenia == contrasenia_usuario:
                         # Inicio de sesión exitoso
+                        # Seteo datos del usuario logueado
+                        set_informacion_usuario(nombre_usuario, rol)
                         print("¡Acceso exitoso!")
                         print(
                             "-----------------------------------------------------------")
