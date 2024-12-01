@@ -23,7 +23,7 @@ def nombre_en_uso(usuarios, nombre_usuario):
     return False
 
 
-def agregar_usuario_a_archivo(nombre_usuario, contrasenia_usuario):
+def agregar_usuario_a_archivo(nombre_usuario, contrasenia_usuario, rol_usuario):
     # Cargar usuarios
     usuarios = cargar_usuarios_desde_archivo()
 
@@ -37,7 +37,8 @@ def agregar_usuario_a_archivo(nombre_usuario, contrasenia_usuario):
 
     # Agregar el nuevo usuario
     with open("usuarios.txt", "a") as archivo:
-        archivo.write(f"{nombre_usuario},{contrasenia_usuario}\n")
+        archivo.write(
+            f"{nombre_usuario},{contrasenia_usuario},{rol_usuario}\n")
     print(f"Usuario {nombre_usuario} agregado exitosamente.")
     print("-----------------------------------------------------------")
 
@@ -82,7 +83,10 @@ def login():
             nombre_usuario = input("Introduce el nombre del nuevo usuario: ")
             contrasenia_usuario = input(
                 "Introduce la contraseña del nuevo usuario: ")
-            agregar_usuario_a_archivo(nombre_usuario, contrasenia_usuario)
+            # el rol por defecto es usuario, si quiere ser admin se modifica el archivo a futuro
+            rol_usuario = 'usuario'
+            agregar_usuario_a_archivo(
+                nombre_usuario, contrasenia_usuario, rol_usuario)
             # Actualizar la lista de usuarios después de agregar uno nuevo
             usuarios = cargar_usuarios_desde_archivo()
             print('¡Creación de usuario exitosa!')

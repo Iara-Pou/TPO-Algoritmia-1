@@ -187,7 +187,9 @@ def usuario_es_admin():
 ruta_json = 'peliculas.json'
 peliculas = cargar_peliculas(ruta_json)
 
-# Tienen que existir películas con formato valido (cargar_peliculas retorna una lista vacía si se genera una excepción en la carga del archivo)
+
+# Tienen que existir películas con formato valido 
+# (cargar_peliculas retorna una lista vacía si se genera una excepción en la carga del archivo)
 if not listaEstaVacia(peliculas) and login():
     continuar = True
     while continuar:
@@ -216,11 +218,11 @@ if not listaEstaVacia(peliculas) and login():
 
         # REDIRIGIR A MÉTODO CORRESPONDIENTE SEGUN ITEM DE MENU
         if opcion == '1':
-
             recomendar_pelicula(peliculas)
+            
         elif opcion == '2':
-
             listar_peliculas_por_genero(peliculas)
+            
         # si usuario es admin, puede agregar pelicula
         elif opcion == '3' and usuario_es_admin():
             resultado = agregar_pelicula()
