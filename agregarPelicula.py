@@ -54,7 +54,6 @@ def calificacionValida(calificacion):
 def actorValido(actor):
     expresion_validacion = r"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
     if not re.match(expresion_validacion, actor):
-        print("El actor contiene caracteres inválidos.")
         return False
     return True
 
@@ -80,6 +79,7 @@ def agregar_pelicula():
     titulo_ingresado = input('Ingresá el título de la pelicula: ')
     while not tituloValido(titulo_ingresado):
         if titulo_ingresado == '-1':
+            print("Carga cancelada.")
             return
         titulo_ingresado = input(
             'Título inválido. Ingresá un nuevo título para la pelicula: ')
@@ -90,6 +90,7 @@ def agregar_pelicula():
     genero_ingresado = input('Ingresá un número para cargar el género: ')
     while not genero_ingresado.isdigit() or not generoValido(int(genero_ingresado), generos_disponibles):
         if genero_ingresado == '-1':
+            print("Carga cancelada.")
             return
         genero_ingresado = input(
             'Número inválido. Ingresá un número válido para cargar el género: ')
@@ -98,6 +99,7 @@ def agregar_pelicula():
     calificacion_ingresada = input('Ingresá una calificación del 1 al 10:')
     while not calificacion_ingresada.isdigit() or not calificacionValida(calificacion_ingresada):
         if calificacion_ingresada == '-1':
+            print("Carga cancelada.")
             return
         # Calificación va del 1 al 10
         calificacion_ingresada = input(
@@ -107,32 +109,47 @@ def agregar_pelicula():
     anio_ingresado = input('Ingresá el año de la película: ')
     while not anio_ingresado.isdigit() or not anioValido(int(anio_ingresado)):
         if anio_ingresado == '-1':
+            print("Carga cancelada.")
             return
         anio_ingresado = input(
             'Año inválido. Ingresá un año válido para la película: ')
 
     # actores
     actores = []
-    primer_actor = input('Ingresá un actor: ')
-    while not actorValido(primer_actor):
-        if primer_actor == '-1':
+    continua_carga = True
+    actor_ingresado = input(
+        'Ingresá un actor que forme parte del elenco, o "0" para finalizar la carga: ')
+
+    while continua_carga:
+
+        while not actorValido(actor_ingresado) and actor_ingresado not in ('0', '-1'):
+            print(
+                "ERROR: Nombre de actor inválido. Ingresá solo letras, espacios y acentos.")
+            actor_ingresado = input(
+                'Ingresá un actor o "0" para finalizar la carga: ')
+
+        if actor_ingresado == '0' and not listaEstaVacia(actores):
+            continua_carga = False
+        # si usuario ingresa -1, cancelo la carga
+        elif actor_ingresado == '-1':
+            print("Carga cancelada.")
             return
-        print("Nombre de actor inválido. Ingresá solo letras y acentos.")
-        primer_actor = input('Ingresá un actor: ')
-    actores.append(primer_actor)
-    segundo_actor = input('Ingresá otro actor: ')
-    while not actorValido(segundo_actor):
-        if segundo_actor == '-1':
-            return
-        print("Nombre de actor inválido. Ingresá solo letras y acentos.")
-        segundo_actor = input('Ingresá otro actor: ')
-    actores.append(segundo_actor)
+        # si quiere dejar de cargar actores, pero la lista esta vacía, error
+        elif actor_ingresado == "0" and listaEstaVacia(actores):
+            print("ERROR: Debes ingresar por lo menos un actor.")
+            actor_ingresado = input(
+                'Ingresá un actor o "0" para finalizar la carga: ')
+        else:
+            actores.append(actor_ingresado)
+            actor_ingresado = input(
+                'Ingresá otro actor que forme parte del elenco, o "0" para finalizar la carga: ')
 
     # descripción
     descripcion_ingresada = input(
         'Ingresá la descripción de la película (hasta 200 caracteres): ')
     while not descripcionValida(descripcion_ingresada):
         if descripcion_ingresada == '-1':
+            print("Carga cancelada.")
             return
         descripcion_ingresada = input(
             'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
@@ -142,6 +159,7 @@ def agregar_pelicula():
         'Ingresá la URL de la imagen de la película: ')
     while not urlImagenValida(url_imagen_ingresada):
         if url_imagen_ingresada == '-1':
+            print("Carga cancelada.")
             return
         url_imagen_ingresada = input(
             'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
@@ -155,9 +173,11 @@ def agregar_pelicula():
                               descripcion_ingresada,
                               url_imagen_ingresada)
 
+    print("\n---------------------------------------------------")
     print('La película a sumar es:')
     mostrar_peliculas([pelicula])
     print('¿Deseas agregar la película?')
+    print("\n---------------------------------------------------")
 
     respuesta_agregar_pelicula = input(
         'Ingresá "si" para agregarla, "no" para cancelar la carga:').lower()
@@ -169,7 +189,6 @@ def agregar_pelicula():
     if respuesta_agregar_pelicula == "si":
         peliculas.append(pelicula)
         guardar_peliculas(peliculas, ruta_json)
-        print("\n---------------------------------------------------")
         print("Película agregada y guardada con éxito.")
         # Recarga películas para que no quede el json de películas desactualizado
         return cargar_peliculas(ruta_json)
