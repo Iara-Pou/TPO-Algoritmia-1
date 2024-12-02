@@ -28,6 +28,16 @@ def loguear_excepcion(mensaje_excepcion):
     except Exception as e:
         # Si falla escritura de excepcion (es archivo)
         print(f"Error al loguear excepción: {e}")
+        
+
+def loguear_error(mensaje_error):
+    # Si hay un error de validación, guardarlo en un txt con la hora.
+    try:
+        with open('logEjecucion.txt', 'a', encoding='utf-8') as archivo:
+            hora_actual = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            archivo.write(f"[{hora_actual}] ERROR: {mensaje_error}\n")
+    except Exception as e:
+        print(f"Error al loguear error: {e}")
 
 
 def loguear_informacion_usuario(id, rol, es_login, es_logout):

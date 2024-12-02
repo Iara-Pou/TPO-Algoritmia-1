@@ -2,7 +2,7 @@ from funciones import *
 from login import login
 from agregarPelicula import agregar_pelicula
 from functools import reduce
-from manejarSesion import get_id_usuario, get_rol_usuario, loguear_informacion_usuario
+from manejarSesion import get_id_usuario, get_rol_usuario, loguear_informacion_usuario, loguear_error
 
 
 def ingresar_genero(generos):
@@ -19,6 +19,7 @@ def ingresar_genero(generos):
                     return -1
                 print(
                     "El género elegido no está en la lista. Por favor, intenta de nuevo.")
+                loguear_error("El género elegido no está en la lista. Por favor, intenta de nuevo.")
                 eleccion_genero = int(input('Ingresá el género: '))
             return list(generos)[eleccion_genero-1]
         except ValueError:
@@ -41,6 +42,8 @@ def seleccionar_opcion(elementos, tipo_elemento):
             # mensaje error
             print("El", tipo_elemento,
                   "no está en la lista. Por favor, intenta de nuevo.")
+            loguear_error("El", tipo_elemento,
+                          "no está en la lista. Por favor, intenta de nuevo.")
         except ValueError:
             mensaje = "Debes ingresar un número para seleccionar la opción."
             print(mensaje)
@@ -67,6 +70,7 @@ def seleccionar_rango(elementos, tipo_elemento):
         print("El rango no es válido. Intenta nuevamente.")
         print("-----------------------------------------------------")
         print(' - '.join(map(str, elementos)))
+        loguear_error("El rango no es válido. Intenta nuevamente.")
 
         return seleccionar_rango(elementos, tipo_elemento)
 
@@ -80,6 +84,7 @@ def ingresar_anio_estreno(anios):
 
     while modalidad not in ('1', '2', '3'):
         modalidad = input("Por favor, ingresa una opción válida: ").strip()
+        loguear_error("Por favor, ingresa una opción válida: ")
 
     if modalidad == '1':
         return seleccionar_opcion(anios, 'año')
@@ -97,6 +102,7 @@ def ingresar_calificacion(calificaciones):
 
     while modalidad not in ('1', '2', '3'):
         modalidad = input("Por favor, ingresa una opción válida: ").strip()
+        loguear_error("Por favor, ingresa una opción válida: ")
 
     if modalidad == '1':
         return seleccionar_opcion(calificaciones, 'calificación')
@@ -217,8 +223,10 @@ if not listaEstaVacia(peliculas) and login():
         # VALIDAR ITEM DE MENU INGRESADO
         while opcion not in ('1', '2', '3', '4') and usuario_es_admin():
             opcion = input("ERROR: Por favor, ingresá 1, 2, 3 o 4: ").strip()
+            loguear_error("Por favor, ingresá 1, 2, 3 o 4:")
         while opcion not in ('1', '2', '3') and not usuario_es_admin():
             opcion = input("ERROR: Por favor, ingresá 1, 2 o 3: ").strip()
+            loguear_error("Por favor, ingresá 1, 2 o 3: ")
 
         # REDIRIGIR A MÉTODO CORRESPONDIENTE SEGUN ITEM DE MENU
         if opcion == '1':
