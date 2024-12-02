@@ -2,7 +2,7 @@ from funciones import *
 from login import login
 from agregarPelicula import agregar_pelicula
 from functools import reduce
-from manejarSesion import get_id_usuario, get_rol_usuario
+from manejarSesion import get_id_usuario, get_rol_usuario, loguear_informacion_usuario, loguear_error
 
 
 def ingresar_genero(generos):
@@ -19,10 +19,13 @@ def ingresar_genero(generos):
                     return -1
                 print(
                     "El género elegido no está en la lista. Por favor, intenta de nuevo.")
+                loguear_error("El género elegido no está en la lista. Por favor, intenta de nuevo.")
                 eleccion_genero = int(input('Ingresá el género: '))
             return list(generos)[eleccion_genero-1]
         except ValueError:
-            print('Debes ingresar un número.')
+            mensaje = "Debes ingresar un número para ingresar el género."
+            print(mensaje)
+            loguear_excepcion(mensaje)
 
 
 def seleccionar_opcion(elementos, tipo_elemento):
@@ -39,8 +42,12 @@ def seleccionar_opcion(elementos, tipo_elemento):
             # mensaje error
             print("El", tipo_elemento,
                   "no está en la lista. Por favor, intenta de nuevo.")
+            loguear_error("El", tipo_elemento,
+                          "no está en la lista. Por favor, intenta de nuevo.")
         except ValueError:
-            print('Debes ingresar un número.')
+            mensaje = "Debes ingresar un número para seleccionar la opción."
+            print(mensaje)
+            loguear_excepcion(mensaje)
 
 
 def seleccionar_rango(elementos, tipo_elemento):
@@ -63,6 +70,7 @@ def seleccionar_rango(elementos, tipo_elemento):
         print("El rango no es válido. Intenta nuevamente.")
         print("-----------------------------------------------------")
         print(' - '.join(map(str, elementos)))
+        loguear_error("El rango no es válido. Intenta nuevamente.")
 
         return seleccionar_rango(elementos, tipo_elemento)
 
@@ -76,6 +84,7 @@ def ingresar_anio_estreno(anios):
 
     while modalidad not in ('1', '2', '3'):
         modalidad = input("Por favor, ingresa una opción válida: ").strip()
+        loguear_error("Por favor, ingresa una opción válida: ")
 
     if modalidad == '1':
         return seleccionar_opcion(anios, 'año')
@@ -93,6 +102,7 @@ def ingresar_calificacion(calificaciones):
 
     while modalidad not in ('1', '2', '3'):
         modalidad = input("Por favor, ingresa una opción válida: ").strip()
+        loguear_error("Por favor, ingresa una opción válida: ")
 
     if modalidad == '1':
         return seleccionar_opcion(calificaciones, 'calificación')
@@ -188,7 +198,7 @@ ruta_json = 'peliculas.json'
 peliculas = cargar_peliculas(ruta_json)
 
 
-# Tienen que existir películas con formato valido 
+# Tienen que existir películas con formato valido
 # (cargar_peliculas retorna una lista vacía si se genera una excepción en la carga del archivo)
 if not listaEstaVacia(peliculas) and login():
     continuar = True
@@ -213,16 +223,18 @@ if not listaEstaVacia(peliculas) and login():
         # VALIDAR ITEM DE MENU INGRESADO
         while opcion not in ('1', '2', '3', '4') and usuario_es_admin():
             opcion = input("ERROR: Por favor, ingresá 1, 2, 3 o 4: ").strip()
+            loguear_error("Por favor, ingresá 1, 2, 3 o 4:")
         while opcion not in ('1', '2', '3') and not usuario_es_admin():
             opcion = input("ERROR: Por favor, ingresá 1, 2 o 3: ").strip()
+            loguear_error("Por favor, ingresá 1, 2 o 3: ")
 
         # REDIRIGIR A MÉTODO CORRESPONDIENTE SEGUN ITEM DE MENU
         if opcion == '1':
             recomendar_pelicula(peliculas)
-            
+
         elif opcion == '2':
             listar_peliculas_por_genero(peliculas)
-            
+
         # si usuario es admin, puede agregar pelicula
         elif opcion == '3' and usuario_es_admin():
             resultado = agregar_pelicula()
@@ -232,4 +244,6 @@ if not listaEstaVacia(peliculas) and login():
         # la opción 4 del admin y tres del usuario normal cierra la sesión
         elif (opcion == '4' and usuario_es_admin()) or (opcion == '3' and not usuario_es_admin()):
             continuar = False
+            # loguea logout en archivo de excepciones
+            loguear_informacion_usuario(get_id_usuario(), '', False, True)
             print("¡Gracias por usar nuestro recomendador!")
