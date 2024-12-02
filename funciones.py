@@ -1,4 +1,5 @@
 import json
+from manejarSesion import loguear_excepcion
 
 
 def filtrar_rango_anios(anio_inicio, anio_fin, anios):
@@ -11,14 +12,19 @@ def cargar_peliculas(ruta_archivo):
             peliculas = json.load(archivo)
         return peliculas
     except FileNotFoundError:
-        print(f"ERROR: No se encontró el archivo en la ruta '{ruta_archivo}'.")
+        mensaje = f"ERROR: No se encontró el archivo en la ruta '{ruta_archivo}'."
+        print(mensaje)
+        loguear_excepcion(mensaje)
         return []
     except json.JSONDecodeError:
-        print(
-            f"ERROR: El archivo '{ruta_archivo}' no contiene un JSON válido.")
+        mensaje = f"ERROR: El archivo '{ruta_archivo}' no contiene un JSON válido.'."
+        print(mensaje)
+        loguear_excepcion(mensaje)
         return []
     except Exception as e:
-        print(f"ERROR INESPERADO: {e}")
+        mensaje = f"ERROR INESPERADO: {e}"
+        print(mensaje)
+        loguear_excepcion(mensaje)
         return []
 
 

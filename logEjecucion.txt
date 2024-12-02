@@ -1,0 +1,19 @@
+**********************************************************
+[2024-12-02 19:26:21] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-02 19:26:30] EXCEPCIÓN: Debes ingresar un número para ingresar el género.
+[2024-12-02 19:26:30] EXCEPCIÓN: Debes ingresar un número para ingresar el género.
+[2024-12-02 19:26:30] EXCEPCIÓN: Debes ingresar un número para ingresar el género.
+[2024-12-02 19:26:30] EXCEPCIÓN: Debes ingresar un número para ingresar el género.
+[2024-12-02 19:26:32] EXCEPCIÓN: Debes ingresar un número para ingresar el género.
+[2024-12-02 19:26:34] LOGOUT: Sesión cerrada para el usuario ID usuario1.
+----------------------------------------------------------
+**********************************************************
+[2024-12-02 19:26:44] LOGIN:
+ID Usuario: usuario3
+Rol Usuario: usuario
+**********************************************************
+[2024-12-02 19:26:46] LOGOUT: Sesión cerrada para el usuario ID usuario3.
+----------------------------------------------------------

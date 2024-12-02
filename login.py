@@ -1,4 +1,4 @@
-from manejarSesion import set_informacion_usuario
+from manejarSesion import set_informacion_usuario, loguear_informacion_usuario
 
 
 def cargar_usuarios_desde_archivo():
@@ -70,6 +70,9 @@ def login():
                         print("¡Acceso exitoso!")
                         print(
                             "-----------------------------------------------------------")
+                        # imprime información del login
+                        loguear_informacion_usuario(
+                            nombre_usuario, rol, True, False)
                         return True
 
                 # Disminuir el número de intentos
