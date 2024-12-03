@@ -1,10 +1,10 @@
-from funciones import *
+from src.funciones.funciones import *
 import re
 from datetime import datetime
 import json
-from manejarSesion import loguear_error
+from src.manejarSesion import loguear_error
 
-ruta_json = 'peliculas.json'
+ruta_json = 'data/peliculas.json'
 peliculas = cargar_peliculas(ruta_json)
 
 
@@ -85,7 +85,8 @@ def agregar_pelicula():
             return
         titulo_ingresado = input(
             'Título inválido. Ingresá un nuevo título para la pelicula: ')
-        loguear_error('Título inválido. Ingresá un nuevo título para la pelicula: ')
+        loguear_error(
+            'Título inválido. Ingresá un nuevo título para la pelicula: ')
 
     # género (por número)
     generos_disponibles = list(conseguir_generos(peliculas))
@@ -97,7 +98,8 @@ def agregar_pelicula():
             return
         genero_ingresado = input(
             'Número inválido. Ingresá un número válido para cargar el género: ')
-        loguear_error('Número inválido. Ingresá un número válido para cargar el género: ')
+        loguear_error(
+            'Número inválido. Ingresá un número válido para cargar el género: ')
 
     # calificación
     calificacion_ingresada = input('Ingresá una calificación del 1 al 10:')
@@ -108,7 +110,8 @@ def agregar_pelicula():
         # Calificación va del 1 al 10
         calificacion_ingresada = input(
             'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
-        loguear_error('Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
+        loguear_error(
+            'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
 
     # año
     anio_ingresado = input('Ingresá el año de la película: ')
@@ -131,7 +134,8 @@ def agregar_pelicula():
         while not actorValido(actor_ingresado) and actor_ingresado not in ('0', '-1'):
             print(
                 "ERROR: Nombre de actor inválido. Ingresá solo letras, espacios y acentos.")
-            loguear_error("Nombre de actor inválido. Ingresá solo letras, espacios y acentos.")
+            loguear_error(
+                "Nombre de actor inválido. Ingresá solo letras, espacios y acentos.")
             actor_ingresado = input(
                 'Ingresá un actor o "0" para finalizar la carga: ')
 
@@ -161,7 +165,8 @@ def agregar_pelicula():
             return
         descripcion_ingresada = input(
             'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
-        loguear_error('Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
+        loguear_error(
+            'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
 
     # URL de imagen
     url_imagen_ingresada = input(
@@ -172,7 +177,8 @@ def agregar_pelicula():
             return
         url_imagen_ingresada = input(
             'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
-        loguear_error('URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
+        loguear_error(
+            'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
 
     # Guardar la lista de películas actualizada en el archivo JSON
     pelicula = crear_pelicula(titulo_ingresado,

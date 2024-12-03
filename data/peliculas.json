@@ -4,16 +4,24 @@
         "genero": "Animación",
         "calificacion": 6,
         "anio": 2004,
-        "actores": ["Craig T. Nelson", "Holly Hunter", "Samuel L. Jackson"],
+        "actores": [
+            "Craig T. Nelson",
+            "Holly Hunter",
+            "Samuel L. Jackson"
+        ],
         "descripcion": "Una familia de superhéroes intenta llevar una vida normal, mientras luchan contra un villano que amenaza al mundo.",
-        "urlImagen" : "https://www.originalfilmart.com/cdn/shop/products/incredibles_2004_advance_original_film_art_5000x.jpg?v=1580632748"
+        "urlImagen": "https://www.originalfilmart.com/cdn/shop/products/incredibles_2004_advance_original_film_art_5000x.jpg?v=1580632748"
     },
     {
         "titulo": "Shrek",
         "genero": "Animación",
         "calificacion": 7,
         "anio": 2001,
-        "actores": ["Mike Myers", "Eddie Murphy", "Cameron Diaz"],
+        "actores": [
+            "Mike Myers",
+            "Eddie Murphy",
+            "Cameron Diaz"
+        ],
         "descripcion": "Un ogro solitario se embarca en una misión para rescatar a una princesa y recuperar su hogar.",
         "urlImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdPNnQHigZ-t3XUfLd4ZAWUjQp3cuNdSGA0Q&s"
     },
@@ -22,16 +30,24 @@
         "genero": "Animación",
         "calificacion": 8,
         "anio": 2017,
-        "actores": ["Anthony Gonzalez", "Gael García Bernal", "Benjamin Bratt"],
+        "actores": [
+            "Anthony Gonzalez",
+            "Gael García Bernal",
+            "Benjamin Bratt"
+        ],
         "descripcion": "Un joven aspirante a músico se encuentra en la Tierra de los Muertos y busca la verdad sobre su familia.",
-        "urlImagen" : "https://m.media-amazon.com/images/I/71pM2kb3biL._AC_UF894,1000_QL80_.jpg"
+        "urlImagen": "https://m.media-amazon.com/images/I/71pM2kb3biL._AC_UF894,1000_QL80_.jpg"
     },
     {
         "titulo": "Spirited Away",
         "genero": "Animación",
         "calificacion": 9,
         "anio": 2001,
-        "actores": ["Rumi Hiiragi", "Miyu Irino", "Mari Natsuki"],
+        "actores": [
+            "Rumi Hiiragi",
+            "Miyu Irino",
+            "Mari Natsuki"
+        ],
         "descripcion": "Una niña de 10 años se pierde en un mundo de espíritus y debe encontrar una manera de regresar a casa.",
         "urlImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmYE9c6D88rYN6LEbAEnV_N6KvspU0OZ-bRA&s"
     },
@@ -40,7 +56,10 @@
         "genero": "Drama",
         "calificacion": 6,
         "anio": 2003,
-        "actores": ["Tommy Wiseau", "Juliette Danielle"],
+        "actores": [
+            "Tommy Wiseau",
+            "Juliette Danielle"
+        ],
         "descripcion": "Un amorío se convierte en un triángulo amoroso que destruye la vida de todos los involucrados.",
         "urlImagen": "https://static.displate.com/857x1200/displate/2020-11-07/c7080d7ebe1950f2b86fdb6a6f5971f9_a0fe2ae81e56eacd959d2ea67666a398.jpg"
     },
@@ -49,7 +68,10 @@
         "genero": "Drama",
         "calificacion": 7,
         "anio": 2001,
-        "actores": ["Russell Crowe", "Jennifer Connelly"],
+        "actores": [
+            "Russell Crowe",
+            "Jennifer Connelly"
+        ],
         "descripcion": "La vida del matemático John Nash, quien luchó contra la esquizofrenia mientras hacía importantes contribuciones a su campo.",
         "urlImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgUO2vQuuL3x9RuXmM7ioUoKnnieOxyKg-4w&s"
     },
@@ -58,7 +80,10 @@
         "genero": "Drama",
         "calificacion": 8,
         "anio": 2006,
-        "actores": ["Will Smith", "Jaden Smith"],
+        "actores": [
+            "Will Smith",
+            "Jaden Smith"
+        ],
         "descripcion": "La historia inspiradora de un padre que lucha por un futuro mejor para él y su hijo a pesar de las adversidades.",
         "urlImagen": "https://m.media-amazon.com/images/M/MV5BMTQ5NjQ0NDI3NF5BMl5BanBnXkFtZTcwNDI0MjEzMw@@._V1_.jpg"
     },
@@ -67,7 +92,10 @@
         "genero": "Drama",
         "calificacion": 9,
         "anio": 1994,
-        "actores": ["Tim Robbins", "Morgan Freeman"],
+        "actores": [
+            "Tim Robbins",
+            "Morgan Freeman"
+        ],
         "descripcion": "La historia de un banquero que es injustamente encarcelado y su amistad con un compañero de prisión que le da esperanza.",
         "urlImagen": "https://m.media-amazon.com/images/I/71715eBi1sL._AC_SL1000_.jpg"
     },
@@ -76,7 +104,10 @@
         "genero": "Romance",
         "calificacion": 6,
         "anio": 2010,
-        "actores": ["Kristen Stewart", "Robert Pattinson"],
+        "actores": [
+            "Kristen Stewart",
+            "Robert Pattinson"
+        ],
         "descripcion": "Bella debe elegir entre su amor por Edward y su amistad con Jacob, mientras se enfrenta a una amenaza de vampiros.",
         "urlImagen": "https://i.ebayimg.com/images/g/pjMAAOSws4Nhy3Xo/s-l1200.jpg"
     },
@@ -85,7 +116,10 @@
         "genero": "Romance",
         "calificacion": 7,
         "anio": 2005,
-        "actores": ["Keira Knightley", "Matthew Macfadyen"],
+        "actores": [
+            "Keira Knightley",
+            "Matthew Macfadyen"
+        ],
         "descripcion": "La historia de amor entre Elizabeth Bennet y el Sr. Darcy en la Inglaterra del siglo XIX.",
         "urlImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNQOqNz5BNMTGXMVS82T6p6M4KekaMLnicyw&s"
     },
@@ -94,7 +128,10 @@
         "genero": "Romance",
         "calificacion": 8,
         "anio": 2016,
-        "actores": ["Ryan Gosling", "Emma Stone"],
+        "actores": [
+            "Ryan Gosling",
+            "Emma Stone"
+        ],
         "descripcion": "Un músico y una aspirante a actriz luchan por sus sueños en Los Ángeles mientras se enamoran el uno del otro.",
         "urlImagen": "https://m.media-amazon.com/images/I/71-u32-oOaL.jpg"
     },
@@ -103,7 +140,10 @@
         "genero": "Romance",
         "calificacion": 9,
         "anio": 1997,
-        "actores": ["Leonardo DiCaprio", "Kate Winslet"],
+        "actores": [
+            "Leonardo DiCaprio",
+            "Kate Winslet"
+        ],
         "descripcion": "Una historia de amor entre dos jóvenes de diferentes clases sociales a bordo del famoso transatlántico.",
         "urlImagen": "https://m.media-amazon.com/images/I/71i6L1vZjiL._AC_SL1058_.jpg"
     },
@@ -112,7 +152,10 @@
         "genero": "Comedia",
         "calificacion": 6,
         "anio": 2009,
-        "actores": ["Bradley Cooper", "Ed Helms"],
+        "actores": [
+            "Bradley Cooper",
+            "Ed Helms"
+        ],
         "descripcion": "Tres amigos se despiertan después de una noche de despedida de soltero en Las Vegas y deben encontrar al novio perdido.",
         "urlImagen": "https://m.media-amazon.com/images/I/810-lQCEXRL._AC_UF894,1000_QL80_.jpg"
     },
@@ -121,7 +164,10 @@
         "genero": "Comedia",
         "calificacion": 7,
         "anio": 2007,
-        "actores": ["Jonah Hill", "Michael Cera"],
+        "actores": [
+            "Jonah Hill",
+            "Michael Cera"
+        ],
         "descripcion": "Dos amigos de secundaria intentan tener una última gran fiesta antes de graduarse.",
         "urlImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCX6GVSF7HUwpPzwTnMs87tFzvpef_rXRtTw&s"
     },
@@ -130,7 +176,10 @@
         "genero": "Comedia",
         "calificacion": 8,
         "anio": 2011,
-        "actores": ["Kristen Wiig", "Maya Rudolph"],
+        "actores": [
+            "Kristen Wiig",
+            "Maya Rudolph"
+        ],
         "descripcion": "Una mujer debe competir con la mejor amiga de la novia mientras navega por los desafíos de ser una dama de honor.",
         "urlImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrJZ7uWzNmdXgDXQQ005gRQCmudhkxTw174Q&s"
     },
@@ -139,7 +188,10 @@
         "genero": "Comedia",
         "calificacion": 9,
         "anio": 2014,
-        "actores": ["Ralph Fiennes", "F. Murray Abraham"],
+        "actores": [
+            "Ralph Fiennes",
+            "F. Murray Abraham"
+        ],
         "descripcion": "Las aventuras de un conserje de un hotel y su joven protegido en un hotel europeo entre las guerras.",
         "urlImagen": "https://www.originalfilmart.com/cdn/shop/files/grand_budapest_hotel_2014_fr_original_film_art_5000x.webp?v=1689358570"
     },
@@ -148,7 +200,10 @@
         "genero": "Terror",
         "calificacion": 6,
         "anio": 2018,
-        "actores": ["Demian Bichir", "Taissa Farmiga"],
+        "actores": [
+            "Demian Bichir",
+            "Taissa Farmiga"
+        ],
         "descripcion": "Un sacerdote y una novicia investigan la muerte de una joven en una abadía rumana, desatando fuerzas demoníacas.",
         "urlImagen": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/78e3b466891157.5b26a37ceebf0.jpg"
     },
@@ -157,7 +212,10 @@
         "genero": "Terror",
         "calificacion": 7,
         "anio": 2018,
-        "actores": ["Emily Blunt", "John Krasinski"],
+        "actores": [
+            "Emily Blunt",
+            "John Krasinski"
+        ],
         "descripcion": "Una familia debe vivir en silencio para evitar criaturas ciegas que cazan por el sonido.",
         "urlImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmz1n0t0p1x76v_ZI-0XKpXko_VdWC0cbRrw&s"
     },
@@ -166,7 +224,10 @@
         "genero": "Terror",
         "calificacion": 8,
         "anio": 2017,
-        "actores": ["Daniel Kaluuya", "Allison Williams"],
+        "actores": [
+            "Daniel Kaluuya",
+            "Allison Williams"
+        ],
         "descripcion": "Un joven afroamericano visita la familia de su novia blanca y descubre un secreto escalofriante.",
         "urlImagen": "https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_.jpg"
     },
@@ -175,7 +236,10 @@
         "genero": "Terror",
         "calificacion": 9,
         "anio": 2018,
-        "actores": ["Toni Collette", "Gabriel Byrne"],
+        "actores": [
+            "Toni Collette",
+            "Gabriel Byrne"
+        ],
         "descripcion": "Después de la muerte de su madre, una familia se enfrenta a una serie de eventos inquietantes y oscuros.",
         "urlImagen": "https://m.media-amazon.com/images/I/61UDTFfx0oL._AC_UF894,1000_QL80_.jpg"
     },
@@ -184,7 +248,10 @@
         "genero": "Crimen",
         "calificacion": 6,
         "anio": 2004,
-        "actores": ["George Clooney", "Brad Pitt"],
+        "actores": [
+            "George Clooney",
+            "Brad Pitt"
+        ],
         "descripcion": "Un grupo de ladrones debe llevar a cabo un nuevo robo para pagar una deuda.",
         "urlImagen": "https://www.originalfilmart.com/cdn/shop/products/ocean_stwelve_2004_advance_original_film_art_5000x.jpg?v=1589659785"
     },
@@ -193,16 +260,22 @@
         "genero": "Crimen",
         "calificacion": 7,
         "anio": 2003,
-        "actores": ["Mark Wahlberg", "Charlize Theron"],
+        "actores": [
+            "Mark Wahlberg",
+            "Charlize Theron"
+        ],
         "descripcion": "Un ladrón planea un robo audaz en Italia con la ayuda de un equipo de expertos.",
-        "urlImagen": "https://m.media-amazon.com/images/I/71FGAGdyDXL.jpg" 
+        "urlImagen": "https://m.media-amazon.com/images/I/71FGAGdyDXL.jpg"
     },
     {
         "titulo": "The Usual Suspects",
         "genero": "Crimen",
         "calificacion": 8,
         "anio": 1995,
-        "actores": ["Kevin Spacey", "Gabriel Byrne"],
+        "actores": [
+            "Kevin Spacey",
+            "Gabriel Byrne"
+        ],
         "descripcion": "Un grupo de criminales es reunido para llevar a cabo un robo, pero su plan se complica.",
         "urlImagen": "https://m.media-amazon.com/images/M/MV5BOTE5MDUxZDUtZWZmZC00NDVmLWFhOGQtNWI2YTc4NzY3MGQ0XkEyXkFqcGc@._V1_.jpg"
     },
@@ -211,7 +284,10 @@
         "genero": "Crimen",
         "calificacion": 9,
         "anio": 1983,
-        "actores": ["Al Pacino", "Michelle Pfeiffer"],
+        "actores": [
+            "Al Pacino",
+            "Michelle Pfeiffer"
+        ],
         "descripcion": "La historia de un inmigrante cubano que se convierte en un poderoso narcotraficante en Miami.",
         "urlImagen": "https://images-cdn.ubuy.co.in/63820e752957fa37f47aad24-scarface-movie-poster-the-american.jpg"
     },
@@ -220,7 +296,10 @@
         "genero": "Fantasía",
         "calificacion": 6,
         "anio": 2010,
-        "actores": ["Noah Ringer", "Dev Patel"],
+        "actores": [
+            "Noah Ringer",
+            "Dev Patel"
+        ],
         "descripcion": "Un joven que puede controlar los cuatro elementos debe salvar el mundo de la Nación del Fuego.",
         "urlImagen": "https://m.media-amazon.com/images/I/71ZxVE+dYXL._AC_UF1000,1000_QL80_.jpg"
     },
@@ -229,7 +308,10 @@
         "genero": "Fantasía",
         "calificacion": 7,
         "anio": 2007,
-        "actores": ["Charlie Cox", "Claire Danes"],
+        "actores": [
+            "Charlie Cox",
+            "Claire Danes"
+        ],
         "descripcion": "Un joven viaja a un mundo mágico para recuperar una estrella caída, solo para descubrir que la estrella es una mujer.",
         "urlImagen": "https://m.media-amazon.com/images/I/61vM9rWCfDL._AC_UF1000,1000_QL80_.jpg"
     },
@@ -238,7 +320,10 @@
         "genero": "Fantasía",
         "calificacion": 8,
         "anio": 2006,
-        "actores": ["Ivana Baquero", "Sergi López"],
+        "actores": [
+            "Ivana Baquero",
+            "Sergi López"
+        ],
         "descripcion": "Una joven se encuentra en un mundo mágico y aterrador durante la guerra civil española.",
         "urlImagen": "https://i.ebayimg.com/00/s/MTYwMFgxMDY2/z/l1gAAOSwMqxg4ZYr/$_57.JPG?set_id=8800005007"
     },
@@ -247,7 +332,10 @@
         "genero": "Fantasía",
         "calificacion": 9,
         "anio": 2017,
-        "actores": ["Sally Hawkins", "Michael Shannon"],
+        "actores": [
+            "Sally Hawkins",
+            "Michael Shannon"
+        ],
         "descripcion": "Una limpiadora de un laboratorio gubernamental forma una conexión única con una criatura anfibia.",
         "urlImagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwjDRfkL1mN_YaWBveWazK3bi06nUmW7jY3Q&s"
     }

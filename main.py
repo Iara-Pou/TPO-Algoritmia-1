@@ -1,8 +1,8 @@
-from funciones import *
-from login import login
-from agregarPelicula import agregar_pelicula
+from src.funciones.funciones import *
+from src.login import login
+from src.agregarPelicula import agregar_pelicula
 from functools import reduce
-from manejarSesion import get_id_usuario, get_rol_usuario, loguear_informacion_usuario, loguear_error
+from src.manejarSesion import get_id_usuario, get_rol_usuario, loguear_informacion_usuario, loguear_error
 
 
 def ingresar_genero(generos):
@@ -194,7 +194,7 @@ def usuario_es_admin():
 
 
 # Flujo principal del programa
-ruta_json = 'peliculas.json'
+ruta_json = 'data/peliculas.json'
 peliculas = cargar_peliculas(ruta_json)
 
 

@@ -1,9 +1,9 @@
-from manejarSesion import set_informacion_usuario, loguear_informacion_usuario
+from src.manejarSesion import set_informacion_usuario, loguear_informacion_usuario
 
 
 def cargar_usuarios_desde_archivo():
     usuarios = ()
-    with open("usuarios.txt", "r") as archivo:
+    with open(ruta_usuarios, "r") as archivo:
         for linea in archivo:
             # Eliminar espacios en blanco y separar el nombre de usuario y contraseña
             linea = linea.strip()
@@ -36,7 +36,7 @@ def agregar_usuario_a_archivo(nombre_usuario, contrasenia_usuario, rol_usuario):
         print("-----------------------------------------------------------")
 
     # Agregar el nuevo usuario
-    with open("usuarios.txt", "a") as archivo:
+    with open(ruta_usuarios, "a") as archivo:
         archivo.write(
             f"{nombre_usuario},{contrasenia_usuario},{rol_usuario}\n")
     print(f"Usuario {nombre_usuario} agregado exitosamente.")
@@ -99,3 +99,6 @@ def login():
             print("-----------------------------------------------------------")
 
     print('Acceso denegado.')
+
+
+ruta_usuarios = "data/usuarios.txt"

@@ -1,0 +1,18 @@
+**********************************************************
+[2024-12-03 16:37:38] LOGIN:
+ID Usuario: usuario6
+Rol Usuario: usuario
+**********************************************************
+[2024-12-03 16:37:42] EXCEPCIÓN: Debes ingresar un número para ingresar el género.
+[2024-12-03 16:38:04] EXCEPCIÓN: Debes ingresar un número para ingresar el género.
+[2024-12-03 16:38:10] LOGOUT: Sesión cerrada para el usuario ID usuario6.
+----------------------------------------------------------
+**********************************************************
+[2024-12-03 16:38:28] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-03 16:38:46] ERROR: Año inválido. Ingresá un año válido para la película: 
+[2024-12-03 16:38:49] ERROR: Debes ingresar por lo menos un actor.
+[2024-12-03 16:39:20] LOGOUT: Sesión cerrada para el usuario ID usuario1.
+----------------------------------------------------------

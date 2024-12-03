@@ -1,5 +1,5 @@
 import json
-from manejarSesion import loguear_excepcion
+from src.manejarSesion import loguear_excepcion
 
 
 def filtrar_rango_anios(anio_inicio, anio_fin, anios):

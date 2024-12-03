@@ -2,3 +2,4 @@ usuario1,contrasenia1,admin
 usuario2,contrasenia2,usuario
 usuario3,contrasenia3,usuario
 usuario4,contrasenia4,usuario
+usuario6,contrasenia6,usuario

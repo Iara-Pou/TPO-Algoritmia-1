@@ -1,5 +1,5 @@
 
-from funciones import (
+from src.funciones.funciones import (
     filtrar_rango_anios,
     buscar_por_genero,
     buscar_por_anio,
