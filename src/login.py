@@ -54,13 +54,17 @@ def login():
         print("---------------------------------------------------")
         print("1. Iniciar sesión")
         print("2. Agregar nuevo usuario")
-        opcion = input("Elige una opción: ")
+        print("---------------------------------------------------")
+
+        opcion = input("Elige una opción: ").strip()
+        print("---------------------------------------------------\n")
 
         if opcion == "1":
             # Iniciar sesión
             while intentos_permitidos > 0:
                 nombre_usuario = input("Introduce tu usuario: ")
                 contrasenia_usuario = input("Introduce tu contraseña: ")
+                print("---------------------------------------------------")
 
                 for usuario, contrasenia, rol in usuarios:
                     if usuario == nombre_usuario and contrasenia == contrasenia_usuario:
@@ -79,7 +83,7 @@ def login():
                 intentos_permitidos -= 1
                 print(
                     f"Credenciales incorrectas. Te quedan {intentos_permitidos} intento(s).")
-                print("-----------------------------------------------------------")
+                print("---------------------------------------------------\n")
 
         elif opcion == "2":
             # Agregar un nuevo usuario

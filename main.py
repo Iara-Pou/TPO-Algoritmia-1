@@ -19,7 +19,8 @@ def ingresar_genero(generos):
                     return -1
                 print(
                     "El género elegido no está en la lista. Por favor, intenta de nuevo.")
-                loguear_error("El género elegido no está en la lista. Por favor, intenta de nuevo.")
+                loguear_error(
+                    "El género elegido no está en la lista. Por favor, intenta de nuevo.")
                 eleccion_genero = int(input('Ingresá el género: '))
             return list(generos)[eleccion_genero-1]
         except ValueError:
@@ -219,6 +220,7 @@ if not listaEstaVacia(peliculas) and login():
 
         print("---------------------------------------------------")
         opcion = input('Ingresa la opción que desees: ').strip()
+        print("---------------------------------------------------\n")
 
         # VALIDAR ITEM DE MENU INGRESADO
         while opcion not in ('1', '2', '3', '4') and usuario_es_admin():

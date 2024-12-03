@@ -74,7 +74,8 @@ def crear_pelicula(titulo_ingresado, genero_ingresado, calificacion_ingresada, a
 
 
 def agregar_pelicula():
-    print('CARGA DE PELÍCULAS \nIMPORTANTE || Por favor, ingresá -1 en cualquier momento de la carga para cancelar el proceso. ')
+    print("\n---------------------------------------------------")
+    print('Carga de películas: \nIMPORTANTE || Por favor, ingresá -1 en cualquier momento de la carga para cancelar el proceso. ')
 
     # Ingresar datos y validar:
     # título
@@ -87,6 +88,7 @@ def agregar_pelicula():
             'Título inválido. Ingresá un nuevo título para la pelicula: ')
         loguear_error(
             'Título inválido. Ingresá un nuevo título para la pelicula: ')
+    print("---------------------------------------------------")
 
     # género (por número)
     generos_disponibles = list(conseguir_generos(peliculas))
@@ -100,6 +102,7 @@ def agregar_pelicula():
             'Número inválido. Ingresá un número válido para cargar el género: ')
         loguear_error(
             'Número inválido. Ingresá un número válido para cargar el género: ')
+    print("---------------------------------------------------")
 
     # calificación
     calificacion_ingresada = input('Ingresá una calificación del 1 al 10:')
@@ -112,6 +115,7 @@ def agregar_pelicula():
             'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
         loguear_error(
             'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
+    print("---------------------------------------------------")
 
     # año
     anio_ingresado = input('Ingresá el año de la película: ')
@@ -122,6 +126,7 @@ def agregar_pelicula():
         anio_ingresado = input(
             'Año inválido. Ingresá un año válido para la película: ')
         loguear_error('Año inválido. Ingresá un año válido para la película: ')
+    print("---------------------------------------------------")
 
     # actores
     actores = []
@@ -155,6 +160,7 @@ def agregar_pelicula():
             actores.append(actor_ingresado)
             actor_ingresado = input(
                 'Ingresá otro actor que forme parte del elenco, o "0" para finalizar la carga: ')
+    print("---------------------------------------------------")
 
     # descripción
     descripcion_ingresada = input(
@@ -167,6 +173,7 @@ def agregar_pelicula():
             'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
         loguear_error(
             'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
+    print("---------------------------------------------------")
 
     # URL de imagen
     url_imagen_ingresada = input(
@@ -179,6 +186,7 @@ def agregar_pelicula():
             'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
         loguear_error(
             'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
+    print("---------------------------------------------------")
 
     # Guardar la lista de películas actualizada en el archivo JSON
     pelicula = crear_pelicula(titulo_ingresado,
@@ -192,8 +200,9 @@ def agregar_pelicula():
     print("\n---------------------------------------------------")
     print('La película a sumar es:')
     mostrar_peliculas([pelicula])
-    print('¿Deseas agregar la película?')
     print("\n---------------------------------------------------")
+
+    print('¿Deseas agregar la película?')
 
     respuesta_agregar_pelicula = input(
         'Ingresá "si" para agregarla, "no" para cancelar la carga:').lower()
