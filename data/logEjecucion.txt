@@ -16,3 +16,29 @@ Rol Usuario: admin
 [2024-12-03 16:38:49] ERROR: Debes ingresar por lo menos un actor.
 [2024-12-03 16:39:20] LOGOUT: Sesión cerrada para el usuario ID usuario1.
 ----------------------------------------------------------
+**********************************************************
+[2024-12-05 23:05:10] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+**********************************************************
+[2024-12-05 23:09:10] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-05 23:11:36] ERROR: Título inválido. Ingresá un nuevo título para la pelicula: 
+[2024-12-05 23:12:12] ERROR: Título inválido. Ingresá un nuevo título para la pelicula: 
+**********************************************************
+[2024-12-05 23:15:25] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-05 23:16:04] LOGOUT: Sesión cerrada para el usuario ID usuario1.
+----------------------------------------------------------
+**********************************************************
+[2024-12-05 23:24:25] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-05 23:24:35] LOGOUT: Sesión cerrada para el usuario ID usuario1.
+----------------------------------------------------------

@@ -1,7 +1,7 @@
-from src.manejarSesion import set_informacion_usuario, loguear_informacion_usuario
+from src.manejarSesion import setInformacionUsuario, loguearInformacionUsuario
 
 
-def cargar_usuarios_desde_archivo():
+def cargarUsuariosDesdeArchivo():
     usuarios = ()
     with open(ruta_usuarios, "r") as archivo:
         for linea in archivo:
@@ -14,7 +14,7 @@ def cargar_usuarios_desde_archivo():
     return usuarios
 
 
-def nombre_en_uso(usuarios, nombre_usuario):
+def nombreEnUso(usuarios, nombre_usuario):
     # Itero usuarios, si alguno fuera igual retorno True (si existe)
     for usuario in usuarios:
         if usuario[0] == nombre_usuario:
@@ -23,12 +23,12 @@ def nombre_en_uso(usuarios, nombre_usuario):
     return False
 
 
-def agregar_usuario_a_archivo(nombre_usuario, contrasenia_usuario, rol_usuario):
+def agregarUsuarioAArchivo(nombre_usuario, contrasenia_usuario, rol_usuario):
     # Cargar usuarios
-    usuarios = cargar_usuarios_desde_archivo()
+    usuarios = cargarUsuariosDesdeArchivo()
 
     # Validar que no repito nombre
-    while nombre_en_uso(usuarios, nombre_usuario):
+    while nombreEnUso(usuarios, nombre_usuario):
         print(
             f"El nombre de usuario '{nombre_usuario}' ya está en uso. Elige otro.")
         nombre_usuario = input('Nombre nuevo: ')
@@ -44,7 +44,7 @@ def agregar_usuario_a_archivo(nombre_usuario, contrasenia_usuario, rol_usuario):
 
 
 def login():
-    usuarios = cargar_usuarios_desde_archivo()
+    usuarios = cargarUsuariosDesdeArchivo()
     intentos_permitidos = 3
 
     while intentos_permitidos > 0:
@@ -70,12 +70,12 @@ def login():
                     if usuario == nombre_usuario and contrasenia == contrasenia_usuario:
                         # Inicio de sesión exitoso
                         # Seteo datos del usuario logueado
-                        set_informacion_usuario(nombre_usuario, rol)
+                        setInformacionUsuario(nombre_usuario, rol)
                         print("¡Acceso exitoso!")
                         print(
                             "-----------------------------------------------------------")
                         # imprime información del login
-                        loguear_informacion_usuario(
+                        loguearInformacionUsuario(
                             nombre_usuario, rol, True, False)
                         return True
 
@@ -92,10 +92,10 @@ def login():
                 "Introduce la contraseña del nuevo usuario: ")
             # el rol por defecto es usuario, si quiere ser admin se modifica el archivo a futuro
             rol_usuario = 'usuario'
-            agregar_usuario_a_archivo(
+            agregarUsuarioAArchivo(
                 nombre_usuario, contrasenia_usuario, rol_usuario)
             # Actualizar la lista de usuarios después de agregar uno nuevo
-            usuarios = cargar_usuarios_desde_archivo()
+            usuarios = cargarUsuariosDesdeArchivo()
             print('¡Creación de usuario exitosa!')
 
         else:

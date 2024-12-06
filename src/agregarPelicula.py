@@ -2,13 +2,13 @@ from src.funciones.funciones import *
 import re
 from datetime import datetime
 import json
-from src.manejarSesion import loguear_error
+from src.manejarSesion import loguearError
 
 ruta_json = 'data/peliculas.json'
-peliculas = cargar_peliculas(ruta_json)
+peliculas = cargarPeliculas(ruta_json)
 
 
-def guardar_peliculas(peliculas, ruta_json):
+def guardarPeliculas(peliculas, ruta_json):
     with open(ruta_json, 'w', encoding='utf-8') as archivo:
         json.dump(peliculas, archivo, ensure_ascii=False, indent=4)
 
@@ -32,7 +32,7 @@ def urlImagenValida(url):
 
 def tituloValido(titulo):
     # que no se repita
-    if titulo in conseguir_titulos(peliculas):
+    if titulo in conseguirTitulos(peliculas):
         print('Error: el titulo ya se usó en otra película.')
         return False
 
@@ -59,7 +59,7 @@ def actorValido(actor):
     return True
 
 
-def crear_pelicula(titulo_ingresado, genero_ingresado, calificacion_ingresada, anio_ingresado, actores, descripcion_ingresada, url_imagen_ingresada):
+def crearPelicula(titulo_ingresado, genero_ingresado, calificacion_ingresada, anio_ingresado, actores, descripcion_ingresada, url_imagen_ingresada):
     pelicula = {}
     pelicula["titulo"] = titulo_ingresado
     pelicula["genero"] = genero_ingresado
@@ -72,7 +72,7 @@ def crear_pelicula(titulo_ingresado, genero_ingresado, calificacion_ingresada, a
     return pelicula
 
 
-def agregar_pelicula():
+def agregarPelicula():
     print("\n---------------------------------------------------")
     print('Carga de películas: \nIMPORTANTE || Por favor, ingresá -1 en cualquier momento de la carga para cancelar el proceso. ')
 
@@ -84,12 +84,12 @@ def agregar_pelicula():
             return cancelarCarga()
         titulo_ingresado = input(
             'Título inválido. Ingresá un nuevo título para la pelicula: ')
-        loguear_error(
+        loguearError(
             'Título inválido. Ingresá un nuevo título para la pelicula: ')
     print("---------------------------------------------------")
 
     # género (por número)
-    generos_disponibles = sorted(list(conseguir_generos(peliculas)))
+    generos_disponibles = sorted(list(conseguirGeneros(peliculas)))
     mostrarMenuNumerado(generos_disponibles)
     genero_ingresado = input('Ingresá un número para cargar el género: ')
     while not genero_ingresado.isdigit() or not generoValido(int(genero_ingresado), generos_disponibles):
@@ -97,7 +97,7 @@ def agregar_pelicula():
             return cancelarCarga()
         genero_ingresado = input(
             'Número inválido. Ingresá un número válido para cargar el género: ')
-        loguear_error(
+        loguearError(
             'Número inválido. Ingresá un número válido para cargar el género: ')
     print("---------------------------------------------------")
 
@@ -109,7 +109,7 @@ def agregar_pelicula():
         # Calificación va del 1 al 10
         calificacion_ingresada = input(
             'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
-        loguear_error(
+        loguearError(
             'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
     print("---------------------------------------------------")
 
@@ -120,7 +120,7 @@ def agregar_pelicula():
             return cancelarCarga()
         anio_ingresado = input(
             'Año inválido. Ingresá un año válido para la película: ')
-        loguear_error('Año inválido. Ingresá un año válido para la película: ')
+        loguearError('Año inválido. Ingresá un año válido para la película: ')
     print("---------------------------------------------------")
 
     # actores
@@ -134,7 +134,7 @@ def agregar_pelicula():
         while not actorValido(actor_ingresado) and actor_ingresado not in ('0', '-1'):
             print(
                 "ERROR: Nombre de actor inválido. Ingresá solo letras, espacios y acentos.")
-            loguear_error(
+            loguearError(
                 "Nombre de actor inválido. Ingresá solo letras, espacios y acentos.")
             actor_ingresado = input(
                 'Ingresá un actor o "0" para finalizar la carga: ')
@@ -147,7 +147,7 @@ def agregar_pelicula():
         # si quiere dejar de cargar actores, pero la lista esta vacía, error
         elif actor_ingresado == "0" and listaEstaVacia(actores):
             print("ERROR: Debes ingresar por lo menos un actor.")
-            loguear_error("Debes ingresar por lo menos un actor.")
+            loguearError("Debes ingresar por lo menos un actor.")
             actor_ingresado = input(
                 'Ingresá un actor o "0" para finalizar la carga: ')
         else:
@@ -164,7 +164,7 @@ def agregar_pelicula():
             return cancelarCarga()
         descripcion_ingresada = input(
             'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
-        loguear_error(
+        loguearError(
             'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
     print("---------------------------------------------------")
 
@@ -176,22 +176,22 @@ def agregar_pelicula():
             return cancelarCarga()
         url_imagen_ingresada = input(
             'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
-        loguear_error(
+        loguearError(
             'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
     print("---------------------------------------------------")
 
     # Guardar la lista de películas actualizada en el archivo JSON
-    pelicula = crear_pelicula(titulo_ingresado,
-                              generos_disponibles[int(genero_ingresado) - 1],
-                              calificacion_ingresada,
-                              anio_ingresado,
-                              actores,
-                              descripcion_ingresada,
-                              url_imagen_ingresada)
+    pelicula = crearPelicula(titulo_ingresado,
+                             generos_disponibles[int(genero_ingresado) - 1],
+                             calificacion_ingresada,
+                             anio_ingresado,
+                             actores,
+                             descripcion_ingresada,
+                             url_imagen_ingresada)
 
     print("\n---------------------------------------------------")
     print('La película a sumar es:\n')
-    mostrar_peliculas([pelicula])
+    mostrarPeliculas([pelicula])
     print("\n---------------------------------------------------")
 
     print('¿Deseas agregar la película?')
@@ -205,10 +205,10 @@ def agregar_pelicula():
     # si actualizo la pelicula, cargo y retorno el archivo actualizado
     if respuesta_agregar_pelicula == "si":
         peliculas.append(pelicula)
-        guardar_peliculas(peliculas, ruta_json)
+        guardarPeliculas(peliculas, ruta_json)
         print("Película agregada y guardada con éxito.")
         # Recarga películas para que no quede el json de películas desactualizado
-        return cargar_peliculas(ruta_json)
+        return cargarPeliculas(ruta_json)
     else:
         return cancelarCarga()
 

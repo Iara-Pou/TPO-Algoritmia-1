@@ -1,12 +1,12 @@
 import json
-from src.manejarSesion import loguear_excepcion
+from src.manejarSesion import loguearExcepcion
 
 
-def filtrar_rango_anios(anio_inicio, anio_fin, anios):
+def filtrarRangoAnios(anio_inicio, anio_fin, anios):
     return list(filter(lambda anio: anio >= int(anio_inicio) and anio <= int(anio_fin), anios))
 
 
-def cargar_peliculas(ruta_archivo):
+def cargarPeliculas(ruta_archivo):
     try:
         with open(ruta_archivo, 'r', encoding='utf-8') as archivo:
             peliculas = json.load(archivo)
@@ -14,62 +14,62 @@ def cargar_peliculas(ruta_archivo):
     except FileNotFoundError:
         mensaje = f"ERROR: No se encontró el archivo en la ruta '{ruta_archivo}'."
         print(mensaje)
-        loguear_excepcion(mensaje)
+        loguearExcepcion(mensaje)
         return []
     except json.JSONDecodeError:
         mensaje = f"ERROR: El archivo '{ruta_archivo}' no contiene un JSON válido.'."
         print(mensaje)
-        loguear_excepcion(mensaje)
+        loguearExcepcion(mensaje)
         return []
     except Exception as e:
         mensaje = f"ERROR INESPERADO: {e}"
         print(mensaje)
-        loguear_excepcion(mensaje)
+        loguearExcepcion(mensaje)
         return []
 
 
-def buscar_por_genero(peliculas, genero):
+def buscarPorGenero(peliculas, genero):
     return [p for p in peliculas if p['genero'].lower() == genero.lower()]
 
 
-def buscar_por_anio(peliculas, anio):
+def buscarPorAnio(peliculas, anio):
     return [p for p in peliculas if anio == p["anio"]]
 
 
-def buscar_por_calificacion(peliculas, calificacion):
+def buscarPorCalificacion(peliculas, calificacion):
     return [p for p in peliculas if p['calificacion'] == calificacion]
 
 
-def buscar_por_titulo(peliculas, titulo):
+def buscarPorTitulo(peliculas, titulo):
     for pelicula in peliculas:
         if pelicula['titulo'] == titulo:
             return pelicula
     return None
 
 
-def mostrar_peliculas(peliculas):
+def mostrarPeliculas(peliculas):
     for p in peliculas:
         print(f"- Título: {p['titulo']}\n- Género: {p['genero']}\n- Calificación: {p['calificacion']}\n- Año: {p['anio']}\n- Actores: {', '.join(p['actores'])}\n- Descripción: {p['descripcion']}\n- URL imágen: {p['urlImagen']}\n")
 
 
-def conseguir_generos(peliculas):
+def conseguirGeneros(peliculas):
     return set(map(lambda pelicula: pelicula['genero'], peliculas))
 
 
-def conseguir_anios(peliculas):
+def conseguirAnios(peliculas):
     return set(map(lambda pelicula: pelicula['anio'], peliculas))
 
 
-def conseguir_calificaciones(peliculas):
+def conseguirCalificaciones(peliculas):
     return set(map(lambda pelicula: pelicula['calificacion'], peliculas))
 
 
-def conseguir_titulos(peliculas):
+def conseguirTitulos(peliculas):
     if not peliculas:  # Caso base: lista vacía
         return set()
     # Extraer el título de la primera película y llamar recursivamente con el resto de titulos
     titulo = {peliculas[0]['titulo']}
-    return titulo.union(conseguir_titulos(peliculas[1:]))
+    return titulo.union(conseguirTitulos(peliculas[1:]))
 
 
 def mostrarMenuNumerado(opciones):
