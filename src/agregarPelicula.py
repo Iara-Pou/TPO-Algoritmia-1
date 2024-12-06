@@ -152,6 +152,7 @@ def agregarPelicula():
                 'Ingresá un actor o "0" para finalizar la carga: ')
         else:
             actores.append(actor_ingresado)
+            print("----------------------")
             actor_ingresado = input(
                 'Ingresá otro actor que forme parte del elenco, o "0" para finalizar la carga: ')
     print("---------------------------------------------------")

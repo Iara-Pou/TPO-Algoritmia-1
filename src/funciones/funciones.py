@@ -65,10 +65,13 @@ def conseguirCalificaciones(peliculas):
 
 
 def conseguirTitulos(peliculas):
-    if not peliculas:  # Caso base: lista vacía
+    if not peliculas:  
         return set()
-    # Extraer el título de la primera película y llamar recursivamente con el resto de titulos
+    
+    # Crea un conjunto con el título de la primera película
     titulo = {peliculas[0]['titulo']}
+    # conseguirTitulos se llama a sí misma con peliculas[1:] (lista original menos el primer elemento)
+    # en cada llamado, el primer elemento de la lista (peliculas[0]) se procesa. Función vuelve a llamarse con el resto de la lista
     return titulo.union(conseguirTitulos(peliculas[1:]))
 
 
