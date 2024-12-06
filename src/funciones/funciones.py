@@ -82,3 +82,8 @@ def listaEstaVacia(lista):
     if len(lista) == 0:
         return True
     return False
+
+
+def cancelarCarga():
+    print('Carga cancelada')
+    return -1

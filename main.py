@@ -16,7 +16,7 @@ def ingresar_genero(generos):
             eleccion_genero = int(input('Ingresá el género: '))
             while eleccion_genero < 1 or eleccion_genero > len(generos):
                 if eleccion_genero == -1:
-                    return -1
+                    return cancelarCarga()
                 print(
                     "El género elegido no está en la lista. Por favor, intenta de nuevo.")
                 loguear_error(
@@ -36,7 +36,7 @@ def seleccionar_opcion(elementos, tipo_elemento):
                 f"Por favor, ingresa un/una {tipo_elemento}: ").strip())
             # Si el usuario ingresa -1, cancela el circuito
             if eleccion == -1:
-                return -1
+                return cancelarCarga()
             # Si es un número y está dentro de los elementos que puedo elegir, lo retorna
             if eleccion in elementos:
                 return eleccion
@@ -54,7 +54,7 @@ def seleccionar_opcion(elementos, tipo_elemento):
 def seleccionar_rango(elementos, tipo_elemento):
     primer_elemento = seleccionar_opcion(elementos, f"primer {tipo_elemento}")
     if primer_elemento == -1:
-        return -1
+        return cancelarCarga()
 
     elementos_siguientes = filtrar_rango_anios(
         primer_elemento, elementos[-1], elementos)
@@ -62,7 +62,7 @@ def seleccionar_rango(elementos, tipo_elemento):
 
     segundo_elemento = seleccionar_opcion(elementos, f"{tipo_elemento} de fin")
     if segundo_elemento == -1:
-        return -1
+        return cancelarCarga()
 
     if segundo_elemento >= primer_elemento:
         return filtrar_rango_anios(primer_elemento, segundo_elemento, elementos)
@@ -240,7 +240,7 @@ if not listaEstaVacia(peliculas) and login():
         # si usuario es admin, puede agregar pelicula
         elif opcion == '3' and usuario_es_admin():
             resultado = agregar_pelicula()
-            if resultado is not None:
+            if resultado != -1:
                 peliculas = resultado
 
         # la opción 4 del admin y tres del usuario normal cierra la sesión

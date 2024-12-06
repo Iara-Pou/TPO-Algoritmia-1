@@ -38,8 +38,6 @@ def tituloValido(titulo):
     # Validar que el título solo tenga letras, números, espacios, comas o "#"
     expresion_validacion = r"^[a-zA-Z0-9 #,]+$"
     if not re.match(expresion_validacion, titulo):
-        print("El título contiene caracteres inválidos.")
-        loguear_error("El título contiene caracteres inválidos.")
         return False
 
     return True
@@ -82,8 +80,7 @@ def agregar_pelicula():
     titulo_ingresado = input('Ingresá el título de la pelicula: ')
     while not tituloValido(titulo_ingresado):
         if titulo_ingresado == '-1':
-            print("Carga cancelada.")
-            return
+            return cancelarCarga()
         titulo_ingresado = input(
             'Título inválido. Ingresá un nuevo título para la pelicula: ')
         loguear_error(
@@ -96,8 +93,7 @@ def agregar_pelicula():
     genero_ingresado = input('Ingresá un número para cargar el género: ')
     while not genero_ingresado.isdigit() or not generoValido(int(genero_ingresado), generos_disponibles):
         if genero_ingresado == '-1':
-            print("Carga cancelada.")
-            return
+            return cancelarCarga()
         genero_ingresado = input(
             'Número inválido. Ingresá un número válido para cargar el género: ')
         loguear_error(
@@ -108,8 +104,7 @@ def agregar_pelicula():
     calificacion_ingresada = input('Ingresá una calificación del 1 al 10:')
     while not calificacion_ingresada.isdigit() or not calificacionValida(calificacion_ingresada):
         if calificacion_ingresada == '-1':
-            print("Carga cancelada.")
-            return
+            return cancelarCarga()
         # Calificación va del 1 al 10
         calificacion_ingresada = input(
             'Calificación inválida. Ingresá un número del 1 al 10 para cargar la calificación: ')
@@ -121,8 +116,7 @@ def agregar_pelicula():
     anio_ingresado = input('Ingresá el año de la película: ')
     while not anio_ingresado.isdigit() or not anioValido(int(anio_ingresado)):
         if anio_ingresado == '-1':
-            print("Carga cancelada.")
-            return
+            return cancelarCarga()
         anio_ingresado = input(
             'Año inválido. Ingresá un año válido para la película: ')
         loguear_error('Año inválido. Ingresá un año válido para la película: ')
@@ -148,8 +142,7 @@ def agregar_pelicula():
             continua_carga = False
         # si usuario ingresa -1, cancelo la carga
         elif actor_ingresado == '-1':
-            print("Carga cancelada.")
-            return
+            return cancelarCarga()
         # si quiere dejar de cargar actores, pero la lista esta vacía, error
         elif actor_ingresado == "0" and listaEstaVacia(actores):
             print("ERROR: Debes ingresar por lo menos un actor.")
@@ -167,8 +160,7 @@ def agregar_pelicula():
         'Ingresá la descripción de la película (hasta 200 caracteres): ')
     while not descripcionValida(descripcion_ingresada):
         if descripcion_ingresada == '-1':
-            print("Carga cancelada.")
-            return
+            return cancelarCarga()
         descripcion_ingresada = input(
             'Descripción inválida. Ingresá una descripción válida (letras, números, puntos, comas, hasta 200 caracteres): ')
         loguear_error(
@@ -180,8 +172,7 @@ def agregar_pelicula():
         'Ingresá la URL de la imagen de la película: ')
     while not urlImagenValida(url_imagen_ingresada):
         if url_imagen_ingresada == '-1':
-            print("Carga cancelada.")
-            return
+            return cancelarCarga()
         url_imagen_ingresada = input(
             'URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): ')
         loguear_error(
