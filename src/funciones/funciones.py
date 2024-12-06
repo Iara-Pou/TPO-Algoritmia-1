@@ -49,7 +49,7 @@ def buscar_por_titulo(peliculas, titulo):
 
 def mostrar_peliculas(peliculas):
     for p in peliculas:
-        print(f"Título: {p['titulo']}\nGénero: {p['genero']}\nCalificación: {p['calificacion']}\nAño: {p['anio']}\nActores: {', '.join(p['actores'])}\nDescripción: {p['descripcion']}\n")
+        print(f"- Título: {p['titulo']}\n- Género: {p['genero']}\n- Calificación: {p['calificacion']}\n- Año: {p['anio']}\n- Actores: {', '.join(p['actores'])}\n- Descripción: {p['descripcion']}\n- URL imágen: {p['urlImagen']}\n")
 
 
 def conseguir_generos(peliculas):

@@ -33,6 +33,7 @@ def urlImagenValida(url):
 def tituloValido(titulo):
     # que no se repita
     if titulo in conseguir_titulos(peliculas):
+        print('Error: el titulo ya se usó en otra película.')
         return False
 
     # Validar que el título solo tenga letras, números, espacios, comas o "#"
@@ -189,7 +190,7 @@ def agregar_pelicula():
                               url_imagen_ingresada)
 
     print("\n---------------------------------------------------")
-    print('La película a sumar es:')
+    print('La película a sumar es:\n')
     mostrar_peliculas([pelicula])
     print("\n---------------------------------------------------")
 
@@ -208,5 +209,7 @@ def agregar_pelicula():
         print("Película agregada y guardada con éxito.")
         # Recarga películas para que no quede el json de películas desactualizado
         return cargar_peliculas(ruta_json)
+    else:
+        return cancelarCarga()
 
     # si no actualizo la película, retorna None
