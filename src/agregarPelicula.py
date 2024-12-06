@@ -88,7 +88,7 @@ def agregar_pelicula():
     print("---------------------------------------------------")
 
     # género (por número)
-    generos_disponibles = list(conseguir_generos(peliculas))
+    generos_disponibles = sorted(list(conseguir_generos(peliculas)))
     mostrarMenuNumerado(generos_disponibles)
     genero_ingresado = input('Ingresá un número para cargar el género: ')
     while not genero_ingresado.isdigit() or not generoValido(int(genero_ingresado), generos_disponibles):
