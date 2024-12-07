@@ -174,12 +174,15 @@ def agregarPelicula():
                 print(
                     f"\n- Encontramos el actor {actor_similar} en nuestra base de datos.")
                 confirmacion_mismo_actor = input(
-                    "Si quisiste ingresarlo, escribí 'si'. Si no, escribi cualquier otra cosa: ").strip().lower()
+                    "Si quisiste ingresarlo, escribí 'si'. Si no, ingresá cualquier otra combinación de teclas: ").strip().lower()
                 if confirmacion_mismo_actor == 'si':
                     actor_ingresado = actor_similar
 
-            # suma actor a película cargada
-            actores.append(actor_ingresado)
+            # suma actor a película cargada si no fue cargado
+            if actor_ingresado not in actores:
+                actores.append(actor_ingresado)
+            else:
+                print('La carga del actor se omitió porque ya fue cargado.')
             print("\n----------------------")
 
             actor_ingresado = input(

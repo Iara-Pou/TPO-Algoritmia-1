@@ -60,3 +60,13 @@ Rol Usuario: admin
 ID Usuario: usuario1
 Rol Usuario: admin
 **********************************************************
+[2024-12-07 00:56:13] ERROR: Por favor, ingresá 1, 2, 3 o 4:
+[2024-12-07 00:56:13] LOGOUT: Sesión cerrada para el usuario ID usuario1.
+----------------------------------------------------------
+**********************************************************
+[2024-12-07 00:56:28] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-07 00:56:34] ERROR: Por favor, ingresá 1, 2, 3 o 4:
+[2024-12-07 00:56:42] ERROR: Por favor, ingresá 1, 2, 3 o 4:
