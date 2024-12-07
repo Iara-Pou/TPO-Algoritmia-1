@@ -65,14 +65,26 @@ def conseguirCalificaciones(peliculas):
 
 
 def conseguirTitulos(peliculas):
-    if not peliculas:  
+    if not peliculas:
         return set()
-    
+
     # Crea un conjunto con el título de la primera película
     titulo = {peliculas[0]['titulo']}
     # conseguirTitulos se llama a sí misma con peliculas[1:] (lista original menos el primer elemento)
     # en cada llamado, el primer elemento de la lista (peliculas[0]) se procesa. Función vuelve a llamarse con el resto de la lista
     return titulo.union(conseguirTitulos(peliculas[1:]))
+
+
+def conseguirActores(peliculas):
+    actores = []
+    for pelicula in peliculas:
+        # Asegurarse de que exista key "actores" en la película
+        if "actores" in pelicula:
+            # Agregar actores a la lista
+            actores.extend(pelicula["actores"])
+
+    # parseo a set y después a lista para eliminar duplicados
+    return list(set(actores))
 
 
 def mostrarMenuNumerado(opciones):
