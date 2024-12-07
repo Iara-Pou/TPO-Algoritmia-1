@@ -3,6 +3,7 @@ import re
 from datetime import datetime
 import json
 from src.manejarSesion import loguearError
+import difflib
 
 ruta_json = 'data/peliculas.json'
 peliculas = cargarPeliculas(ruta_json)
@@ -34,6 +35,7 @@ def tituloValido(titulo):
     # que no se repita
     if titulo in conseguirTitulos(peliculas):
         print('Error: el titulo ya se usó en otra película.')
+        loguearError('El título ya se usó en otra película.')
         return False
 
     # Validar que el título solo tenga letras, números, espacios, comas o "#"
@@ -57,6 +59,16 @@ def actorValido(actor):
     if not re.match(expresion_validacion, actor):
         return False
     return True
+
+
+def buscarActorSimilar(actor_ingresado, peliculas):
+    actores_ingresados_anteriormente = conseguirActores(peliculas)
+    actor_similar = difflib.get_close_matches(
+        actor_ingresado, actores_ingresados_anteriormente, n=1, cutoff=0.6)
+
+    # Retornar el primer actor más similar encontrado (difflib retorna una lista)
+    # o el mismo actor ingresado si no hay coincidencia suficiente
+    return actor_similar[0] if actor_similar else actor_ingresado
 
 
 def crearPelicula(titulo_ingresado, genero_ingresado, calificacion_ingresada, anio_ingresado, actores, descripcion_ingresada, url_imagen_ingresada):
@@ -130,31 +142,49 @@ def agregarPelicula():
         'Ingresá un actor que forme parte del elenco, o "0" para finalizar la carga: ')
 
     while continua_carga:
-
+        # validacion actores
         while not actorValido(actor_ingresado) and actor_ingresado not in ('0', '-1'):
             print(
                 "ERROR: Nombre de actor inválido. Ingresá solo letras, espacios y acentos.")
             loguearError(
                 "Nombre de actor inválido. Ingresá solo letras, espacios y acentos.")
+
             actor_ingresado = input(
                 'Ingresá un actor o "0" para finalizar la carga: ')
 
         if actor_ingresado == '0' and not listaEstaVacia(actores):
             continua_carga = False
+
         # si usuario ingresa -1, cancelo la carga
         elif actor_ingresado == '-1':
             return cancelarCarga()
+
         # si quiere dejar de cargar actores, pero la lista esta vacía, error
         elif actor_ingresado == "0" and listaEstaVacia(actores):
             print("ERROR: Debes ingresar por lo menos un actor.")
             loguearError("Debes ingresar por lo menos un actor.")
             actor_ingresado = input(
                 'Ingresá un actor o "0" para finalizar la carga: ')
+
+        # maneja actores correctamente ingresados
         else:
+            # busca y consulta por actor similar si no es igual al ingresado
+            actor_similar = buscarActorSimilar(actor_ingresado, peliculas)
+            if actor_similar != actor_ingresado:
+                print(
+                    f"\n- Encontramos el actor {actor_similar} en nuestra base de datos.")
+                confirmacion_mismo_actor = input(
+                    "Si quisiste ingresarlo, escribí 'si'. Si no, escribi cualquier otra cosa: ").strip().lower()
+                if confirmacion_mismo_actor == 'si':
+                    actor_ingresado = actor_similar
+
+            # suma actor a película cargada
             actores.append(actor_ingresado)
-            print("----------------------")
+            print("\n----------------------")
+
             actor_ingresado = input(
                 'Ingresá otro actor que forme parte del elenco, o "0" para finalizar la carga: ')
+
     print("---------------------------------------------------")
 
     # descripción
@@ -186,7 +216,8 @@ def agregarPelicula():
                              generos_disponibles[int(genero_ingresado) - 1],
                              calificacion_ingresada,
                              anio_ingresado,
-                             actores,
+                             # elimina duplicados de lista actores
+                             list(set(actores)),
                              descripcion_ingresada,
                              url_imagen_ingresada)
 
