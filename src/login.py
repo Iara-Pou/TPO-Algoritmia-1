@@ -66,39 +66,41 @@ def login():
 
         if opcion == "1":
             # Iniciar sesión
-            nombre_usuario = input("Introduce tu usuario: ")
+            while True:
+                nombre_usuario = input("Introduce tu usuario: ")
 
-            # Verificar si el usuario existe
-            if nombre_usuario not in usuarios_con_intentos:
-                print("El usuario no existe.")
-                continue
+                # Verificar si el usuario existe
+                if nombre_usuario not in usuarios_con_intentos:
+                    print("El usuario no existe.")
+                    print("---------------------------------------------------")
+                    continue
 
-            while usuarios_con_intentos[nombre_usuario] > 0:
-                contrasenia_usuario = input(
-                    "Introduce tu contraseña: ").strip()
-                print("---------------------------------------------------")
+                if usuarios_con_intentos[nombre_usuario] > 0:
+                    contrasenia_usuario = input(
+                        "Introduce tu contraseña: ").strip()
+                    print("---------------------------------------------------")
 
-                # Verificar las credenciales
-                for usuario, contrasenia, rol in usuarios:
-                    if usuario == nombre_usuario and contrasenia == contrasenia_usuario:
-                        # Inicio de sesión exitoso
-                        setInformacionUsuario(nombre_usuario, rol)
-                        print("¡Acceso exitoso!")
-                        print(
-                            "-----------------------------------------------------------")
-                        # Loguea información del login
-                        loguearInformacionUsuario(
-                            nombre_usuario, rol, True, False)
-                        return True
+                    # Verificar las credenciales
+                    for usuario, contrasenia, rol in usuarios:
+                        if usuario == nombre_usuario and contrasenia == contrasenia_usuario:
+                            # Inicio de sesión exitoso
+                            setInformacionUsuario(nombre_usuario, rol)
+                            print("¡Acceso exitoso!")
+                            print(
+                                "-----------------------------------------------------------")
+                            # Loguea información del login
+                            loguearInformacionUsuario(
+                                nombre_usuario, rol, True, False)
+                            return True
 
-                # Disminuir el número de intentos
-                usuarios_con_intentos[nombre_usuario] -= 1
-                print(
-                    f"Credenciales incorrectas. Te quedan {usuarios_con_intentos[nombre_usuario]} intento(s).")
-                print("---------------------------------------------------")
-
-            print("Acceso denegado por intentos fallidos.")
-            return False
+                    # Disminuir el número de intentos
+                    usuarios_con_intentos[nombre_usuario] -= 1
+                    print(
+                        f"Credenciales incorrectas. Te quedan {usuarios_con_intentos[nombre_usuario]} intento(s).")
+                    print("---------------------------------------------------")
+                else:
+                    print("Acceso denegado por intentos fallidos.")
+                    return False
 
         elif opcion == "2":
             # Agregar un nuevo usuario
