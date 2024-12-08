@@ -45,9 +45,14 @@ def agregarUsuarioAArchivo(nombre_usuario, contrasenia_usuario, rol_usuario):
 
 def login():
     usuarios = cargarUsuariosDesdeArchivo()
+    usuarios_con_intentos = dict()
     intentos_permitidos = 3
 
-    while intentos_permitidos > 0:
+    # cargo usuarios e intentos permitidos
+    for usuario in usuarios:
+        usuarios_con_intentos[usuario[0]] = intentos_permitidos
+
+    while True:
         # menu del login
         print("\n---------------------------------------------------")
         print('CINEMATCH')
@@ -61,29 +66,39 @@ def login():
 
         if opcion == "1":
             # Iniciar sesión
-            while intentos_permitidos > 0:
-                nombre_usuario = input("Introduce tu usuario: ")
-                contrasenia_usuario = input("Introduce tu contraseña: ")
+            nombre_usuario = input("Introduce tu usuario: ")
+
+            # Verificar si el usuario existe
+            if nombre_usuario not in usuarios_con_intentos:
+                print("El usuario no existe.")
+                continue
+
+            while usuarios_con_intentos[nombre_usuario] > 0:
+                contrasenia_usuario = input(
+                    "Introduce tu contraseña: ").strip()
                 print("---------------------------------------------------")
 
+                # Verificar las credenciales
                 for usuario, contrasenia, rol in usuarios:
                     if usuario == nombre_usuario and contrasenia == contrasenia_usuario:
                         # Inicio de sesión exitoso
-                        # Seteo datos del usuario logueado
                         setInformacionUsuario(nombre_usuario, rol)
                         print("¡Acceso exitoso!")
                         print(
                             "-----------------------------------------------------------")
-                        # imprime información del login
+                        # Loguea información del login
                         loguearInformacionUsuario(
                             nombre_usuario, rol, True, False)
                         return True
 
                 # Disminuir el número de intentos
-                intentos_permitidos -= 1
+                usuarios_con_intentos[nombre_usuario] -= 1
                 print(
-                    f"Credenciales incorrectas. Te quedan {intentos_permitidos} intento(s).")
-                print("---------------------------------------------------\n")
+                    f"Credenciales incorrectas. Te quedan {usuarios_con_intentos[nombre_usuario]} intento(s).")
+                print("---------------------------------------------------")
+
+            print("Acceso denegado por intentos fallidos.")
+            return False
 
         elif opcion == "2":
             # Agregar un nuevo usuario
@@ -101,8 +116,6 @@ def login():
         else:
             print("Opción no válida. Inténtalo de nuevo.")
             print("-----------------------------------------------------------")
-
-    print('Acceso denegado.')
 
 
 ruta_usuarios = "data/usuarios.txt"
