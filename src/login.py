@@ -111,8 +111,12 @@ def login():
             rol_usuario = 'usuario'
             agregarUsuarioAArchivo(
                 nombre_usuario, contrasenia_usuario, rol_usuario)
+
             # Actualizar la lista de usuarios después de agregar uno nuevo
             usuarios = cargarUsuariosDesdeArchivo()
+            # cargo usuarios e intentos permitidos
+            for usuario in usuarios:
+                usuarios_con_intentos[usuario[0]] = intentos_permitidos
             print('¡Creación de usuario exitosa!')
 
         else:

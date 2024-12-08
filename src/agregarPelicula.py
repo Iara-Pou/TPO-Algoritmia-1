@@ -21,8 +21,8 @@ def anioValido(anio):
 
 def descripcionValida(descripcion):
     # Permitir letras, números, espacios, puntos y comas, y hasta 200 caracteres
-    expresion_validacion = r"^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s.,]+$"
-    return re.match(expresion_validacion, descripcion) and len(descripcion) <= 200
+    expresion_validacion = r"^[\wáéíóúÁÉÍÓÚñÑ\s.,]{1,200}$"
+    return re.match(expresion_validacion, descripcion)
 
 
 def urlImagenValida(url):

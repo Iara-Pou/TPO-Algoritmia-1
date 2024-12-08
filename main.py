@@ -22,7 +22,7 @@ def ingresar_genero(generos):
                 eleccion_genero = int(input('Ingresá el género: '))
             return list(generos)[eleccion_genero-1]
         except ValueError:
-            mensaje = "Debes ingresar un número para ingresar el género."
+            mensaje = "Debes ingresar un número entero para ingresar el género."
             print(mensaje)
             loguearExcepcion(mensaje)
 
@@ -41,37 +41,43 @@ def seleccionar_opcion(elementos, tipo_elemento):
             # mensaje error
             print("El", tipo_elemento,
                   "no está en la lista. Por favor, intenta de nuevo.")
-            loguearError("El", tipo_elemento,
-                         "no está en la lista. Por favor, intenta de nuevo.")
+            loguearError(
+                "El elemento no está en la lista. Por favor, intenta de nuevo.")
         except ValueError:
-            mensaje = "Debes ingresar un número para seleccionar la opción."
+            mensaje = "Debes ingresar un número entero para seleccionar la opción."
             print(mensaje)
             loguearExcepcion(mensaje)
 
 
 def seleccionar_rango(elementos, tipo_elemento):
-    primer_elemento = seleccionar_opcion(elementos, f"primer {tipo_elemento}")
-    if primer_elemento == -1:
-        return cancelarCarga()
+    while True:
+        try:
+            primer_elemento = seleccionar_opcion(
+                elementos, f"primer {tipo_elemento}")
+            if primer_elemento == -1:
+                return cancelarCarga()
 
-    elementos_siguientes = filtrarRangoAnios(
-        primer_elemento, elementos[-1], elementos)
-    print(' - '.join(map(str, elementos_siguientes)))
+            elementos_siguientes = filtrarRangoAnios(
+                primer_elemento, elementos[-1], elementos)
+            print(' - '.join(map(str, elementos_siguientes)))
 
-    segundo_elemento = seleccionar_opcion(elementos, f"{tipo_elemento} de fin")
-    if segundo_elemento == -1:
-        return cancelarCarga()
+            segundo_elemento = seleccionar_opcion(
+                elementos, f"{tipo_elemento} de fin")
+            if segundo_elemento == -1:
+                return cancelarCarga()
 
-    if segundo_elemento >= primer_elemento:
-        return filtrarRangoAnios(primer_elemento, segundo_elemento, elementos)
-    else:
-        # si no ingresó un rango válido, vuelve a llamar a la funcion para que lo haga
-        print("El rango no es válido. Intenta nuevamente.")
-        print("-----------------------------------------------------")
-        print(' - '.join(map(str, elementos)))
-        loguearError("El rango no es válido. Intenta nuevamente.")
+            if segundo_elemento >= primer_elemento:
+                return filtrarRangoAnios(primer_elemento, segundo_elemento, elementos)
+            else:
+                print("El rango no es válido. Intenta nuevamente.")
+                print("-----------------------------------------------------")
+                print(' - '.join(map(str, elementos)))
+                loguearError("El rango no es válido. Intenta nuevamente.")
 
-        return seleccionar_rango(elementos, tipo_elemento)
+        except ValueError:
+            mensaje = "Debes ingresar un número válido para seleccionar un rango."
+            print(mensaje)
+            loguearExcepcion(mensaje)
 
 
 def ingresar_anio_estreno(anios):
