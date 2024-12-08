@@ -183,7 +183,7 @@ def agregarPelicula():
                 actores.append(actor_ingresado)
             else:
                 print('La carga del actor se omitió porque ya fue cargado.')
-            print("\n----------------------")
+            print("----------------------")
 
             actor_ingresado = input(
                 'Ingresá otro actor que forme parte del elenco, o "0" para finalizar la carga: ')
