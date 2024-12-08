@@ -6,8 +6,6 @@ from src.manejarSesion import getIdUsuario, getRolUsuario, loguearInformacionUsu
 
 
 def ingresar_genero(generos):
-    print("\n---------------------------------------------------")
-    print('IMPORTANTE || Por favor, ingresá -1 en cualquier momento de la carga para cancelar el proceso.')
     print("¿Qué género te gustaría ver? Aquí te dejo una lista con los géneros disponibles:")
     mostrarMenuNumerado(generos)
 
@@ -232,13 +230,19 @@ if not listaEstaVacia(peliculas) and login():
 
         # REDIRIGIR A MÉTODO CORRESPONDIENTE SEGUN ITEM DE MENU
         if opcion == '1':
+            print("\n---------------------------------------------------")
+            print('Recomendación de películas: \nIMPORTANTE || Por favor, ingresá -1 en cualquier momento de la búsqueda para cancelar el proceso. \n')
             recomendar_pelicula(peliculas)
 
         elif opcion == '2':
+            print("\n---------------------------------------------------")
+            print('Búsqueda de películas por género: \nIMPORTANTE || Por favor, ingresá -1 en cualquier momento de la búsqueda para cancelar el proceso. \n')
             listar_peliculas_por_genero(peliculas)
 
         # si usuario es admin, puede agregar pelicula
         elif opcion == '3' and usuario_es_admin():
+            print("\n---------------------------------------------------")
+            print('Carga de películas: \nIMPORTANTE || Por favor, ingresá -1 en cualquier momento de la carga para cancelar el proceso. \n')
             resultado = agregarPelicula()
             if resultado != -1:
                 peliculas = resultado

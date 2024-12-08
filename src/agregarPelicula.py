@@ -85,9 +85,6 @@ def crearPelicula(titulo_ingresado, genero_ingresado, calificacion_ingresada, an
 
 
 def agregarPelicula():
-    print("\n---------------------------------------------------")
-    print('Carga de películas: \nIMPORTANTE || Por favor, ingresá -1 en cualquier momento de la carga para cancelar el proceso. ')
-
     # Ingresar datos y validar:
     # título
     titulo_ingresado = input('Ingresá el título de la pelicula: ')
