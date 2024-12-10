@@ -146,3 +146,17 @@ Rol Usuario: admin
 ID Usuario: usuario1
 Rol Usuario: admin
 **********************************************************
+**********************************************************
+[2024-12-10 17:27:01] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+**********************************************************
+[2024-12-10 17:41:14] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-10 17:42:33] ERROR: Debes ingresar por lo menos un actor.
+[2024-12-10 17:43:25] ERROR: URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): 
+[2024-12-10 17:43:35] LOGOUT: Sesión cerrada para el usuario ID usuario1.
+----------------------------------------------------------
