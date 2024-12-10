@@ -1,4 +1,8 @@
 import json
+import  tkinter 
+from tkinter import ttk
+from io import BytesIO
+
 from src.manejarSesion import loguearExcepcion
 
 
@@ -48,8 +52,57 @@ def buscarPorTitulo(peliculas, titulo):
 
 
 def mostrarPeliculas(peliculas):
-    for p in peliculas:
-        print(f"- Título: {p['titulo']}\n- Género: {p['genero']}\n- Calificación: {p['calificacion']}\n- Año: {p['anio']}\n- Actores: {', '.join(p['actores'])}\n- Descripción: {p['descripcion']}\n- URL imágen: {p['urlImagen']}\n")
+    ventana = tkinter.Tk()
+    ventana.title("Películas")
+
+    # Configuración de estilo
+    style = ttk.Style()
+    style.configure("TLabel", wraplength=400, justify="left", font=("Arial", 12))
+
+    # Contenedor principal
+    contenedor = ttk.Frame(ventana, padding=10)
+    contenedor.grid(column=0, row=0, sticky="nsew")
+
+    # Crear una sección para cada película
+    for i, p in enumerate(peliculas):
+        frame_pelicula = ttk.Frame(contenedor, padding=5)
+        frame_pelicula.grid(column=0, row=i, sticky="ew", pady=10)
+
+        # Mostrar la información
+        titulo = ttk.Label(frame_pelicula, text=f"Título: {p['titulo']}", font=("Arial", 14, "bold"))
+        titulo.grid(column=0, row=0, sticky="w")
+
+        genero = ttk.Label(frame_pelicula, text=f"Género: {p['genero']}")
+        genero.grid(column=0, row=1, sticky="w")
+
+        calificacion = ttk.Label(frame_pelicula, text=f"Calificación: {p['calificacion']}")
+        calificacion.grid(column=0, row=2, sticky="w")
+
+        anio = ttk.Label(frame_pelicula, text=f"Año: {p['anio']}")
+        anio.grid(column=0, row=3, sticky="w")
+
+        actores = ttk.Label(frame_pelicula, text=f"Actores: {', '.join(p['actores'])}")
+        actores.grid(column=0, row=4, sticky="w")
+
+        descripcion = ttk.Label(frame_pelicula, text=f"Descripción: {p['descripcion']}")
+        descripcion.grid(column=0, row=5, sticky="w")
+
+        # Cargar y mostrar la imagen
+        try:
+            response = requests.get(p['urlImagen'])
+            image_data = BytesIO(response.content)
+            image = Image.open(image_data)
+            image.thumbnail((200, 300))  # Ajustar tamaño de la imagen
+            photo = ImageTk.PhotoImage(image)
+
+            imagen_label = ttk.Label(frame_pelicula, image=photo)
+            imagen_label.image = photo  # Mantener una referencia para evitar que se elimine
+            imagen_label.grid(column=1, row=0, rowspan=6, padx=10)
+        except Exception as e:
+            error_label = ttk.Label(frame_pelicula, text="Imagen no disponible")
+            error_label.grid(column=1, row=0, rowspan=6, padx=10)
+
+    ventana.mainloop()
 
 
 def conseguirGeneros(peliculas):
