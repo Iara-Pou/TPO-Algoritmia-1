@@ -146,8 +146,30 @@ Rol Usuario: admin
 ID Usuario: usuario1
 Rol Usuario: admin
 **********************************************************
+[2024-12-10 17:47:54] El archivo data/usuarios.txt está corrupto. Verifica el formato de los datos.
+Tipo de Excepción: type
+Mensaje de Excepción: <class 'ValueError'>
+Stacktrace:
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\TPO-Algoritmia-1\src\login.py", line 12, in cargarUsuariosDesdeArchivo
+    usuario, contrasenia, rol = linea.split(",")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 2)
+
+--------------------------------------------------------------------------------
+[2024-12-10 17:48:17] El archivo data/usuarios.txt no se encuentra. Se creará uno nuevo al agregar usuarios.
+Tipo de Excepción: type
+Mensaje de Excepción: <class 'FileNotFoundError'>
+Stacktrace:
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\TPO-Algoritmia-1\src\login.py", line 8, in cargarUsuariosDesdeArchivo
+    with open(ruta_usuarios, "r") as archivo:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'data/usuarios.txt'
+
+--------------------------------------------------------------------------------
 **********************************************************
-[2024-12-10 17:27:01] LOGIN:
+[2024-12-10 17:49:03] LOGIN:
 ID Usuario: usuario1
 Rol Usuario: admin
 **********************************************************
@@ -160,39 +182,3 @@ Rol Usuario: admin
 [2024-12-10 17:43:25] ERROR: URL de imagen inválida. Ingresá una URL válida (que termine en .jpg, .jpeg, o .png): 
 [2024-12-10 17:43:35] LOGOUT: Sesión cerrada para el usuario ID usuario1.
 ----------------------------------------------------------
-**********************************************************
-[2024-12-10 17:46:24] LOGIN:
-ID Usuario: usuario1
-Rol Usuario: admin
-**********************************************************
-[2024-12-10 17:46:43] ERROR: Por favor, ingresá 1, 2, 3 o 4:
-**********************************************************
-[2024-12-10 17:49:39] LOGIN:
-ID Usuario: usuario1
-Rol Usuario: admin
-**********************************************************
-**********************************************************
-[2024-12-10 17:51:16] LOGIN:
-ID Usuario: usuario1
-Rol Usuario: admin
-**********************************************************
-**********************************************************
-[2024-12-10 17:51:28] LOGIN:
-ID Usuario: usuario1
-Rol Usuario: admin
-**********************************************************
-**********************************************************
-[2024-12-10 17:52:36] LOGIN:
-ID Usuario: usuario1
-Rol Usuario: admin
-**********************************************************
-**********************************************************
-[2024-12-10 17:54:19] LOGIN:
-ID Usuario: usuario1
-Rol Usuario: admin
-**********************************************************
-**********************************************************
-[2024-12-10 17:57:27] LOGIN:
-ID Usuario: usuario1
-Rol Usuario: admin
-**********************************************************
