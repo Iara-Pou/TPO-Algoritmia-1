@@ -24,7 +24,7 @@ def ingresar_genero(generos):
         except ValueError:
             mensaje = "Debes ingresar un número entero para ingresar el género."
             print(mensaje)
-            loguearExcepcion(mensaje)
+            loguearExcepcion(mensaje, ValueError)
 
 
 def seleccionar_opcion(elementos, tipo_elemento):
@@ -46,7 +46,7 @@ def seleccionar_opcion(elementos, tipo_elemento):
         except ValueError:
             mensaje = "Debes ingresar un número entero para seleccionar la opción."
             print(mensaje)
-            loguearExcepcion(mensaje)
+            loguearExcepcion(mensaje, ValueError)
 
 
 def seleccionar_rango(elementos, tipo_elemento):
@@ -77,7 +77,7 @@ def seleccionar_rango(elementos, tipo_elemento):
         except ValueError:
             mensaje = "Debes ingresar un número válido para seleccionar un rango."
             print(mensaje)
-            loguearExcepcion(mensaje)
+            loguearExcepcion(mensaje, ValueError)
 
 
 def ingresar_anio_estreno(anios):
