@@ -87,7 +87,7 @@ def ingresar_anio_estreno(anios):
     mostrarMenuNumerado(['Sí', 'Prefiero un rango', 'No'])
     modalidad = input().strip()
 
-    while modalidad not in ('1', '2', '3'):
+    while modalidad not in ('1', '2', '3','-1'):
         modalidad = input("Por favor, ingresa una opción válida: ").strip()
         loguearError("Por favor, ingresa una opción válida: ")
 
@@ -95,6 +95,9 @@ def ingresar_anio_estreno(anios):
         return seleccionar_opcion(anios, 'año')
     elif modalidad == '2':
         return seleccionar_rango(anios, 'año')
+    elif modalidad == '-1':
+        return cancelarCarga()
+    
     return None
 
 
@@ -105,7 +108,7 @@ def ingresar_calificacion(calificaciones):
     mostrarMenuNumerado(['Sí', 'Prefiero un rango', 'No'])
     modalidad = input().strip()
 
-    while modalidad not in ('1', '2', '3'):
+    while modalidad not in ('1', '2', '3','-1'):
         modalidad = input("Por favor, ingresa una opción válida: ").strip()
         loguearError("Por favor, ingresa una opción válida: ")
 
@@ -113,6 +116,9 @@ def ingresar_calificacion(calificaciones):
         return seleccionar_opcion(calificaciones, 'calificación')
     elif modalidad == '2':
         return seleccionar_rango(calificaciones, 'calificación')
+    elif modalidad == '-1':
+        return cancelarCarga()
+    
     return None
 
 

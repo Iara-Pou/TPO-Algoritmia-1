@@ -70,3 +70,79 @@ Rol Usuario: admin
 **********************************************************
 [2024-12-07 00:56:34] ERROR: Por favor, ingresá 1, 2, 3 o 4:
 [2024-12-07 00:56:42] ERROR: Por favor, ingresá 1, 2, 3 o 4:
+**********************************************************
+[2024-12-10 16:47:14] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-10 16:47:46] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:47:48] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:47:49] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:48:00] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:48:04] ERROR: El elemento no está en la lista. Por favor, intenta de nuevo.
+[2024-12-10 16:48:23] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:48:24] ERROR: Por favor, ingresa una opción válida: 
+**********************************************************
+[2024-12-10 16:50:15] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-10 16:50:40] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:50:40] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:50:41] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:50:41] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:50:42] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:50:42] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:50:42] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:50:48] ERROR: Por favor, ingresa una opción válida: 
+**********************************************************
+[2024-12-10 16:53:41] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-10 16:53:55] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:53:55] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 16:53:56] ERROR: Por favor, ingresa una opción válida: 
+**********************************************************
+[2024-12-10 16:57:37] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+**********************************************************
+[2024-12-10 17:00:48] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+**********************************************************
+[2024-12-10 17:01:14] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+**********************************************************
+[2024-12-10 17:04:04] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-10 17:04:14] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 17:04:15] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 17:04:15] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 17:04:16] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 17:04:16] ERROR: Por favor, ingresa una opción válida: 
+**********************************************************
+[2024-12-10 17:05:12] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+**********************************************************
+[2024-12-10 17:05:54] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-10 17:06:07] ERROR: El género elegido no está en la lista. Por favor, intenta de nuevo.
+[2024-12-10 17:06:12] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 17:06:13] ERROR: Por favor, ingresa una opción válida: 
+**********************************************************
+[2024-12-10 17:06:30] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
