@@ -30,11 +30,9 @@ def loguearExcepcion(mensaje_customizado, mensaje_excepcion):
     try:
         with open(ruta_log, 'a', encoding='utf-8') as archivo:
             hora_actual = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            tipo_excepcion = type(mensaje_excepcion).__name__
             stacktrace = traceback.format_exc()
 
             archivo.write(f"[{hora_actual}] {mensaje_customizado}\n")
-            archivo.write(f"Tipo de Excepción: {tipo_excepcion}\n")
             archivo.write(f"Mensaje de Excepción: {mensaje_excepcion}\n")
             archivo.write("Stacktrace:\n")
             archivo.write(f"{stacktrace}\n")
