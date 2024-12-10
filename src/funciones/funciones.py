@@ -59,11 +59,29 @@ def mostrarPeliculas(peliculas):
     style = ttk.Style()
     style.configure("TLabel", wraplength=400, justify="left", font=("Arial", 12))
 
-    # Contenedor principal
-    contenedor = ttk.Frame(ventana, padding=10)
-    contenedor.grid(column=0, row=0, sticky="nsew")
+    # Configurar la ventana para que se ajuste al tamaño de la pantalla
+    ventana.columnconfigure(0, weight=1)
+    ventana.rowconfigure(0, weight=1)
 
-    # Crear una sección para cada película
+    # Contenedor principal con scrollbar
+    contenedor_principal = ttk.Frame(ventana)
+    contenedor_principal.grid(column=0, row=0, sticky="nsew")
+
+    # Canvas para permitir el scroll
+    canvas = tkinter.Canvas(contenedor_principal)
+    canvas.grid(column=0, row=0, sticky="nsew")
+
+    # Scrollbar vertical
+    scrollbar = ttk.Scrollbar(contenedor_principal, orient="vertical", command=canvas.yview)
+    scrollbar.grid(column=1, row=0, sticky="ns")
+
+    # Configurar el canvas para usar la scrollbar
+    canvas.configure(yscrollcommand=scrollbar.set)
+
+    # Frame dentro del canvas
+    contenedor = ttk.Frame(canvas)
+
+    # Crear el contenido del frame
     for i, p in enumerate(peliculas):
         frame_pelicula = ttk.Frame(contenedor, padding=5)
         frame_pelicula.grid(column=0, row=i, sticky="ew", pady=10)
@@ -87,20 +105,16 @@ def mostrarPeliculas(peliculas):
         descripcion = ttk.Label(frame_pelicula, text=f"Descripción: {p['descripcion']}")
         descripcion.grid(column=0, row=5, sticky="w")
 
-        # Cargar y mostrar la imagen
-        try:
-            response = requests.get(p['urlImagen'])
-            image_data = BytesIO(response.content)
-            image = Image.open(image_data)
-            image.thumbnail((200, 300))  # Ajustar tamaño de la imagen
-            photo = ImageTk.PhotoImage(image)
+    # Añadir el frame al canvas
+    canvas.create_window((0, 0), window=contenedor, anchor="nw")
 
-            imagen_label = ttk.Label(frame_pelicula, image=photo)
-            imagen_label.image = photo  # Mantener una referencia para evitar que se elimine
-            imagen_label.grid(column=1, row=0, rowspan=6, padx=10)
-        except Exception as e:
-            error_label = ttk.Label(frame_pelicula, text="Imagen no disponible")
-            error_label.grid(column=1, row=0, rowspan=6, padx=10)
+    # Ajustar el tamaño del canvas al contenido
+    contenedor.update_idletasks()
+    canvas.configure(scrollregion=canvas.bbox("all"))
+
+    # Configurar el contenedor principal para expandirse con la ventana
+    contenedor_principal.columnconfigure(0, weight=1)
+    contenedor_principal.rowconfigure(0, weight=1)
 
     ventana.mainloop()
 
