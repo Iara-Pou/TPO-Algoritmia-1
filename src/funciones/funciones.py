@@ -14,17 +14,17 @@ def cargarPeliculas(ruta_archivo):
     except FileNotFoundError:
         mensaje = f"ERROR: No se encontró el archivo en la ruta '{ruta_archivo}'."
         print(mensaje)
-        loguearExcepcion(mensaje)
+        loguearExcepcion(mensaje, FileNotFoundError)
         return []
     except json.JSONDecodeError:
         mensaje = f"ERROR: El archivo '{ruta_archivo}' no contiene un JSON válido.'."
         print(mensaje)
-        loguearExcepcion(mensaje)
+        loguearExcepcion(mensaje, json.JSONDecodeError)
         return []
     except Exception as e:
         mensaje = f"ERROR INESPERADO: {e}"
         print(mensaje)
-        loguearExcepcion(mensaje)
+        loguearExcepcion(mensaje, Exception)
         return []
 
 

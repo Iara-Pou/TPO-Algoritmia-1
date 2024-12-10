@@ -146,3 +146,54 @@ Rol Usuario: admin
 ID Usuario: usuario1
 Rol Usuario: admin
 **********************************************************
+[2024-12-10 17:47:54] El archivo data/usuarios.txt está corrupto. Verifica el formato de los datos.
+Tipo de Excepción: type
+Mensaje de Excepción: <class 'ValueError'>
+Stacktrace:
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\TPO-Algoritmia-1\src\login.py", line 12, in cargarUsuariosDesdeArchivo
+    usuario, contrasenia, rol = linea.split(",")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 3, got 2)
+
+--------------------------------------------------------------------------------
+[2024-12-10 17:48:17] El archivo data/usuarios.txt no se encuentra. Se creará uno nuevo al agregar usuarios.
+Tipo de Excepción: type
+Mensaje de Excepción: <class 'FileNotFoundError'>
+Stacktrace:
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\TPO-Algoritmia-1\src\login.py", line 8, in cargarUsuariosDesdeArchivo
+    with open(ruta_usuarios, "r") as archivo:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'data/usuarios.txt'
+
+--------------------------------------------------------------------------------
+**********************************************************
+[2024-12-10 17:49:03] LOGIN:
+ID Usuario: usuario1
+Rol Usuario: admin
+**********************************************************
+[2024-12-10 17:49:07] Debes ingresar un número entero para ingresar el género.
+Tipo de Excepción: type
+Mensaje de Excepción: <class 'ValueError'>
+Stacktrace:
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\TPO-Algoritmia-1\main.py", line 14, in ingresar_genero
+    eleccion_genero = int(input('Ingresá el género: '))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'a'
+
+--------------------------------------------------------------------------------
+[2024-12-10 17:49:32] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 17:49:35] ERROR: Por favor, ingresa una opción válida: 
+[2024-12-10 17:49:39] Debes ingresar un número entero para seleccionar la opción.
+Tipo de Excepción: type
+Mensaje de Excepción: <class 'ValueError'>
+Stacktrace:
+Traceback (most recent call last):
+  File "c:\Users\User\Desktop\TPO-Algoritmia-1\main.py", line 33, in seleccionar_opcion
+    eleccion = int(input(
+               ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: 'a'
+
+--------------------------------------------------------------------------------

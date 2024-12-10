@@ -17,14 +17,14 @@ def cargarUsuariosDesdeArchivo():
         print(
             f"El archivo {ruta_usuarios} no se encuentra. Se creará uno nuevo al agregar usuarios.")
         loguearExcepcion(
-            f"El archivo {ruta_usuarios} no se encuentra. Se creará uno nuevo al agregar usuarios.")
+            f"El archivo {ruta_usuarios} no se encuentra. Se creará uno nuevo al agregar usuarios.", FileNotFoundError)
         return False
 
     except ValueError:
         print(
             f"El archivo {ruta_usuarios} está corrupto. Verifica el formato de los datos.")
         loguearExcepcion(
-            f"El archivo {ruta_usuarios} está corrupto. Verifica el formato de los datos.")
+            f"El archivo {ruta_usuarios} está corrupto. Verifica el formato de los datos.", ValueError)
         return False
 
     return usuarios
